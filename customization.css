@@ -59,7 +59,7 @@
 		/* font-size: 0.9rem; */
 		line-height: 1.2;
 	}
-	/* solution slides use <pre> for code, but in the color of the bg to hide the solution initially */
+	/* "solution"-class slides use <pre> for code, but in the color of the bg to hide the solution initially */
 	.slide.solution pre {
 		color: #222222;
 	}

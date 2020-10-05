@@ -1,7 +1,7 @@
 S1-D2
 1. Introducción (~1d)
 2. Tipos de datos y operaciones básicas (~1d)
-++
+++ (margen 1d)
 
 FESTIVOS PILAR
 
@@ -15,11 +15,11 @@ S3-D1
 
 S3-D4
 8. Funciones avanzadas (~1d)
-7. Objetos, errores y excepciones (~2d)
-
+(cambio de orden)
 FESTIVO 2 NOV (S4-D1)
 
-S4-D4
+S4-D2
+7. Objetos, errores y excepciones (~2d)
 9. Entrada/Salida y manipulación de datos básica (~3d)
 
 S5-D3
@@ -30,4 +30,4 @@ S6-D3
 
 S6-D4
 12. Extras: logging y otros. Entornos de desarrollo (~2d)
-++
+++ (margen 1d)
