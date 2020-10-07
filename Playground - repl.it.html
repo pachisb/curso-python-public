@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- DEV-TEST: <meta http-equiv="refresh" content="5"> -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Slide-HTML</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <link rel="stylesheet" href="slide.css">
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <script src="slide.js"></script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Repl.it playgrounds
+
+      : https://www.repl.it
+      .
+      Hay para muchos lenguajes! (elegir arriba "Start coding")
+      No efímeros (si guardamos la URL que nos cree -con un 
+      nombre "inventado"- y/o creamos una cuenta gratuita)
+      .
+      Además permiten que se trabaje de forma colaborativa!
+      Ojo: caducan (?), son <u>*públicos*</u> (salvo con cuenta de pago),
+      y lógicamente no debemos hacer o guardar nada sensible!
+      O sea, muy similar en filosofía a GitHub...
+      Doc. oficial:
+      : https://docs.repl.it/misc/quick-start
+
+      Más ventajas: cómodo, tiene un IDE "Monaco" (editor, debugger),
+      tiene más herramientas tipo Git y MongoDB (sólo con una cuenta,
+      gratuita o no), incluyendo leer/usar repos GitHub, también tiene
+      gestión de paquetes...
+      Y hay una comunidad: ejemplos, tutoriales, "concursos" (?)...
+      .
+      Ejemplos curiosos e interesantes:
+      : https://repl.it/talk/share/A-sudoku-solver-I-made/56706
+      : https://repl.it/talk/share/Language-Whatifyer/50169
+
+      Y la siguiente slide/página "integra" ya un repl <u>concreto</u> "mío",
+      que se podría abrir simplemente en una nueva pestaña también:
+      : https://repl.it/@pachibelero/LimpingLinearMotion?lite=true
+
+      <iframe width="1024" height="768" src="https://repl.it/@pachibelero/LimpingLinearMotion?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+      @NOSCALE@
+      @CLASS@ repl
+    </pre>
+  </body>
+</html>

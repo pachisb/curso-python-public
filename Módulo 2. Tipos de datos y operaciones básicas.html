@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 2</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 2. Tipos de datos y operaciones básicas
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Tipos de datos básicos
+          Numéricos
+          Cadenas
+        Operadores y booleanos
+        Sistemas de numeración
+        Precedencia de operadores
+        Variables y constantes
+        Funciones de entrada/salidas básicas
+        Trabajo con cadenas
+          str.format()
+          f-strings
+        Documentación oficial
+        y de referencia
+        Ejercicios extra
+      @ZOOM@ 125
+
+      <blockquote>NOTA IMPORTANTE: ejecutar todos<br>los ejemplos de este módulo en el<br>modo <u>interactivo</u>!</blockquote>
+
+      # Tipos de datos básicos
+      ## Numéricos "simples"
+      <em>int</em> - enteros
+        int()
+      <em>float</em> - coma flotante
+        float()
+        round()
+      .
+      Nota: en Python sólo hay un tipo de flotantes
+
+      ## Otros tipos de números
+      Son menos comunes, salvo en ámbitos concretos...
+        complex
+        fractions.Fraction
+        decimal.Decimal
+      . 
+      Más detalles:
+      <a href="https://docs.python.org/3.8/library/stdtypes.html#numeric-types-int-float-complex" target="_blank">https://docs.python.org/3.8/library/stdtypes.html</a>
+
+      ## Otros tipos de datos básicos
+      <em>bool</em>
+        True
+        False
+        bool()
+
+      ## Cadenas
+      Son un tipo de dato "compuesto" (en Python se consideran secuencias)
+      <em>str</em>
+        str()
+      .
+      <!-- REFERENCIA-INTERNA-A-MODULO-4 -->
+      Más detalles a continuación, y en el <a href="Módulo 4. Estructuras de datos.html#op-cadenas" target="_blank">Módulo 4</a>
+      Doc. oficial de referencia (muy extensa):
+      : https://docs.python.org/3.8/library/stdtypes.html#text-sequence-type-str
+      .
+      Nota: en Python no existe el tipo carácter
+
+      # Operadores y booleanos
+      ## Operadores unarios, binarios y ternarios
+      Según el número de operandos
+      Ejemplos:
+        <samp>-</samp>5
+        5 <samp>+</samp> -2
+        x * 2 <samp>if</samp> x >= 0 <samp>else</samp> -x
+
+      ## Operadores aritméticos
+      Ejemplos:
+        5 + 2
+        +2
+        5 - 2
+        5 - -2
+        4 * 3
+        5 * 0.5
+        27 ** 1/3 
+        -0.0 * -5   # ojo, 0 con signo?!
+      Nota: se pueden combinar tipos de datos sin
+      problema (casi siempre) pues se convierten
+
+      Más operadores aritméticos:
+        5 / 2
+        5 / 0
+        5 // 2    # división entera
+        5 // 2.5
+        5 % 2     # módulo (resto de la div. entera)
+        5 % 2.5
+      .
+      Nota: algunas cosas no son como en otros lenguajes
+      (división entera, y tipos de datos y conversiones)
+
+      Notación científica:
+        >>> 5 * 10_000_000_000_000_000.0
+        <samp>5e+16</samp>
+      Equivale a: 5 x 10<sup>16</sup>
+      .
+      Ojo: no separadores de miles "típicos"
+      ni separación decimal con comas!
+        100,000,000  # "error" (otra cosa)
+        10,5         # "error"
+
+      Tamaños y precisión:
+        5 ** 4000
+        5 ** 4000 * 1.0
+        0.1 ** 100
+        0.1 ** 1000
+      .
+      Nota: los números tienen precisión <u>limitada</u>, y los flotantes tienen "límites"
+      máx. y mín. (mín. significa cercanía al 0), aunque los enteros en Python
+      pueden ser mucho más largos que en otros lenguajes!
+      .
+      Curiosidad sobre potencias (fábula del tablero de ajedrez):
+      : https://es.wikipedia.org/wiki/Problema_del_trigo_y_del_tablero_de_ajedrez
+
+      ## Operadores relacionales
+        < > == >= <= !=
+      Comparan el *valor* de dos objetos, que no tienen
+      por qué ser del mismo tipo (hay conversiones...)
+      Devuelven un booleano: True o False
+      .
+      Nota: no existen los operadores <> (Python 2), => ni =<
+
+      Diferencias con otros lenguajes:
+      - Todos tienen la misma prioridad, que es inferior a<br> la de los operadores aritméticos
+      - Se permiten expresiones como <samp>a < b < c</samp> con el<br> significado habitual en matemáticas. Es decir, se<br> pueden encadenar n comparaciones (se evalúan<br> por pares, de izda. a dcha.)
+      .
+      Más detalles:
+      : https://docs.python.org/3/reference/expressions.html#comparisons
+
+      ## Operadores lógicos
+      Operan con booleanos (ej. comparaciones)
+        and
+        or
+        not
+
+      !img/logical-and-table.png
+      .
+      !img/logical-or-table.png
+
+      !img/logical-and-or-condensed-table.png
+      @ZOOM@ 80
+
+      Podemos ver el <samp>and</samp> como una multiplicación
+      Podemos ver el <samp>or</samp> como una suma (limitada a 1)
+      Y la negación como: <samp>1 - valor</samp>
+      .
+      El álgebra de Boole cubre muchas más cosas,
+      por ejemplo el <samp>xor</samp> que veremos más adelante,
+      y las reglas para simplificar expresiones (...)
+      : https://es.wikipedia.org/wiki/%C3%81lgebra_de_Boole
+
+      !img/logical-xor-table.png
+
+      Ejemplos de reglas para and y not:
+        x and False == False
+        False and x == False
+        y and x == x and y
+        x and True == x
+        True and x == x
+        x and x == x
+      .
+        not (not x) == x
+
+      ## Evaluación cortocircuitada
+      Se basa en simplificar expresiones:
+        x > 5 or x <= 5 or cmxzsdfksdfsd.error
+      <samp>True</samp>
+      .
+        False and 5 and 5 > 0 and cmxzsdfksdfsd.error
+        1 < x < 1 < sdaskjkaslj.errortoo
+      <samp>False</samp>
+      .
+      Una expresión booleana deja de evaluarse cuando el resultado es "definitivo"
+      Notar que las siguientes "partes" podrían ser incluso erróneas (en parte...) y eso
+      puede ser un problema (sólo pasa en lenguajes <u>interpretados</u>, como Python)!
+
+      ## Booleanos operando con otros tipos
+      Valor True o False de otros objetos (tipos de datos)
+        bool(57)
+        bool(0.0)
+        bool("")
+        bool(0.00001)
+      .
+      Lo más interesante suele ser saber qué se evalúa como <samp>False</samp>
+      : https://thomas-cokelaer.info/tutorials/python/boolean.html#what-is-false
+
+      Valor numérico de los booleanos
+        int(True)
+        int(False)
+        True * 5 + True + False / 2
+
+      ## Operadores lógicos con otros tipos de datos
+      Operadores and y or, uso especial muy útil:
+        >>> True and 5.0
+        <samp>5.0</samp>
+        >>> False or "default value"
+        <samp>'default value'</samp>
+      Pensar en and/or como multip./suma para recordarlo?
+      El caso contrario (False con and, True con or) se
+      comporta de la forma "normal" esperable (bool): <u>¿por qué?</u>
+
+      Y si no usamos ningún booleano como operador?
+        >>> 2 or 3
+        <samp>2</samp>
+        >>> 5 or 0.0
+        <samp>5</samp>
+        >>> [] or 3  # Lista vacía (también cadenas, etc.)
+        <samp>3</samp>
+        >>> None or 3  # Valor especial (lo veremos)
+        <samp>3</samp>
+        >>> 0 or {}
+        <samp>{}</samp>
+      Devuelve el primer valor True, o el último False (si ninguno es True)
+
+      En resumen:
+      Lo más usado es para tener un valor de "fallback"
+      o valor por defecto, cuando otro es False (o None):
+        msg = s or "No data available"
+      Más ejemplos y detalles útiles:
+      : https://realpython.com/python-or-operator/
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      Y algo equivalente ocurre con el and + True
+      Aunque no suele usarse tanto
+      .
+      <blockquote>Ejercicio <u>(opcional)</u>: pensar y probar <br> /NOBR/
+       casos así (y para qué pueden ser útiles), <br> /NOBR/
+      y anotar alguno si fuera el caso</blockquote>
+
+      # Sistemas de numeración
+      Bit vs byte. Palabra (word)
+      Kilobyte (KB)
+      Kibibyte (KiB)
+      Megabyte (MB)
+      Mebibyte
+      Gibibyte (TB)
+      Gigabit
+      Terabye, Petabyte, Exabyte (...)
+
+      decimal
+      octal
+        oct()
+      binario
+        bin()
+      hexadecimal
+        hex()
+      Relación entre ellos. Ej.:
+        bin(0x100000)
+
+      # Operadores y booleanos (cont.)
+      ## Operadores de manipulación de bits
+        << >>
+        & | (and y or)
+        ^ (xor)
+        ~ (complemento, unario)
+      .
+      Pensar siempre en la representación binaria,
+      para este tipo de operadores...
+
+      Ejemplo:
+      Los desplazamientos (shift) son mult. / div.
+        1 << 4
+        bin(1)
+        bin(16)
+
+      ## Operadores de manipulación de cadenas
+      Ejemplos básicos (veremos otras formas...):
+        "a" + "5"
+        "a" * 5
+
+      # Precedencia de operadores
+      Aritméticos: regla "*PEMDAS*"
+        P   E  MD  AS
+        ( ) ** * / + -
+      Notas:
+      - M y D igual prioridad entre sí; A y S también.
+      - Ojo que los signos (+ y -) no son AS, aunque a veces lo parezca
+      - Multiplicación de matrices (@) y otras divisiones (// %) son como MD
+      - M, D, A y S se evalúan de izda. a dcha. (es lo habitual)
+      - Exponentes se evalúan de dcha. a izda.! (Ej. 4 <sup>3 <sup>2</sup></sup>)
+      : http://www.mathsisfun.com/operation-order-pemdas.html
+
+      Grupos principales (dentro de algunos de ellos, el orden ya descrito antes):
+      - Primero los paréntesis y similares (corchetes, llaves...)
+      - Luego el exponente (E)
+      - Luego los signos (+ y -); y luego la negación de bits (~)
+      - Luego los MD; seguidos de los AS
+      - Luego el resto de operaciones de manipulación de bits (binarias)
+      - Luego los relacionales (comparaciones), incluyendo variantes: is, in...
+      - Luego los operadores lógicos (not, and y or; en ese orden)
+      - Luego el operador ternario
+      Tabla completa y más detalles:
+      : https://docs.python.org/3/reference/expressions.html#operator-precedence
+
+      # Variables y constantes
+      <u>Variable</u> = dato con un valor asociado que puede cambiar,
+      siempre dentro de un determinado tipo de dato, con un
+      identificador (nombre) y que tiene un ámbito (alcance)
+      .
+      En Python el tipo de dato puede cambiarse y no hace falta
+      declarar ("definir" la variable de antemano) porque es un
+      lenguaje "no fuertemente tipado"
+      En otros lenguajes, una variable "es" una posic. en memoria
+
+      <u>Constante</u> = es un dato cuyo valor es inalterable
+      .
+      Un literal también lo es, pero normalmente llamamos
+      constante a los datos con un identificador asociado
+      .
+      Ventajas de usar constantes: legibilidad, mantenibilidad,
+      y permiten al lenguaje optimizar cosas
+
+      Identificadores válidos
+      (...) "the valid characters for identifiers are the same as
+      in Python 2.x: the uppercase and lowercase letters A through
+      Z, the underscore _ and, except for the first character, the
+      digits 0 through 9"
+
+      Algunas recomendaciones:
+      - Es habitual usar sólo minusculas, underscore y dígitos
+      - Es habitual reservar las mayúsculas para CONSTANTES
+      - Que sean descriptivos aunque mejor si son breves
+      - Evitar 'l', 'I', 'O', y palabras como list, str...
+      - No usar acentos, eñes, ç, etc.
+
+      Ejemplos:
+        a = 5
+        PI = 3.1415927
+      Nota: en realidad se permiten otros caracteres también. Ej.:
+        año = 2020
+      .
+      <!-- REFERENCIA-INTERNA-A-MODULO-4 -->
+      Ver más detalles en el <a href="Módulo 4. Estructuras de datos.html#juegos-caracteres" target="_blank">Módulo 4</a>
+      .
+      Avanzado: reglas para los identificadores
+      : https://docs.python.org/3/reference/lexical_analysis.html#identifiers
+
+      Asignación: asociar un [nuevo] valor (de un determinado
+      tipo) a una variable. Ej.:
+        nombre_variable = <expresión>
+        nom_var1 = nom_var2 = <expresión>
+      .
+      Primero se evalúa la expresión, y el valor resultante se
+      "guarda" (en realidad se asocia, en Python) a la variable
+      .
+      Nota: NO es a su vez una expresión (no devuelve un valor)
+      a diferencia de lo que pasa en otros lenguajes!
+
+      # Funciones de entrada/salidas básicas
+        input()
+        input(">>>>> ")
+        print()
+        print(..., sep=' ', end='\n')
+
+      # Trabajo con cadenas
+      ## Operaciones básicas
+        "a" + "5"
+        "a" * 5
+      Comparaciones: con cuidado siempre!
+        ==
+        <
+        <=
+        >=
+        etc.
+      scripting (<samp>[]</samp>)
+        str.substring()
+
+      len()
+      chr()
+      ord()
+      
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: cambio de base<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Convertir un entero a una nueva base<br> /NOBR/
+      Pedir un número a convertir y la base.<br> /NOBR/
+      Se debe escribir el número en la nueva.<br> /NOBR/
+      La base del número "original" es 10.<br> /NOBR/
+      Las bases válidas son de 2 a 9.</blockquote>
+      @CLASS@ ejercicio-1
+
+      ## str.format()
+      En otros lenguajes es habitual algo como:
+        printf("El resultado es: %d", 5)
+      Se puede usar, pero es más habitual y cómodo
+      usar format() (que además convierte tipos)
+        '{2}, {1}, {0}'.format(10, 20, 30)
+      .
+      Sintaxis, formatos disponibles, etc.:
+      : https://docs.python.org/3/library/string.html#format-string-syntax
+      Nota: la notación tipo printf la veremos (operador %)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: Stack Overflow<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Buscar ejemplos de problemas al usar<br> /NOBR/
+      format() en Stack Overflow (en inglés?)</blockquote>
+      .
+      <!-- Capacidad crítica para juzgar respuestas -->
+      <!-- Incluso aunque sean valoradas -->
+      Notas:
+      - Intentar averiguar qué respuestas se valoran
+      y por qué...
+      - Queda claro siempre el "contexto?" (...)
+      @CLASS@ ejercicio-2
+
+      ## f-strings (>= 3.6)
+      Aunque desde que existen las f-strings, son
+      lo más utilizado (y con motivo!)
+        a = 10
+        b = 20 
+        c = 30
+        f"{c}, {b}, {a}"
+      : https://realpython.com/python-f-strings/
+
+      # Documentación oficial y de referencia
+      The Python Tutorial (docs.python.org), oficial (pero informal):
+      : https://docs.python.org/3/tutorial/index.html
+      Un buen libro online gratuito para algunos temas (algo antiguo):
+      <a href="https://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/...</a>
+      Stack Overflow (tag Python) no oficial pero ayuda:
+      : https://stackoverflow.com/questions/tagged/python
+
+      # Ejercicios extra
+      - Opcional: el ejercicio mencionado sobre and + True (...)
+      - Practicar con los tipos de datos básicos, y sus operadores
+      - Practicar con las f-strings (al menos un poco, básicas)
+      - Representar números (enteros, positivos) en otras bases,<br>al menos unos pocos, en base 16 y 2
+
+    </pre>
+  </body>
+</html>
