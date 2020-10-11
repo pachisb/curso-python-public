@@ -139,7 +139,8 @@
       : https://es.wikipedia.org/wiki/Problema_del_trigo_y_del_tablero_de_ajedrez
 
       ## Operadores relacionales
-        < > == >= <= !=
+        == !=  # comparación de igualdad / desigualdad
+        < > >= <=
       Comparan el *valor* de dos objetos, que no tienen
       por qué ser del mismo tipo (hay conversiones...)
       Devuelven un booleano: True o False
@@ -159,15 +160,11 @@
         or
         not
 
-      !img/logical-and-table.png
-      .
-      !img/logical-or-table.png
-
       !img/logical-and-or-condensed-table.png
       @ZOOM@ 80
 
       Podemos ver el <samp>and</samp> como una multiplicación
-      Podemos ver el <samp>or</samp> como una suma (limitada a 1)
+      Podemos ver el <samp>or</samp> como una suma (con "tope" 1)
       Y la negación como: <samp>1 - valor</samp>
       .
       El álgebra de Boole cubre muchas más cosas,
@@ -177,40 +174,65 @@
 
       !img/logical-xor-table.png
 
-      Ejemplos de reglas para and y not:
+      Ejemplos de reglas para <u>simplificar</u> expresiones
+      booleanas con and y not:
         x and False == False
         False and x == False
-        y and x == x and y
         x and True == x
         True and x == x
         x and x == x
-      .
         not (not x) == x
+      .
+      Ojo, esto matemáticamente es correcto pero
+      en programación no siempre (orden!):
+        y and x == x and y
 
       ## Evaluación cortocircuitada
       Se basa en simplificar expresiones:
+        x > 5 or x <= 5 or x > 2
+      <samp>True</samp>
+      No hace falta llegar al tercer término (x > 2) si alguno
+      anterior ya resultó ser True (y estamos en un or)
+      .
+        x < 5 and False and 5 > 0
+      <samp>False</samp>
+
+      Otra forma de verlo:
+      Una expresión booleana deja de evaluarse cuando el
+      resultado es "definitivo" (ya no hay cambio posible):
+      - El <samp>and</samp> se "detiene" al encontrar un <samp>False</samp>
+      - El <samp>or</samp> se "detiene" al encontrar un <samp>True</samp>
+
+      !img/logical-and-table.png
+      .
+      !img/logical-or-table.png
+
+      ## Evaluación cortocircuitada (cont.)
+      Posibles problemas "ocultos" en nuestro código fuente:
         x > 5 or x <= 5 or cmxzsdfksdfsd.error
       <samp>True</samp>
-      .
         False and 5 and 5 > 0 and cmxzsdfksdfsd.error
         1 < x < 1 < sdaskjkaslj.errortoo
       <samp>False</samp>
       .
-      Una expresión booleana deja de evaluarse cuando el resultado es "definitivo"
-      Notar que las siguientes "partes" podrían ser incluso erróneas (en parte...) y eso
-      puede ser un problema (sólo pasa en lenguajes <u>interpretados</u>, como Python)!
+      Siguientes "partes" o términos de una expresión podrían ser
+      incluso erróneas (al menos en parte...) y no darnos cuenta a
+      tiempo! Sólo pasa en lenguajes <u>interpretados</u>, como Python...
+      El error (sintaxis, etc.) <u>detendrá el programa</u> si no lo gestionamos!
 
       ## Booleanos operando con otros tipos
-      Valor True o False de otros objetos (tipos de datos)
+      Valor True o False "equivalente" de otros tipos de datos:
         bool(57)
         bool(0.0)
         bool("")
         bool(0.00001)
       .
-      Lo más interesante suele ser saber qué se evalúa como <samp>False</samp>
+      Lo más interesante suele ser saber/recordar qué se evalúa como <samp>False</samp>
+      Tabla resumen:
       : https://thomas-cokelaer.info/tutorials/python/boolean.html#what-is-false
 
-      Valor numérico de los booleanos
+      Y para "cerrar el círculo", también lo contrario...
+      Valor numérico "equivalente" de los booleanos:
         int(True)
         int(False)
         True * 5 + True + False / 2
@@ -221,22 +243,24 @@
         <samp>5.0</samp>
         >>> False or "default value"
         <samp>'default value'</samp>
-      Pensar en and/or como multip./suma para recordarlo?
-      El caso contrario (False con and, True con or) se
-      comporta de la forma "normal" esperable (bool): <u>¿por qué?</u>
+      Pensar en and/or como multipl./suma para recordarlo?
+      .
+      Los casos contrarios (False con and, True con or) se
+      comportan de la forma "normal" esperable (bool): <u>¿por qué?</u>
 
       Y si no usamos ningún booleano como operador?
         >>> 2 or 3
         <samp>2</samp>
         >>> 5 or 0.0
         <samp>5</samp>
-        >>> [] or 3  # Lista vacía (también cadenas, etc.)
+        >>> "" or 3  # "" se evalúa como False aquí
         <samp>3</samp>
-        >>> None or 3  # Valor especial (lo veremos)
+        >>> None or 3  # None es un valor "especial" (lo veremos)
         <samp>3</samp>
         >>> 0 or {}
         <samp>{}</samp>
-      Devuelve el primer valor True, o el último False (si ninguno es True)
+      .
+      Devuelven el primer valor True, o el último False (si ninguno es True)
 
       En resumen:
       Lo más usado es para tener un valor de "fallback"
@@ -272,6 +296,16 @@
         hex()
       Relación entre ellos. Ej.:
         bin(0x100000)
+      .
+      Nota: bin() etc. devuelven cadenas, <u>¿por qué?</u>
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: cambio de base<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Dado un número a convertir y una nueva<br> /NOBR/
+      base, calcular el número en la nueva base.<br> /NOBR/
+      La base de partida es siempre 10.<br> /NOBR/
+      Las bases nuevas válidas son de 2 a 9.</blockquote>
+      @CLASS@ ejercicio-1
 
       # Operadores y booleanos (cont.)
       ## Operadores de manipulación de bits
@@ -307,7 +341,7 @@
       : http://www.mathsisfun.com/operation-order-pemdas.html
 
       Grupos principales (dentro de algunos de ellos, el orden ya descrito antes):
-      - Primero los paréntesis y similares (corchetes, llaves...)
+      - Primero los paréntesis (P) y similares (corchetes, llaves...)
       - Luego el exponente (E)
       - Luego los signos (+ y -); y luego la negación de bits (~)
       - Luego los MD; seguidos de los AS
@@ -322,16 +356,19 @@
       <u>Variable</u> = dato con un valor asociado que puede cambiar,
       siempre dentro de un determinado tipo de dato, con un
       identificador (nombre) y que tiene un ámbito (alcance)
-      .
+        x = 5
+        x = "hola"
       En Python el tipo de dato puede cambiarse y no hace falta
       declarar ("definir" la variable de antemano) porque es un
       lenguaje "no fuertemente tipado"
       En otros lenguajes, una variable "es" una posic. en memoria
 
       <u>Constante</u> = es un dato cuyo valor es inalterable
+        PI = 3.1415927
       .
       Un literal también lo es, pero normalmente llamamos
       constante a los datos con un identificador asociado
+        3.1415927
       .
       Ventajas de usar constantes: legibilidad, mantenibilidad,
       y permiten al lenguaje optimizar cosas
@@ -363,62 +400,110 @@
 
       Asignación: asociar un [nuevo] valor (de un determinado
       tipo) a una variable. Ej.:
-        nombre_variable = <expresión>
-        nom_var1 = nom_var2 = <expresión>
+        nombre_variable = &lt;expresión&gt;
       .
       Primero se evalúa la expresión, y el valor resultante se
-      "guarda" (en realidad se asocia, en Python) a la variable
+      "guarda" (en realidad se asocia, en Python) en la variable
+
+      En Pyhton, la asignación usa el símbolo de igualdad (=)
+      pero no se debe confundir con la notación y el significado
+      que se le dan en matemáticas. Ejemplo:
+        x = x + 1
+      No confundir tampoco con el operador de igualdad (==), que
+      en otros lenguajes usa el mismo símbolo (=), más confuso...
       .
-      Nota: NO es a su vez una expresión (no devuelve un valor)
-      a diferencia de lo que pasa en otros lenguajes!
+      La asignación es por tanto una sentencia, no una expresión
+      Nota: NO es ambas cosas tampoco (no devuelve un valor)
+      a diferencia de lo que pasa en algunos otros lenguajes!
+
+      Asignaciones múltiples:
+        var2 = var1 = 5
+      Importante: el orden (de asignación) es de dcha. a izda. 
+      .
+        x, y = y, x
+      Ésta última de hecho es la forma recomendada para
+      "intercambiar" el valor de 2 o n elementos
+      <u>Importante</u>: cómo se haría con asignaciones simples?
+
+      Asignaciones especiales (con operaciones):
+        x = 1
+        x *= 15  # equivale a x = x * 15
+        x += 10  # equivale a x = x + 10
+        x //= 5  # división entera
+        x /= 5  # ojo, división flotante (cambia el tipo)
+        x -= 3
+        x **= 2  # cuadrado!
+        etc.
 
       # Funciones de entrada/salidas básicas
-        input()
-        input(">>>>> ")
+        x = input()  # lee un valor y nos lo devuelve
+        x = input(">>>>>>> ")
+        x = input("Dime un valor: ")
+      .
         print()
-        print(..., sep=' ', end='\n')
+        print(x, y, z)
+        print(x, y, z, sep=' ', end='\n')
+        print(x, y, x, sep=' ::\n', end=' ::\n')
 
       # Trabajo con cadenas
       ## Operaciones básicas
         "a" + "5"
         "a" * 5
-      Comparaciones: con cuidado siempre!
+      .
+      Comparaciones: con cuidado siempre! Lo veremos
         ==
         <
         <=
         >=
         etc.
-      scripting (<samp>[]</samp>)
-        str.substring()
 
+      <u>subscripting</u>: acceder a sus elementos
+        s = "hola"
+        s[0]
+        s[1]
+        s[-1]
+
+      Subcadenas:
+      str.substring()
+      Veremos por qué se usa el punto (métodos del tipo str)
+        s = "hola"
+        s.substring(0, 2)
+      .
+      Longitud (de cualquier elemento "compuesto"):
       len()
+        len("hola")
+        len("")
+
       chr()
+        chr(10)
       ord()
-      
-      <!-- EJERCICIO-PARA-CLASE -->
-      # Ejercicio 1: cambio de base<a href="#ejercicio-1" class="link-anchor"> # </a>
-      <blockquote>Convertir un entero a una nueva base<br> /NOBR/
-      Pedir un número a convertir y la base.<br> /NOBR/
-      Se debe escribir el número en la nueva.<br> /NOBR/
-      La base del número "original" es 10.<br> /NOBR/
-      Las bases válidas son de 2 a 9.</blockquote>
-      @CLASS@ ejercicio-1
+        ord('A')
+        ord('B')
+        ord(' ')
+        ord('')
+        ord('\n')
+      El significado de chr() y ord() más "a fondo" lo
+      veremos más adelante, en el Módulo 4
 
       ## str.format()
       En otros lenguajes es habitual algo como:
         printf("El resultado es: %d", 5)
-      Se puede usar, pero es más habitual y cómodo
-      usar format() (que además convierte tipos)
-        '{2}, {1}, {0}'.format(10, 20, 30)
+      Nota: la notación tipo printf la veremos (operador %)
+      .
+      Se puede usar %, pero es más habitual y cómodo utilizar format(),
+      que además permite convertir tipos y más cosas (...):
+        "x = {}, y = {}, z = {}".format(x, y, z)
+        "{:f} = {} / {}".format(10, 200, 20)
       .
       Sintaxis, formatos disponibles, etc.:
       : https://docs.python.org/3/library/string.html#format-string-syntax
-      Nota: la notación tipo printf la veremos (operador %)
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 2: Stack Overflow<a href="#ejercicio-2" class="link-anchor"> # </a>
-      <blockquote>Buscar ejemplos de problemas al usar<br> /NOBR/
-      format() en Stack Overflow (en inglés?)</blockquote>
+      <blockquote>Buscar ejemplos de problemas al usar la función<br> /NOBR/
+      de cadenas format() en Stack Overflow (en inglés?).<br> /NOBR/
+      Buscar cómo cambiar el orden de los elementos (<u>i18n</u>).</blockquote>
+      : https://stackoverflow.com/questions/tagged/python
       .
       <!-- Capacidad crítica para juzgar respuestas -->
       <!-- Incluso aunque sean valoradas -->
@@ -428,28 +513,31 @@
       - Queda claro siempre el "contexto?" (...)
       @CLASS@ ejercicio-2
 
-      ## f-strings (>= 3.6)
+      ## f-strings (Python >= 3.6)
       Aunque desde que existen las f-strings, son
       lo más utilizado (y con motivo!)
         a = 10
         b = 20 
         c = 30
         f"{c}, {b}, {a}"
+      .
+      Más detalles:
       : https://realpython.com/python-f-strings/
 
       # Documentación oficial y de referencia
       The Python Tutorial (docs.python.org), oficial (pero informal):
       : https://docs.python.org/3/tutorial/index.html
-      Un buen libro online gratuito para algunos temas (algo antiguo):
+      Un buen libro online gratuito para algunos temas (algo antiguo),
+      que permite por ejemplo repasar lo esencial de lo visto hasta ahora:
       <a href="https://openbookproject.net/thinkcs/python/english3e/variables_expressions_statements.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/...</a>
       Stack Overflow (tag Python) no oficial pero ayuda:
       : https://stackoverflow.com/questions/tagged/python
 
       # Ejercicios extra
       - Opcional: el ejercicio mencionado sobre and + True (...)
-      - Practicar con los tipos de datos básicos, y sus operadores
+      - Practicar con los tipos de datos básicos y sus operadores, en<br> especial con booleanos, conversiones o mezclas de tipos, etc.
       - Practicar con las f-strings (al menos un poco, básicas)
-      - Representar números (enteros, positivos) en otras bases,<br>al menos unos pocos, en base 16 y 2
+      - Representar números (enteros, positivos) en otras bases,<br> al menos unos pocos, en base 16 y 2
 
     </pre>
   </body>
