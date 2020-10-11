@@ -90,9 +90,10 @@
       Python 3.6 / 3.8
       Consola: CMD / MV Linux / WSL
       Visual Studio Code (VS Code)
-      Veyon / VNC (?), Google Drive, Zoom
+      Veyon / VNC, Google Drive, Zoom
       Git
       Repl.it, Google Colab
+      .
       Opcional: GitHub, Google Cloud Console
       Opcional: Oracle VirtualBox + BBDD
 
@@ -113,13 +114,13 @@
       
       ## Idioma
       Cantidad y calidad de la información
-      - Ocurre igual en Wikipedia, doc. oficial
-      de muchos productos, lenguajes, servicios
+      - Ocurre igual en Wikipedia, doc. oficial<br> de muchos productos, lenguajes, servicios
       - Las traducciones suelen contener fallos
       - Caso concreto importante: Microsoft!
       .
       Recomendación: <em>navegador en inglés</em>
 
+      <!-- PENDIENTE: eliminar fechas en GitHub al acabar -->
       # Estructura del curso
       Duración: 120 horas
       6 semanas, 24 sesiones
@@ -147,12 +148,6 @@
 
       !img/students.jpg
       @ZOOM@ 175
-
-      Control de asistencia?
-      Número de descansos?
-      Zoom?
-      Micrófono?
-      Tamaño en pantalla?
 
       !img/exam.jpg
       @ZOOM@ 150
@@ -288,11 +283,12 @@
       Qué es una consola?
 
       ## Entornos de pruebas interactivos Python
-      Consola en local / MV / WSL (recomendado!)
+      En local: consola / MV / WSL (recomendado!)
       .
       Entorno de pruebas Repl.it:
       : https://repl.it/
-      Python 3.8, IDE sencillo, depurador, modo colaborativo...)
+      Python 3.8, IDE sencillo, depurador, modo colaborativo...
+      Ver documento/presentación específica (...)
       .
       Consola de Google Cloud (Debian 10, Python 3.7)
       : https://console.cloud.google.com/
@@ -302,12 +298,12 @@
       .
       Entorno de pruebas Python, en Katacoda (<u>efímero</u>!)
       : https://www.katacoda.com/scenario-examples/courses/environment-usages/python
+      Nota: Ubuntu 18.04 (Python 3.6 y 2.7)
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / demo: WSL Ubuntu
       <blockquote>Mostrar WSL con Ubuntu (o Debian), y<br> /NOBR/
-      cómo instalarlo en Windows 10.<br> /NOBR/
-      Instalamos también Veyon / VNC</blockquote>
+      cómo instalarlo en Windows 10</blockquote>
       .
       Nota: necesarios permisos admin! (...)
 
@@ -346,20 +342,39 @@
       que el valor / resultado de una expresión!
       Sentencia vs. expresión (...)
       .
-      Nota: print en Python 2: <code>print "hola", 2.0</code>
+      Nota: print en Python 2 no es una función:
+        <i>print "hola", 2.0</i>
 
       # Herramientas alternativas
       ## IPython
       Es un shell interactivo de Python mejorado
       : https://en.wikipedia.org/wiki/IPython
       : http://ipython.org/
-      Windows:
-        py.exe -m IPython
+
+      Cómo lanzarlo (varias opciones)
+      Windows (recordar <kbd>Windows+R</kbd> como atajo para "Ejecutar"):
         ipython3.exe
-      Linux:
-        python3 -m IPython
-        python -m IPython
+        py.exe -m IPython
+      Nota: la parte ".exe" se puede omitir. Mayúsculas en "IPython" importan!
+      Nota: el primero puede que no funcione "tal cual" sin localizar su ruta.
+      Normalmente estará en: <em>%APPDATA%\Python\Python38\Scripts</em>
+      o en <em>C:\Program Files...</em> Lo mejor: crearnos accesos directos
+      .
+      Linux Ubuntu o Debian:
         ipython3
+        python3 -m IPython
+        python -m IPython  # sólo para Python 2.x!
+
+      Cómo instalarlo de forma rápida para pruebas y desarrollo
+      Windows / a veces Linux (depende del tipo de entorno):
+        >>> import sys; import subprocess
+        >>> subprocess.run((sys.executable, '-m',
+              'pip', 'install', '--user', 'IPython'))
+      .
+      Linux (ojo, lo instala para todo el sistema y usuarios):
+        sudo apt-get update
+        sudo apt-get install python3-pip
+        sudo pip3 install IPython
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       ## Ejercicio / demo: IPython
@@ -380,8 +395,8 @@
       : https://en.wikipedia.org/wiki/Project_Jupyter
       
       ## Manejo básico de Jupyter Notebook<a href="#jupyter-cheat" class="link-anchor"> # </a>
-      <kbd>Ctrl+Enter</kbd> ➡ ejecutar el bloque actual
-      <kbd>Shift+Enter</kbd> ➡ ejecutar el bloque actual y seguir
+      <kbd>Ctrl+Enter</kbd> para ejecutar el bloque actual
+      <kbd>Shift+Enter</kbd> para ejecutar el bloque actual y seguir
       .
       Intro básica, atajos de teclas, etc.:
       : https://medium.com/edureka/jupyter-notebook-cheat-sheet-88f60d1aca7
