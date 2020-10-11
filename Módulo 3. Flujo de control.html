@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 3</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 3. Flujo de control
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Visual Studio Code
+          Instalación
+        Condicionales
+        Anidación
+        Diagramas de flujo
+        Expresiones condicionales
+        Expresiones de asignación
+        Comentarios e indentación
+        Formateado (estilo) del código
+        Bucles
+          while
+          for
+          break, continue, else, pass
+        Palabras reservadas
+        Ejercicios extra
+        Referencias
+
+      # Visual Studio Code
+      Documentación oficial:
+      : https://code.visualstudio.com/docs
+      .
+      Guía recomendable (primeros pasos y "trucos")
+      : https://code.visualstudio.com/docs/getstarted/tips-and-tricks
+
+      ## Entornos alternativos tipo IDE (ya vistos!)
+      Entorno de pruebas Repl.it:
+      : https://repl.it/
+      Python 3.8, IDE sencillo, depurador, modo colaborativo...
+      Ver documento/presentación específica (...)
+      .
+      Google Colab (Jupyter Notebook) usado con Google Drive
+      : https://colab.research.google.com/notebooks/welcome.ipynb
+      .
+      Consola de Google Cloud (Debian 10, Python 3.7)
+      : https://console.cloud.google.com/
+
+      ## Instalación
+      Descargar e instalar VS Code (mejor: System Installer)
+      : https://code.visualstudio.com/#alt-downloads
+      Recomendable: probar su "Interactive Playground"
+      .
+      Atajos de teclado (cheat sheet):
+      Imprescindible sólo un atajo de teclado: <kbd>Ctrl+Shift+P</kbd>
+      : https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+
+
+      Instalamos también Veyon:
+      : https://veyon.io/
+      .
+      Segundo intento de instalar WSL sin permisos de admin?
+      : https://github.com/microsoft/WSL/issues/3817
+      : https://docs.microsoft.com/en-us/windows/wsl/install-manual#installing-your-distro
+      : https://docs.microsoft.com/en-us/windows/wsl/install-on-server
+
+      ## Configuración del entorno de VS Code
+      Recomendado: abrir una carpeta en blanco y crear algún fichero .py
+      Instalar extensión Python
+      *<u>NO INSTALAR</u>* el linter que nos ofrece
+      Instalar extensión Preview
+      : https://marketplace.visualstudio.com/items?itemName=searKing.preview-vscode
+      Instalar extensión Remote - WSL
+      : https://code.visualstudio.com/docs/remote/ssh
+      : https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
+      Seleccionar *entorno Python 3.8*
+      Instalar paquetes Python matplotlib, pandas y numpy
+        py.exe -m pip install matplotlib pandas numpy
+      Instalar paquetes Python pyreadconsole, black, pydocs, jupyter y requests
+
+      <blockquote>NOTA IMPORTANTE: ejecutar todos<br>los ejemplos de este módulo en un<br>IDE o en un notebook!</blockquote>
+
+      # Condicionales
+      Ejemplo:
+        <samp>if</samp> x < 0:
+            print('Negative changed to zero')
+            x = 0
+      .
+      Atención a la sintaxis: los dos puntos indican comienzo de
+      bloque (y es obligatorio que éste siempre esté <em>indentado</em>)
+
+      Otro ejemplo:
+        if x < 0:
+            print('Negative changed to zero')
+            x = 0
+        <samp>else</samp>:
+            x *= 2
+      .
+      Podemos verlo como una "bifurcación" en el camino
+
+      Un ejemplo más complejo:
+        if x < 0:
+            print('Negative changed to zero')
+            x = 0
+        else:
+            if x == 0:
+                print('Zero')
+            <samp>elif</samp> x == 1 or x < 2.0:
+                print('Single')
+            elif x == 1:
+                print('TEXT NEVER SHOWN')
+            else:
+                print('More')
+      Sólo se ejecuta <u>una parte</u> (eval. cortocirc. también aquí)
+      Nota: no existen los "switch" o "case" típicos en otros lenguajes
+
+      # Anidación
+        if ...:
+            x = i
+            if ...:
+                if i > 2:
+                    x /= 2
+                elif i > 500:
+                    print("too high")
+                    zzz_only_here = True  # 1ª aparición
+                    x = 0
+            else:
+                x = a + b
+            print(x)
+            print(zzz_only_here)  # error si i <= 500 !!
+      .
+      Recomendación: no abusar! (re-factorizar...)
+      De lo contrario el código se hace confuso de leer
+      Aparte de eso, cuidado con dónde <u>definir</u> variables!
+
+      # Diagramas de flujo (flowcharts)
+      Primeros ejemplos:
+      <a href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html#conditional-execution" target="_blank">How to Think Like a Computer Scientist: Learning with Python</a>
+      Más detalles y explicación de los símbolos:
+      : https://en.wikipedia.org/wiki/Flowchart
+
+      <!-- !img/flowchart-example.png -->
+      <!-- !img/flowchart-main-symbols.png -->
+      <img src="img/flowchart-example.png" style="display: inline; margin-right: 2em;">   <img src="img/flowchart-main-symbols.png" style="display: inline;">
+
+      # Expresiones condicionales
+      Recordar: se hacen con el (único) operador ternario
+      Son una <u>expresión</u>, no una sentencia condicional
+        y = x * 2 if x >= 0 else -x
+        # Se entiende la precedencia? Lo último era la asignacion!
+      .
+        print(s[0] if len(s) > 0 else " ")
+        # Como vimos, lo anterior equivale a:
+        print(len(s) > 0 and s[0] or " ")
+      .
+      Más detalles:
+      <a href="https://docs.python.org/3/reference/expressions.html#conditional-expressions" target="_blank">https://docs.python.org/3/reference/expressions.html</a>
+
+      # Expresiones de asignación (Python >= 3.8)
+      Operador <samp>:=</samp>
+      Doble papel: hace la asignación, y además devuelve el valor
+      Funciona en la parte inicial de if, while, y algún sitio más
+      .
+      No se recomienda abusar, sólo si son claras y sirven para
+      que el código resulte más breve. Si ayuda, usar paréntesis!
+        if s := pattern.search(data):
+            do_something(s)
+      .
+      Más detalles:
+      : https://docs.python.org/3/reference/expressions.html#assignment-expressions
+      : https://www.python.org/dev/peps/pep-0572/
+
+      # Comentarios e indentación
+      Los comentarios simplemente se ignoran (suprimen), igual
+      que las líneas en blanco o con solo espacios/tabuladores
+        # This is a normal comment
+        y = 5 + x  # This is a comment at the end of the line
+      .
+      Reglas de indentado. Ejemplos de <em>errores</em>:
+        # This is a normal comment
+         # This is an indented comment (valid)
+         if len(s) > 1:                   # error: first line indented
+         s = l[:i] + l[i+1:]              # error: not indented
+                r = f(l[:i] + l[i+1:])    # error: unexpected indent
+                if i > 0:
+                        # This is a normal comment
+                        r.append(l[i:i+1] + x)
+                    print(i)              # error: inconsistent dedent
+      Más detalles:
+      : https://docs.python.org/3/reference/lexical_analysis.html#indentation
+
+      # Formateado (estilo) del código
+      Estilo recomendado: PEP 8. Resumen:
+      - Indentación con 4 espacios, no tabuladores
+      - Líneas de menos de 80 caracteres
+      - Espacios tras las comas y entre operadores
+      - No espacios tras/pre paréntesis (funciones, listas...)
+      - Comentarios preferiblemente en una línea separada
+      - Separar funciones, clases, y bloques grandes con líneas en blanco
+      - Nombres consistentes: variables_y_funciones, EjemploClases, CONSTANTES
+      Referencia: <a href="https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style" target="_blank">The Python Tutorial (docs.python.org)</a>
+      Más detalles: <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8</a>
+
+      ## Saltos de línea y unión de líneas
+      Separación con punto y coma (no se recomienda, a veces confunde)
+        # The next line means print 3 lines or none!
+        if x < y < z: print(x); print(y); print(z)
+      Unión / continuación de líneas (explícita):
+        # The next line is explicitly joined to the following
+        if 1900 < year < 2100 and 1 <= month <= 12 \
+           and 1 <= day <= 31:  # indent is ignored here
+                # It's a valid date
+                print("ok")
+      La unión *no sirve* dentro de comentarios, nombres, keywords, etc.
+      Más detalles:
+      : https://docs.python.org/3/reference/lexical_analysis.html#line-structure
+
+      ## Saltos de línea y unión de líneas (cont.)
+      Unión / continuación de líneas (implícita):
+        made_up_names = ["Frunch", "Maart", "Andril", "Mei", "Luni",
+                         # This comment inside the expression is valid
+                         "Zebrech", "Trepf", "Krungt"]
+      Por eso es más limpio y claro esto que unir líneas:
+        if ( 1900 < year < 2100 and 1 <= month <= 12
+             and 1 <= day <= 31 ):
+            print("ok")
+      .
+      Es decir, si el contexto lo deja claro, <u>podemos cortar las líneas</u> "sin más"!
+      Más detalles:
+      : https://docs.python.org/3/reference/lexical_analysis.html#line-structure
+
+      # Bucles
+      Secuencia de instrucciones que se ejecutarán 0 o más veces
+      Es "necesario" asegurar que terminará en algún momento!
+      ## while
+      Ejemplo:
+        # Escribir la secuencia Collatz o "3n+1" hasta 1
+        n = int(input("Número para empezar? "))
+        <samp>while</samp> n != 1:
+            print(n, end=", ")
+            if n % 2 == 0:  # par
+                n = n // 2
+            else:
+                n = n * 3 + 1
+        print(n, end=".\n")
+      .
+      Más información sobre la secuencia Collatz:
+      : https://es.wikipedia.org/wiki/Conjetura_de_Collatz
+      <a href="https://www.investigacionyciencia.es/noticias/un-gran-resultado-matemtico-para-un-problema-peligroso-18125" target="_blank">https://www.investigacionyciencia.es/noticias/...</a>
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: cambio de base<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Convertir un entero a una nueva base:<br> /NOBR/
+      Pedir un número a convertir y la base.<br> /NOBR/
+      Se debe escribir el número en la nueva.<br> /NOBR/
+      La base del número "original" es 10.<br> /NOBR/
+      Las bases nuevas válidas son de 2 a 9.</blockquote>
+      @CLASS@ ejercicio-1
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: polígonos y tortugas<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Dada una demo / base de un programa que dibuja en Python (con el<br> /NOBR/
+      módulo <u>turtle</u>) un cuadrado, modificarlo para que sea capaz de dibujar<br> /NOBR/
+      un polígono cualquiera, tras pedir al usuario el número de lados "n".<br> /NOBR/
+      Nota: da igual si no se dibuja centrado, mientras se vea entero.</blockquote>
+      Ejemplo de base en: <a href="examples/turtle-square-exercise.py" target="_blank">turtle-square-exercise.py</a>
+      Posible variante (opc.): dibujar estrellas de n puntas (n impar)
+      .
+      Doc. y más detalles, historia y curiosidades (lenguaje Logo)
+      : https://docs.python.org/3/library/turtle.html
+      : https://en.wikipedia.org/wiki/Turtle_graphics
+      : https://en.wikipedia.org/wiki/Logo_(programming_language)
+      .
+      @CLASS@ ejercicio-2
+
+      ## for
+      Ejemplo:
+        <samp>for</samp> i <samp>in</samp> "hola", "que", "tal":
+            print(i)
+      .
+      Observar las dos palabras clave, for e in
+      Estructura "fija" y número de elementos conocido al inicio
+      Variable de bucle (en el ej.: "i"), y "cuerpo" (bloque indentado!)
+      Diagrama de flujo explicativo: <a href="https://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html#flow-of-execution-of-the-for-loop" target="_blank">Ver aquí</a>
+
+      for vs while: iteración "definida" vs. "indefinida" (más general)
+      Cualquier iteración/bucle for puede transformarse a uno con while?
+      .
+      Recomendación: usar for siempre que sea posible, por legibilidad, y
+      usar while cuando la condición <u>varía</u>, o no se conoce de inicio
+
+      Variaciones:
+        for i in "hola que tal".split():
+        for i in (1, 2, 3):
+        for i in ["hola", "que", 2, 3]:  # mix de tipos OK
+        for i in "aeiou":  # qué hace éste?
+          ...
+      .
+      También con listas, cadenas... Cualquier secuencia/colecc.!
+      Incluso con iteradores y generadores (los veremos más adelante)
+      Nota: es muy diferente a lo que permiten otros lenguajes!
+
+      Muy útil: <u>range()</u>, que veremos en detalle más adelante
+        range(5)  # devuelve un rango [0, 5), o sea 0..4
+        for i in range(5):
+            print(i, end='')
+        <samp>01234</samp>
+      .
+      . No es una lista o tupla pero se le parece...
+        r = range(5)
+        print(r)  # qué ocurre?
+        print(list(r))
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      <!-- EJERCICIO-CON-SOLUCION-INVISIBLE (PISTAS) -->
+      .
+      .
+      # Ejercicio 3: buscar repetidos<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>Dada una lista de palabras como una cadena (separadas por<br> /NOBR/
+      espacios solamente), escribir las palabras que aparezcan<br> /NOBR/
+      repetidas. Asumir que todo está siempre en minúsculas.<br> /NOBR/
+      No importa si las repetidas se muestran varias veces...</blockquote>
+      .
+      Nota: usar solamente cadenas (no listas, tuplas, etc.)
+      Pistas:
+      - x.find(y) devuelve >= 0 si se encuentra la subcadena y en x
+      - y in x devuelve True si se encuentra la subcadena y en x
+      - Opcional: usar str.split() para la separación de palabras
+        Si usamos split() interesará seguramente usar un bucle for
+        Más "a mano" puede ser con un while que vaya recorriendo
+        la cadena y guardando palabras ya visitadas...
+      @CLASS@ ejercicio-3
+      @ZOOM@ 125
+      @CLASS@ solution
+
+      ## break en bucles for y while
+      Se utiliza para interrumpir el bucle más "<u>cercano</u>"
+        total = 0
+        while True:
+            n = input("Número siguiente (en blanco para acabar)? ")
+            if n.strip() == "":  # nada o sólo espacios, \n, etc.
+                <em>break</em>
+            total += int(n)
+        # después del break, se continúa aquí
+        print("La suma total es: ", total)
+      .
+      Nota: en otros lenguajes además hay más tipos de bucles (ej. los que
+      comprueban la condic. al final), pero en Python se debe hacer siempre
+      lo equivalente a base de usar break
+
+      ## continue en bucles for y while
+      Para continuar con la siguiente iteración del bucle más "<u>cercano</u>"
+      Ejemplo:
+        for num in range(2, 10):
+            if num % 2 == 0:
+                print("Found an even number", num)
+                <samp>continue</samp>
+            print("Found an odd number", num)
+
+      ## else en bucles for y while
+      Se ejecuta al final, sólo si no se interrumpió con break
+      Ejemplo:
+        has_primes = False
+        for n in received_list_of_numbers:
+            if isprime(n):
+                has_primes = True
+                print("OK, hay al menos un número primo")
+                break
+        <samp>else</samp>:
+            # No se entra aquí si se salió con un break
+            print("La lista no contenía ningún número primo")
+      .
+      No confundir con el else de las sentencias if...
+
+      ## pass
+      Sentencia "nula". Usado cuando se necesite (poco habitual) no hacer nada
+      Ejemplo:
+        while True:
+            <samp>pass</samp>  # Este bucle sólo se interrumpe desde teclado (Ctrl+C)
+      .
+      Puede servir en bucles, y también en sentencias if, etc. (cualquier "bloque")
+      .
+      Más detalles sobre else, break, continue y pass:
+      <a href="https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops" target="_blank">https://docs.python.org/3/tutorial/controlflow.html</a>
+
+      # Palabras reservadas (keywords)
+        help('keywords')  # Python 3.8
+        False      await      else       import     pass
+        None       break      except     in         raise
+        True       class      finally    is         return
+        and        continue   for        lambda     try
+        as         def        from       nonlocal   while
+        assert     del        global     not        with
+        async      elif       if         or         yield
+      : https://docs.python.org/3/reference/lexical_analysis.html#keywords
+
+      # Ejercicios extra
+      - Escribir un programa para dibujar una espiral (con turtle)
+      - Escribir un programa para saber si un número es primo
+      - <u><strong>The Python Challenge</strong></u>: <a href="http://www.pythonchallenge.com/">www.pythonchallenge.com</a><br>Nota: antes, saber ver el "source code" en el navegador (...)
+      Ver más en el apartado "Referencias"
+
+      # Referencias
+      The Python Tutorial (docs.python.org), oficial (pero informal):
+      : https://docs.python.org/3/tutorial/controlflow.html
+      .
+      Un buen libro online gratuito para algunos temas (algo antiguo):
+      Por ejemplo condicionales, lógica, bucles, diagramas de flujo, y algunos ejercicios al final:
+      : https://openbookproject.net/thinkcs/python/english3e/conditionals.html#conditional-execution
+      : https://openbookproject.net/thinkcs/python/english3e/iteration.html
+      : https://openbookproject.net/thinkcs/python/english3e/conditionals.html
+      : https://openbookproject.net/thinkcs/python/english3e/conditionals.html#exercises
+      : https://openbookproject.net/thinkcs/python/english3e/iteration.html#exercises
+
+    </pre>
+  </body>
+</html>
