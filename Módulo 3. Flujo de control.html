@@ -73,14 +73,15 @@
       Imprescindible sólo un atajo de teclado: <kbd>Ctrl+Shift+P</kbd>
       : https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 
-
       Instalamos también Veyon:
       : https://veyon.io/
       .
       Segundo intento de instalar WSL sin permisos de admin?
-      : https://github.com/microsoft/WSL/issues/3817
       : https://docs.microsoft.com/en-us/windows/wsl/install-manual#installing-your-distro
+      Formas alternativas de instalar, y soluciones a posibles problemas:
       : https://docs.microsoft.com/en-us/windows/wsl/install-on-server
+      : https://docs.microsoft.com/en-us/windows/wsl/install-win10
+      : https://github.com/microsoft/WSL/issues/3817
 
       ## Configuración del entorno de VS Code
       Recomendado: abrir una carpeta en blanco y crear algún fichero .py
@@ -150,6 +151,16 @@
       Recomendación: no abusar! (re-factorizar...)
       De lo contrario el código se hace confuso de leer
       Aparte de eso, cuidado con dónde <u>definir</u> variables!
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: ecuación 2º grado
+      <blockquote>Hacer un programa sencillo que nos permita calcular<br> /NOBR/
+      las soluciones (una o dos) de una ecuación de 2º grado<br> /NOBR/
+      <code>a ** x^2 + b ** x + c = 0</code> <br> /NOBR/
+      Comprobando antes que existen y son valores reales</blockquote>
+      .
+      Uso de variables y condicionales
+      "Pasos" o estructura lógica del programa
 
       # Diagramas de flujo (flowcharts)
       Primeros ejemplos:
@@ -251,7 +262,7 @@
       Secuencia de instrucciones que se ejecutarán 0 o más veces
       Es "necesario" asegurar que terminará en algún momento!
       ## while
-      Ejemplo:
+      Ejemplo (también en: <a href="examples/collatz.py" target="_blank">collatz.py</a>):
         # Escribir la secuencia Collatz o "3n+1" hasta 1
         n = int(input("Número para empezar? "))
         <samp>while</samp> n != 1:
@@ -267,16 +278,30 @@
       <a href="https://www.investigacionyciencia.es/noticias/un-gran-resultado-matemtico-para-un-problema-peligroso-18125" target="_blank">https://www.investigacionyciencia.es/noticias/...</a>
 
       <!-- EJERCICIO-PARA-CLASE -->
-      # Ejercicio 1: cambio de base<a href="#ejercicio-1" class="link-anchor"> # </a>
+      # Ejercicio 1: media y suma<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Pedir una lista de números y calcular<br> /NOBR/
+      su media aritmética y su suma. Se deben<br> /NOBR/
+      aceptar números enteros, reales o mezcla.<br> /NOBR/
+      Pedir una secuencia de enteros hasta que<br> /NOBR/
+      se introduzca un valor vacío o el que se<br> /NOBR/
+      haya definido como especial (ej. "fin"),<br> /NOBR/
+      y entonces escribir los resultados.</blockquote>
+      @CLASS@ ejercicio-1
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: cambio de base<a href="#ejercicio-2" class="link-anchor"> # </a>
       <blockquote>Convertir un entero a una nueva base:<br> /NOBR/
       Pedir un número a convertir y la base.<br> /NOBR/
       Se debe escribir el número en la nueva.<br> /NOBR/
       La base del número "original" es 10.<br> /NOBR/
       Las bases nuevas válidas son de 2 a 9.</blockquote>
-      @CLASS@ ejercicio-1
+      Hacerlo por parejas o grupos
+      Hacer primero el diagrama de flujo en papel (alto nivel)
+      Posible variante (opc.): bases 2 a 16 ("dígitos" a-f)
+      @CLASS@ ejercicio-2
 
       <!-- EJERCICIO-PARA-CLASE -->
-      # Ejercicio 2: polígonos y tortugas<a href="#ejercicio-2" class="link-anchor"> # </a>
+      # Ejercicio 3: polígonos y tortugas<a href="#ejercicio-3" class="link-anchor"> # </a>
       <blockquote>Dada una demo / base de un programa que dibuja en Python (con el<br> /NOBR/
       módulo <u>turtle</u>) un cuadrado, modificarlo para que sea capaz de dibujar<br> /NOBR/
       un polígono cualquiera, tras pedir al usuario el número de lados "n".<br> /NOBR/
@@ -289,7 +314,7 @@
       : https://en.wikipedia.org/wiki/Turtle_graphics
       : https://en.wikipedia.org/wiki/Logo_(programming_language)
       .
-      @CLASS@ ejercicio-2
+      @CLASS@ ejercicio-3
 
       ## for
       Ejemplo:
@@ -300,12 +325,6 @@
       Estructura "fija" y número de elementos conocido al inicio
       Variable de bucle (en el ej.: "i"), y "cuerpo" (bloque indentado!)
       Diagrama de flujo explicativo: <a href="https://openbookproject.net/thinkcs/python/english3e/hello_little_turtles.html#flow-of-execution-of-the-for-loop" target="_blank">Ver aquí</a>
-
-      for vs while: iteración "definida" vs. "indefinida" (más general)
-      Cualquier iteración/bucle for puede transformarse a uno con while?
-      .
-      Recomendación: usar for siempre que sea posible, por legibilidad, y
-      usar while cuando la condición <u>varía</u>, o no se conoce de inicio
 
       Variaciones:
         for i in "hola que tal".split():
@@ -329,25 +348,31 @@
         print(r)  # qué ocurre?
         print(list(r))
 
-      <!-- EJERCICIO-PARA-CLASE -->
+      <em>for vs while</em>: iteración "definida" vs. "indefinida" (más general)
+      Cualquier iteración/bucle for puede transformarse a uno con while?
+      .
+      Recomendación: usar for siempre que sea posible, por legibilidad, y
+      usar while cuando la condición <u>varía</u>, o no se conoce de inicio
+
+        <!-- EJERCICIO-PARA-CLASE -->
       <!-- EJERCICIO-CON-SOLUCION-INVISIBLE (PISTAS) -->
       .
       .
-      # Ejercicio 3: buscar repetidos<a href="#ejercicio-3" class="link-anchor"> # </a>
-      <blockquote>Dada una lista de palabras como una cadena (separadas por<br> /NOBR/
-      espacios solamente), escribir las palabras que aparezcan<br> /NOBR/
+      # Ejercicio 4: buscar repetidos<a href="#ejercicio-4" class="link-anchor"> # </a>
+      <blockquote>Pedir una lista de palabras como una cadena (separadas por<br> /NOBR/
+      espacios solamente), y escribir las palabras que aparezcan<br> /NOBR/
       repetidas. Asumir que todo está siempre en minúsculas.<br> /NOBR/
       No importa si las repetidas se muestran varias veces...</blockquote>
       .
+      Hacerlo por parejas o grupos
       Nota: usar solamente cadenas (no listas, tuplas, etc.)
       Pistas:
       - x.find(y) devuelve >= 0 si se encuentra la subcadena y en x
-      - y in x devuelve True si se encuentra la subcadena y en x
       - Opcional: usar str.split() para la separación de palabras
-        Si usamos split() interesará seguramente usar un bucle for
+        Si usamos split() interesa seguramente usar un bucle for
         Más "a mano" puede ser con un while que vaya recorriendo
         la cadena y guardando palabras ya visitadas...
-      @CLASS@ ejercicio-3
+      @CLASS@ ejercicio-4
       @ZOOM@ 125
       @CLASS@ solution
 
