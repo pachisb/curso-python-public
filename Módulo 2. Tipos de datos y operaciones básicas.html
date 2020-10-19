@@ -439,6 +439,7 @@
         x = input()  # lee un valor y nos lo devuelve
         x = input(">>>>>>> ")
         x = input("Dime un valor: ")
+      Importante: siempre devuelve una cadena!
       .
         print()
         print(x, y, z)
@@ -456,6 +457,7 @@
         <=
         >=
         etc.
+      Hacer pruebas con mayúsculas y minúsculas para entenderlo
 
       <u>subscripting</u>: acceder a sus elementos
         s = "hola"
@@ -489,14 +491,19 @@
       En otros lenguajes es habitual algo como:
         printf("El resultado es: %d", 5)
       Nota: la notación tipo printf la veremos (operador %)
-      .
-      Se puede usar %, pero es más habitual y cómodo utilizar format(),
+      pero ya no es habitual/recomendable usarla en Python 3
+
+      Es más cómodo/potente/flexible utilizar str.format(),
       que además permite convertir tipos y más cosas (...):
         "x = {}, y = {}, z = {}".format(x, y, z)
         "{:f} = {} / {}".format(10, 200, 20)
+        "{first:f} {second} {first}".format(first=10, second=20)
       .
+      Pensar en la cadena como una "plantilla" para el resultado final
+      Nota: en realidad es lo mismo (pero menos claro?) esto:
+        format("x = {}, y = {}, z = {}", x, y, z)
       Sintaxis, formatos disponibles, etc.:
-      : https://docs.python.org/3/library/string.html#format-string-syntax
+      : https://docs.python.org/3/library/string.html#formatspec
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 2: Stack Overflow<a href="#ejercicio-2" class="link-anchor"> # </a>
@@ -505,8 +512,15 @@
       Buscar cómo cambiar el orden de los elementos (<u>i18n</u>).</blockquote>
       : https://stackoverflow.com/questions/tagged/python
       .
+      <!-- Ejemplo error: "El valor es: {:f}".format("5") -->
+      <!-- Ejemplo error: "El valor es: {1}".format("5") -->
+      <!-- Ejemplo error: "El valor es: {0}".format(a="5") -->
+      <!-- Ejemplo error: "El valor es: {d}".format(a="5") -->
+      <!-- https://stackoverflow.com/questions/40252807/printing-mixed-list-in-python -->
+      <!-- Ejemplo error anterior: "El valor es: {:r}".format("5") -->
+      <!-- https://stackoverflow.com/questions/11458440/string-formatting-with-0d-doesnt-convert-to-integer -->
       <!-- Capacidad crítica para juzgar respuestas -->
-      <!-- Incluso aunque sean valoradas -->
+      <!-- Incluso aunque estén bien valoradas -->
       Notas:
       - Intentar averiguar qué respuestas se valoran
       y por qué...
@@ -514,14 +528,16 @@
       @CLASS@ ejercicio-2
 
       ## f-strings (Python >= 3.6)
-      Aunque desde que existen las f-strings, son
-      lo más utilizado (y con motivo!)
+      Aunque desde que existen los "formatted string literals"
+      (f-strings), son lo más utilizado (y con motivo!)
         a = 10
-        b = 20 
+        b = 20
         c = 30
-        f"{c}, {b}, {a}"
+        f"{c:f}, {b}, {a}"
       .
-      Más detalles:
+      Las variables y expresiones se reemplazan autom.! 
+      Por lo demás, todo igual que con str.format()
+      El resultado es una cadena normal. Más detalles:
       : https://realpython.com/python-f-strings/
 
       # Documentación oficial y de referencia
