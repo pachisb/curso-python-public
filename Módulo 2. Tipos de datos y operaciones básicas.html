@@ -279,12 +279,14 @@
 
       # Sistemas de numeración
       Bit vs byte. Palabra (word)
-      Kilobyte (KB)
-      Kibibyte (KiB)
+      Megabit vs Megabyte (ej. redes)
+      .
+      Kilobyte (KB) 10 ^ 3
+      Kibibyte (KiB) 2 ^ 10
       Megabyte (MB)
-      Mebibyte
-      Gibibyte (TB)
-      Gigabit
+      Mebibyte (MiB)
+      Gigabyte (TB)
+      Gibibyte (GiB)
       Terabye, Petabyte, Exabyte (...)
 
       decimal
@@ -445,6 +447,9 @@
         print(x, y, z)
         print(x, y, z, sep=' ', end='\n')
         print(x, y, x, sep=' ::\n', end=' ::\n')
+      .
+      Ambas son funciones "built-in" (siempre disponibles)
+      : https://docs.python.org/3/library/functions.html
 
       # Trabajo con cadenas
       ## Operaciones básicas
@@ -461,15 +466,15 @@
 
       <u>subscripting</u>: acceder a sus elementos
         s = "hola"
-        s[0]
+        s[0]  # empiezan en cero!
         s[1]
         s[-1]
 
-      Subcadenas:
-      str.substring()
+      Subcadenas (substrings)
       Veremos por qué se usa el punto (métodos del tipo str)
         s = "hola"
-        s.substring(0, 2)
+        s.find("ho")  # posición encontrada (empieza en cero)
+        s.find("he")  # o bien -1 si no aparece la subcadena
       .
       Longitud (de cualquier elemento "compuesto"):
       len()
@@ -490,8 +495,11 @@
       ## str.format()
       En otros lenguajes es habitual algo como:
         printf("El resultado es: %d", 5)
-      Nota: la notación tipo printf la veremos (operador %)
+      Nota: la notación tipo printf la veremos (<u>operador %</u>)
       pero ya no es habitual/recomendable usarla en Python 3
+      .
+      Y también hay un format() built-in similar (pero menos claro):
+        print("El resultado es: " + format(5, "d"))
 
       Es más cómodo/potente/flexible utilizar str.format(),
       que además permite convertir tipos y más cosas (...):
@@ -500,8 +508,6 @@
         "{first:f} {second} {first}".format(first=10, second=20)
       .
       Pensar en la cadena como una "plantilla" para el resultado final
-      Nota: en realidad es lo mismo (pero menos claro?) esto:
-        format("x = {}, y = {}, z = {}", x, y, z)
       Sintaxis, formatos disponibles, etc.:
       : https://docs.python.org/3/library/string.html#formatspec
 
@@ -535,7 +541,7 @@
         c = 30
         f"{c:f}, {b}, {a}"
       .
-      Las variables y expresiones se reemplazan autom.! 
+      Las variables y expresiones se reemplazan automáticamente! 
       Por lo demás, todo igual que con str.format()
       El resultado es una cadena normal. Más detalles:
       : https://realpython.com/python-f-strings/
