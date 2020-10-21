@@ -160,14 +160,16 @@
       # Ejercicio / demo: ecuación 2º grado
       <blockquote>Hacer un programa sencillo que nos permita calcular<br> /NOBR/
       las soluciones (una o dos) de una ecuación de 2º grado<br> /NOBR/
-      <code>a ** x^2 + b ** x + c = 0</code> <br> /NOBR/
-      Comprobando antes que existen y son valores reales</blockquote>
+      <code>a ** x^2 + b ** x + c = 0</code><br> /NOBR/
+      tras pedir al usuario los valores de a, b y c (reales)<br> /NOBR/
+      Debe comprobar si las soluciones son valores reales,<br> /NOBR/
+      y en caso contrario mostrar un mensaje de error</blockquote>
       .
       Uso de variables y condicionales
       "Pasos" o estructura lógica del programa
 
       # Diagramas de flujo (flowcharts)
-      Primeros ejemplos:
+      Primeros ejemplos (if, else, etc.):
       <a href="http://openbookproject.net/thinkcs/python/english3e/conditionals.html#conditional-execution" target="_blank">How to Think Like a Computer Scientist: Learning with Python</a>
       Más detalles y explicación de los símbolos:
       : https://en.wikipedia.org/wiki/Flowchart
@@ -189,16 +191,16 @@
       Más detalles:
       <a href="https://docs.python.org/3/reference/expressions.html#conditional-expressions" target="_blank">https://docs.python.org/3/reference/expressions.html</a>
 
-      # Expresiones de asignación (Python >= 3.8)
+      # Avanzado: expresiones de asignación (Python >= 3.8)
       Operador <samp>:=</samp>
       Doble papel: hace la asignación, y además devuelve el valor
-      Funciona en la parte inicial de if, while, y algún sitio más
-      .
-      No se recomienda abusar, sólo si son claras y sirven para
-      que el código resulte más breve. Si ayuda, usar paréntesis!
-        if s := pattern.search(data):
+      Funciona sólo en la parte inicial de if, while, y algún sitio más
+        if s := pattern.search(data):  # asigna a s el valor y comprueba si != ""
             do_something(s)
       .
+      No se recomienda abusar, sólo si son claras y sirven para que el código
+      resulte más breve/compacto. Si ayuda, usar paréntesis!
+      Casi siempre es mejor y más claro usar una asignación separada antes del if/while...
       Más detalles:
       : https://docs.python.org/3/reference/expressions.html#assignment-expressions
       : https://www.python.org/dev/peps/pep-0572/
@@ -216,7 +218,7 @@
          s = l[:i] + l[i+1:]              # error: not indented
                 r = f(l[:i] + l[i+1:])    # error: unexpected indent
                 if i > 0:
-                        # This is a normal comment
+                        s = "# This is a string, not a comment"
                         r.append(l[i:i+1] + x)
                     print(i)              # error: inconsistent dedent
       Más detalles:
@@ -266,6 +268,9 @@
       Secuencia de instrucciones que se ejecutarán 0 o más veces
       Es "necesario" asegurar que terminará en algún momento!
       ## while
+      Diagrama de flujo (notación "informal" pero sirve) y ejemplos:
+      <a href="https://www.tutorialspoint.com/python/python_while_loop.htm" target="_blank">https://www.tutorialspoint.com/python/...</a>
+
       Ejemplo (también en: <a href="examples/collatz.py" target="_blank">collatz.py</a>):
         # Escribir la secuencia Collatz o "3n+1" hasta 1
         n = int(input("Número para empezar? "))
@@ -291,6 +296,29 @@
       haya definido como especial (ej. "fin"),<br> /NOBR/
       y entonces escribir los resultados.</blockquote>
       @CLASS@ ejercicio-1
+
+      ## Python Tutor
+      Herramienta muy útil, recomendada para los "inicios":
+      : https://www.pythontutor.com/
+      .
+      "Write Python code in your web browser,
+      and see it visualized step by step"
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1 bis: cálculo de e<a href="#ejercicio-1-bis" class="link-anchor"> # </a>
+      <blockquote>Cálculo por aproximación (iterativo) del valor de la<br> /NOBR/
+      constante matemática <u>e</u> (o número irracional <u>e</u>)<br> /NOBR/
+      Se debe usar la fórmula: <code>ex = ∑<sub>n=0 hasta infinito</sub> x/(n!)</code><br> /NOBR/
+      . ... suponiendo x = 1 idealmente (más sencillo)<br> /NOBR/
+      Se deberá hacer un número de iteraciones "suficiente"<br> /NOBR/
+      para que el cálculo sea preciso (al menos 5 decimales)<br> /NOBR/
+      Nota: no permitido usar librerías (math, etc.)</blockquote>
+      .
+      Mejora opcional: número de iteraciones "exacto" para que
+      se cumpla una precisión determinada (fijada de inicio)
+      .
+      : https://en.wikipedia.org/wiki/E_(mathematical_constant)
+      @CLASS@ ejercicio-1-bis
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 2: cambio de base<a href="#ejercicio-2" class="link-anchor"> # </a>
@@ -343,9 +371,8 @@
 
       Muy útil: <u>range()</u>, que veremos en detalle más adelante
         range(5)  # devuelve un rango [0, 5), o sea 0..4
-        for i in range(5):
-            print(i, end='')
-        <samp>01234</samp>
+        for i in range(21):
+            print(i, "\t", 2 ** i)
       .
       . No es una lista o tupla pero se le parece...
         r = range(5)
@@ -418,6 +445,10 @@
             print("La lista no contenía ningún número primo")
       .
       No confundir con el else de las sentencias if...
+
+      Ejemplos de break y else en bucles, y
+      diagramas de flujo para entenderlos:
+      : https://www.python-course.eu/python3_loops.php
 
       ## pass
       Sentencia "nula". Usado cuando se necesite (poco habitual) no hacer nada
