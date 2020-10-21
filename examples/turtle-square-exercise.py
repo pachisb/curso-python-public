@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 import turtle
 
 # Inicialización: crear una "tortuga" t. Dejar tal cual
