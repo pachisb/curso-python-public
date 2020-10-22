@@ -1,0 +1,9 @@
+# http://www.pythonchallenge.com/
+
+# http://www.pythonchallenge.com/pc/def/0.html  (inicial)
+
+# Soluciones a los primeros problemas:
+# 0 http://www.pythonchallenge.com/pc/def/274877906944.html -> http://www.pythonchallenge.com/pc/def/map.html
+# 1 http://www.pythonchallenge.com/pc/def/ocr.html
+# 2 http://www.pythonchallenge.com/pc/def/equality.html
+# 3 http://www.pythonchallenge.com/pc/def/linkedlist.html -> http://www.pythonchallenge.com/pc/def/linkedlist.php
