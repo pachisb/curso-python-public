@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Solución al Ejercicio / demo "ecuación 2º grado" del Módulo 3
+
 floatstr = input("Dame un número flotante para a: ")
 a = float(floatstr)
 floatstr = input("Dame un número flotante para b: ")
