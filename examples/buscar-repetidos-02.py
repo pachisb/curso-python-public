@@ -21,10 +21,10 @@ for letra in cadena:
         # print("SUBCADENA:", subcadena)  # para depurar, opcional
         if not subcadena.find(palabra) == -1:
             ### ORIGINAL: hemos encontrado una repetida (lo que piden), así que la mostramos y listo
-            ### print("SOLUCION:", palabra)
+            ### print("Palabra repetida:", palabra)
             ### MEJORADO: guardamos los resultados (las repetidas) y así los mostramos sólo una vez
             if soluciones.find(palabra) == -1:
-                print("SOLUCION SIN REPETICIONES:", palabra)
+                print("Palabra repetida:", palabra)
                 soluciones += palabra + " "
                 # print("SOLUCIONES:", soluciones)  # para depurar, opcional
         subcadena += palabra

@@ -1263,11 +1263,18 @@ for c in text:
 # Ahora busco de nuevo en (casi) todo el texto lo que cumpla ciertos criterios
 for i in range(3, len(orig)):
     # Los 3 previos son mayúsc., los 3 siguientes lo mismo
-    if ( orig[i-3].isupper() and orig[i-2].isupper() and orig[i-1].isupper()
-            and orig[i+1].isupper() and orig[i+2].isupper() and orig[i+3].isupper()
-            # El 4º previo y el 4ª siguiente NO son mayúsc. (nos piden EXACTAMENTE 3 mayúsc.)
-            and orig[i-4].islower() and orig[i+4].islower()
-            # Y el carácter en sí, que cumple lo anterior siendo además él mismo minúsculas
-            and orig[i].islower() ):
+    if (
+        orig[i - 3].isupper()
+        and orig[i - 2].isupper()
+        and orig[i - 1].isupper()
+        and orig[i + 1].isupper()
+        and orig[i + 2].isupper()
+        and orig[i + 3].isupper()
+        # El 4º previo y el 4ª siguiente NO son mayúsc. (nos piden EXACTAMENTE 3 mayúsc.)
+        and orig[i - 4].islower()
+        and orig[i + 4].islower()
+        # Y el carácter en sí, que cumple lo anterior siendo además él mismo minúsculas
+        and orig[i].islower()
+    ):
         # Si el resultado de toda la expresión anterior es True, este carácter "cumple"!
         print(orig[i])

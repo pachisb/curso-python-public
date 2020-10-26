@@ -26,8 +26,8 @@ print()
 
 
 # alternativa mucho más compleja, con listas y generadores y str.translate():
-orig = [chr(i+ord('a')) for i in range(26)]
-dest = [chr(i+ord('c')) for i in range(24)] + ["a", "b"]
+orig = [chr(i + ord("a")) for i in range(26)]
+dest = [chr(i + ord("c")) for i in range(24)] + ["a", "b"]
 orig = "".join(orig)
 dest = "".join(dest)
 print("CADENA 1 USADA PARA EL 'TRADUCTOR':", orig)

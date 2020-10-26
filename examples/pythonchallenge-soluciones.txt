@@ -1,9 +1,12 @@
+# Página principal:
 # http://www.pythonchallenge.com/
 
-# http://www.pythonchallenge.com/pc/def/0.html  (inicial)
+# Una vez que le damos a empezar, la dirección del primer desafío (0) es:
+# http://www.pythonchallenge.com/pc/def/0.html
 
-# Soluciones a los primeros problemas:
-# 0 http://www.pythonchallenge.com/pc/def/274877906944.html -> http://www.pythonchallenge.com/pc/def/map.html
-# 1 http://www.pythonchallenge.com/pc/def/ocr.html
-# 2 http://www.pythonchallenge.com/pc/def/equality.html
-# 3 http://www.pythonchallenge.com/pc/def/linkedlist.html -> http://www.pythonchallenge.com/pc/def/linkedlist.php
+# Soluciones a los primeros problemas (dirección del siguiente desafío: n+1):
+# Cuando se indican dos direcciones, es porque la que metemos (solución) autom. cambia a otra...
+# 0: http://www.pythonchallenge.com/pc/def/274877906944.html -> http://www.pythonchallenge.com/pc/def/map.html
+# 1: http://www.pythonchallenge.com/pc/def/ocr.html
+# 2: http://www.pythonchallenge.com/pc/def/equality.html
+# 3: http://www.pythonchallenge.com/pc/def/linkedlist.html -> http://www.pythonchallenge.com/pc/def/linkedlist.php
