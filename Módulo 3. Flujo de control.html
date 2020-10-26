@@ -95,10 +95,10 @@
       : https://code.visualstudio.com/docs/remote/ssh
       : https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
       Seleccionar *entorno Python 3.8*
-      Instalar paquetes Python matplotlib, pandas y numpy
-        py.exe -m pip install matplotlib pandas numpy
+      Instalar paquetes Python matplotlib, pandas, etc.
+        py.exe -m pip install matplotlib pandas scipy numpy seaborn
       Instalar paquetes Python IPython, pip, wheel y setuptools (si no lo están ya)
-      Instalar paquetes Python black, pydocs, jupyter y requests
+      Instalar paquetes Python black, rope, pydocs, jupyter y requests
       Opcional: instalar/desinst. paquete Python pyreadline si problemas con <kbd>Tab</kbd>
 
       <blockquote>NOTA IMPORTANTE: ejecutar todos<br> los ejemplos de este módulo en un<br> IDE o en un notebook!</blockquote>
@@ -206,12 +206,13 @@
       : https://www.python.org/dev/peps/pep-0572/
 
       # Comentarios e indentación
-      Los comentarios simplemente se ignoran (suprimen), igual
-      que las líneas en blanco o con solo espacios/tabuladores
+      Los comentarios simplemente se ignoran (suprimen), igual que las líneas en blanco
+      o con solo espacios/tabuladores. Sirven para documentar y para "desactivar código"
         # This is a normal comment
         y = 5 + x  # This is a comment at the end of the line
+        # y = 5 * x  # This is a previous/alternate piece of code, now inactive
       .
-      Reglas de indentado. Ejemplos de <em>errores</em>:
+      Se deben cumplir unas <u>reglas de indentado</u>. Ejemplos de <em>errores</em>:
         # This is a normal comment
          # This is an indented comment (valid)
          if len(s) > 1:                   # error: first line indented
@@ -328,7 +329,7 @@
       Se debe escribir el número en la nueva.<br> /NOBR/
       La base del número "original" es 10.<br> /NOBR/
       Las bases nuevas válidas son de 2 a 9.</blockquote>
-      Hacerlo por parejas o grupos
+      .
       Hacer primero el diagrama de flujo en papel (alto nivel)
       Posible variante (opc.): bases 2 a 16 ("dígitos" a-f)
       @CLASS@ ejercicio-2
@@ -393,7 +394,6 @@
       repetidas. Asumir que todo está siempre en minúsculas.<br> /NOBR/
       No importa si las repetidas se muestran varias veces...</blockquote>
       .
-      Hacerlo por parejas o grupos
       Nota: usar solamente cadenas (no listas, tuplas, etc.)
       Pistas:
       - x.find(y) devuelve >= 0 si se encuentra la subcadena y en x
@@ -447,11 +447,12 @@
 
       ## pass
       Sentencia "nula". Usado cuando se necesite (poco habitual) no hacer nada
-      Ejemplo:
-        while True:
+      Ejemplo (bucle que no hace nada "productivo" pero no termina nunca):
+        while True:  # Lo único que hace es comprobar todo el rato si True == True !!
             <samp>pass</samp>  # Este bucle sólo se interrumpe desde teclado (Ctrl+C)
       .
-      Puede servir en bucles, y también en sentencias if, etc. (cualquier "bloque")
+      Puede servir en bucles, y también en sentencias if, etc. (cualquier "bloque"),
+      o donde queramos dejar el código "a medias" temporalmente para acabarlo después
       .
       Más detalles sobre else, break, continue y pass:
       <a href="https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops" target="_blank">https://docs.python.org/3/tutorial/controlflow.html</a>
