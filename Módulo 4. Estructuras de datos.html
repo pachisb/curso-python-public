@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 4</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 4. Estructuras de datos
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Colecciones
+        Listas
+        Igualdad e identidad
+        Tuplas
+          Inmutabilidad
+        Rangos y range()
+        Matrices. Pilas y colas
+        Operaciones adicionales con cadenas
+        f-strings avanzadas
+        Escaping
+        raw strings. triple-quoted strings
+        Diccionarios
+        Conjuntos
+          sets y multisets
+        Juegos de caracteres
+        Ejercicios extra
+        Referencias
+
+      # Colecciones
+      Valores "compuestos" (...)
+        "", (), [], {}
+      Las cadenas son colecciones también!
+
+      # Listas
+      Colección de elementos con orden/posición, de
+      tamaño variable/dinámico, y cualquier profundidad.
+      Se asimilan tanto a listas como a vectores/arrays
+      de otros lenguajes, aunque son más flexibles.
+      .
+      Nota: la eficiencia no es tan buena como en arrays,
+      por eso más adelante se verá y usará NumPy (...)
+      .
+      Más detalles sobre listas:
+      : https://realpython.com/python-lists-tuples/#python-lists
+
+      Operadores útiles:
+        l1 = [1, 2, 3, 4, 5, 6]
+        l2 = [7, 8, 9]
+        l1 + l2      # concatenación de colecciones
+        l1 + "hola"  # no es lo intuitivo!
+        l = l1 * 2   # repetición
+        e <samp>in</samp> l1      # pertenencia (membership)
+        l[i]         # acceso por posición (subscripting)
+        l[-j]        # acceso, posic. contando desde fin
+      .
+      Nota: no confundir la keyword in aquí con la de for
+
+      Pueden contener cualquier tipo de objetos:
+        l = [1, 'a', 'hola', 7, 5.0]
+      .
+      Incluidas otras listas (y otras colecciones)
+      O sea, se pueden <u>anidar</u>, a cualquier profundidad:
+        l = [1, [2, 3]]
+        len(l)
+        l = [1, 2, [2, 3, [4, 'a'], 5], 7, 8]
+
+      Funciones útiles:
+        list.append(e), list.extend(l)  # añade elemento / colecc.
+        list.insert(pos, e), list.remove(e), list.pop()
+        list.count()  # por comodidad, equivale a len()
+        len(), min(), max(), sum()
+        list.index(e)  # Posición de un elemento
+                       # OJO: error si no presente
+        list.index(e) if e in list else -1  # ejemplo sin error
+      .
+      Nota: operan sólo en el primer nivel de profundidad!
+        l3 = [1, [2, 3], 4, [5, 6], 7, 8, 9]
+        len(l3)
+        3 in l3
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: bucles y funciones con listas
+      <blockquote>De una lista de <u>números</u>, calcular su suma.<br> /NOBR/
+      Se deben aceptar números enteros, reales o una mezcla de ambos.<br> /NOBR/
+      Mostrar además el número de elementos que hay, los que tienen<br> /NOBR/
+      el valor mínimo y el máximo, y los negativos.</blockquote>
+      .
+        lista = [3, 5, 2.0, -2.5, -1, 99, 8.7654, 0.0]
+        print("Suma:", sum(lista))
+        print("Número:", len(lista))
+        print("Mínimo:", min(lista))
+        print("Máximo:", max(lista))
+        for f in lista:
+            if f < 0:
+                print("Negativo:", f)
+        # avanzado: expresión equivalente al bucle for anterior
+        print("Negativo(s):", [f for f in lista if f < 0])
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: rango de números<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Crear una lista de <u>números</u> similar a lo que<br> /NOBR/
+      nos devolvería range(). Hacerlo en la forma<br> /NOBR/
+      que recibe dos "parámetros" (inicio, fin).<br> /NOBR/
+      Usar sólo bucles y listas, no funciones.</blockquote>
+      Opcional: hacer que además permita "saltos".
+      .
+      Ejemplo de estructura:
+        # Valores para los "parámetros"
+        inicio = 0
+        fin = 10
+        salto = 1  # opcional
+        ...
+        print("La lista final es:", lista_num)
+      @CLASS@ ejercicio-1
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: media con listas
+      <blockquote>Pedir una lista de números y calcular su media<br> /NOBR/
+      aritmética y su suma. Se deben aceptar números<br> /NOBR/
+      enteros, reales o una mezcla de ambos.<br> /NOBR/
+      Pedir una secuencia de valores como una sola<br> /NOBR/
+      cadena (una sola línea) y transformarla en una<br> /NOBR/
+      lista, para luego hacer cálculos en un bucle y<br> /NOBR/
+      finalmente escribir los resultados.</blockquote>
+      NOTA: <u>solución</u> en la siguiente slide/página
+      Opcional: calcular también la mediana (orden!)
+      : https://en.wikipedia.org/wiki/Median
+
+      Solución (también en: <a href="examples/media-y-mediana-con-listas.py" target="_blank">media-y-mediana-con-listas.py</a>):
+        cadena = input("Dame la lista de números sep. por espacios: ")
+        lista = []
+        suma = 0.0
+        for palabra in cadena.split():
+            # Lo que contiene la lista del bucle (cadena.split()) son cadenas!
+            # O sea que cada valor necesitamos convertirlo a un número (float)
+            f = float(palabra)
+            lista.append(f)
+        # Ahora que ya es una lista de números, podemos usar esta operación
+        suma = sum(lista)
+        media = suma / len(lista)
+        print(f"La suma es {suma} y la media es {media}.")
+      .
+      Opcional: calcular también la mediana (orden!) (...)
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: buscar repetidos con listas
+      <blockquote>Pedir una lista de palabras como una cadena (separadas por espacios<br> /NOBR/
+      solamente), y escribir las palabras que aparezcan repetidas.<br> /NOBR/
+      Aceptar (y detectar repetidos) aunque no todo esté en minúsculas.<br> /NOBR/
+      No importa si las repeticiones se muestran varias veces...</blockquote>
+      No usar str.find() pero sí listas y otras funciones de cadenas (minúsculas...)
+      Opcional: no mostrar las repeticiones más de una vez
+      .
+      NOTA: solución en: <a href="examples/buscar-repetidos-03-listas.py" target="_blank">buscar-repetidos-03-listas.py</a>
+
+      Más funciones...
+        del
+        list.sort()
+        list.reverse()
+      .
+      Nota: casi todas <u>modifican</u> el contenido de la lista,
+      salvo unas pocas:
+        list.count(), list.index()
+      Pero ojo, por ejemplo esto no modifica nada:
+        l3 + l2  # por qué?
+
+      ## slicing
+      Una <u>slice</u> es una porción ("rodaja") de una colección
+        l[0:], l[2:3], l[:5], l[0:0]
+        l[-3:-1]  # confuso, pero también válido (desde el final)
+        del l[1:3]
+      Uso de slices para copiar/duplicar listas
+        l[:]  # DIFERENCIA con str: esto devuelve una NUEVA copia
+        l[:] == l, l[:] is l
+      Slices con stride ("salto")
+        l[::2]
+        l[::-1]  # qué hace?!
+      .
+      Ojo: siempre índices "0-based" e intervalos abierto/cerr.: [ )
+
+      # Igualdad e identidad
+      Ejemplo:
+        a = [1, 2]
+        b = [1, 2]
+        a == b
+        <samp>True</samp>
+        a is b
+        <samp>False</samp>
+        a[0] is b[0]
+        <samp>True</samp>
+        id(a)
+        <samp>139892470048712</samp>
+        id(b)
+        <samp>139892470030792</samp>
+
+      Otro ejemplo:
+        >>> x = []
+        >>> y = x
+        >>> y.append(10)
+        >>> y
+        [10]
+        >>> x
+        [10]
+      Comparar con lo que acabamos de ver... x is y?
+
+      ## copia
+      Por lo ya visto, a veces necesitaremos hacer una
+      copia diferente (aunque con el mismo contenido
+      inicial) de una colección (lista o lo que sea)
+        l = [1, 2]
+        l2 = l.copy()  # o también: l2 = l[:]
+        l2 = list(l1)  # incluso esto, es lo mismo
+        l == l2
+        l is l2
+
+      ## Avanzado: copia y clonado
+      Pero... en realidad pueden hacerse copias
+      "shallow" (superf.) o "deep" (profundas)... No
+      hay diferencia cuando no hay anidación. Por
+      defecto, se hacen superficiales (sólo 1<sup>er</sup> nivel).
+      Cuando son "deep" se llama clonar el objeto,
+      mientras que si son "shallow" se dice copiar.
+      .
+      Más detalles en la <a href="https://docs.python.org/3/library/copy.html" target="_blank">doc. oficial</a> y también
+      aquí (recomendado, más sencillo):
+      : https://realpython.com/copying-python-objects/
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: repaso con Jupyter<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Repaso de listas y bucles, con notebooks de Jupyter de ejemplo, tomados<br> /NOBR/
+      del curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).<br> /NOBR/
+      </blockquote>
+      : https://www.udemy.com/course/complete-python-bootcamp/
+      : https://github.com/Pierian-Data/Complete-Python-3-Bootcamp
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Imprescindibles:
+      - Listas: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/04-Lists.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../04-Lists.ipynb</a>
+      - Bucles for: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/03-for%20Loops.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../03-for Loops.ipynb</a>
+      Recomendable (repaso Módulo 3):
+      - Bucles while: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/04-while%20Loops.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../04-while Loops.ipynb</a>
+      Opcional (sólo algunas partes: range, in, etc.):
+      - Operadores: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/05-Useful-Operators.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../05-Useful-Operators.ipynb</a>
+      @CLASS@ ejercicio-2
+
+      # Tuplas
+      Secuencias de n elementos (n-tuplas)
+        t = (1, 2, 3)
+      Se pueden anidar a cualquier profundidad:
+        t = (1, (2, 3))
+      Se pueden combinar tipos de datos:
+        t = (1, 'a', (2, 3), 'hola', [9, 8, 7])
+      .
+      Más sobre tuplas:
+      : https://realpython.com/python-lists-tuples/#python-tuples
+
+      Caso especial: tupla de un solo elemento
+        (1, )
+      Caso especial: tupla vacía
+        ()
+      .
+      Por qué hace falta esto? Otros usos de paréntesis?
+      En realidad con las tuplas lo "definitorio" es la <u>coma</u>
+        1,
+
+      ## slicing
+      Igual que para las cadenas y listas en casi todo...
+        t[0:], t[2:3], t[:5], t[0:0]
+      Slices con stride ("salto")
+        t[::-1]  # qué hace?!
+      .
+      Nota: el operador de acceso (subscripting) sigue siendo []
+
+      Otras operaciones y funciones muy similares también a list:
+        len()
+        tuple.count()
+        tuple.index()  # Posición de un elemento (error si no está)
+        in  # pertenencia (devuelve True o False, sin errores)
+      etc.
+
+      Importante: las tuplas son <u>inmutables</u>
+        t = (1, 'a', (2, 3), 'hola', [9, 8, 7])
+        t[0] = 5  # error!
+        del t[0]  # error!
+      Y los elementos que contienen?
+        t[4][0] = 0
+        t[4]
+        t
+      .
+      Avanzado: por eso no se pueden (ni hace falta) copiar ni clonar
+        t[:]  # IGUAL que en str: esto NO hace NUEVA copia
+              # pero tampoco "importa" mucho
+        t[:] is t  # en este caso sí devuelve True
+
+      Idea que puede ayudar a entender las tuplas:
+      Son un caso particular de listas que <u>no permiten</u>
+      <u>realizar modificaciones</u> una vez creadas
+
+      ## Inmutabilidad
+      "Immutable objects (numbers, strings and tuples) have a
+      fixed value. Such an object cannot be altered. A new object
+      will be created if a different value has to be stored"
+      .
+      Es decir, son mutables los objetos que pueden cambiar de
+      valor pero manteniendo su id (ej. listas, dicc., clases).
+      Los inmutables son algo así como constantes (...).
+      .
+      Todo esto es algo bastante peculiar de Python... lo que
+      más importa es <u>recordar qué tipos de datos son inmutables</u>
+      <u>(cadenas, tuplas, tipos simples)</u> para usarlas en diccionarios
+      .
+      : https://docs.python.org/3/glossary.html#term-mutable
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 3: tuplas con Jupyter<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>Repaso de tuplas, con notebooks de Jupyter de ejemplo, tomados del<br> /NOBR/
+      curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).<br> /NOBR/
+      </blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Tuplas: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/06-Tuples.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../06-Tuples.ipynb</a>
+      @CLASS@ ejercicio-3
+
+      # Rangos y range()
+      Tipo de dato que "produce" una secuencia de enteros
+        range(5)
+        for i in range(5):
+            print(i)
+      .
+      Por defecto empiezan en 0
+        range(start, stop[, step])
+        range(stop)  # start defaults to 0
+                     # and step to 1
+      Doc.:
+        "Return an object that produces a sequence of
+        integers from start (inclusive) to stop (exclusive)
+        by step."
+      <code>range(i, j)</code> produces: <code>i, i+1, i+2, ..., j-1</code>
+
+      Los rangos se "parecen" a una lista, y a veces nos
+      podemos confundir, pero realmente no "contienen"
+      los elementos sino que los producen uno por uno
+      (y si no los vamos consumiendo, no ocupan memoria).
+      Veremos cosas similares más adelante (generators...).
+        print(range(1, 10))  # qué muestra esto?
+      .
+      En la práctica, si hace falta los podemos <u>convertir</u>
+      fácilmente a una lista:
+        smallnums = list(range(1, 10))
+        print(smallnums)
+
+      Avanzado: unpacking operator (Python >= 3.5):
+      Es un operador especial, unario (no es multiplicar!)
+        * iterable      # devuelve sus elementos
+      Ejemplo:
+        >>> list(range(4)) + [4, 5, 6]
+        >>> [*range(4), 4, 5, 6]
+        [0, 1, 2, 3, 4, 5, 6]
+      .
+      Más detalles (dónde/cuándo se puede usar, etc.)
+      : https://www.python.org/dev/peps/pep-0448/
+
+      # Matrices
+      Listas de listas
+        m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+      .
+      Más adelante se verán los Pandas Datasets!
+      : https://realpython.com/pandas-python-explore-dataset/
+
+      # Pilas y colas
+      Estructura de datos muy común. En otros lenguajes,
+      suelen tener un tipo propio (o lo debemos crear).
+      En Python, normalmente basta con manejar listas
+      ## Pilas (stacks): LIFO
+        list.append()
+        list.pop()  # equivale a list.pop(-1) por defecto
+      ## Colas (queues): FIFO
+        list.append()
+        list.pop(0)
+
+      # Operaciones adicionales con cadenas<a href="#op-cadenas" class="link-anchor"> # </a>
+      ## string literal concatenation
+      Ejemplos de dos cosas diferentes:
+        "hola" + " " + "mundo"    # es una operación/expresión ("suma")
+        "hola " '"' "mundo" '"'   # una sola cadena, escrita en trozos
+      Lo segundo se usa por comodidad, legibilidad, para facilitar
+      el uso de caracteres especiales... Se puede combinar cualquier
+      literal de cadena válido (todos los que vamos a ver ahora)
+      Es simplemente una <u>notación especial</u> para escribir una cadena
+      @CLASS@ op-cadenas
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-4 (DESDE MODULO 2) -->
+
+      ## slicing en cadenas
+      Igual que en listas y cualquier otra colección!
+        "hola"[:2]
+        "hola"[::-1]
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 4 <u>(opcional)</u>: strings con Jupyter<a href="#ejercicio-4" class="link-anchor"> # </a>
+      <blockquote>Repaso de tuplas, con notebooks de Jupyter de ejemplo, tomados del<br> /NOBR/
+      curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).<br> /NOBR/
+      </blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Strings (básico + slicing): <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/02-Strings.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Strings.ipynb</a>
+      @CLASS@ ejercicio-4
+
+      ## transformaciones útiles
+        str.replace()
+        str.strip()  # elimina whitespace al inicio y fin
+        str.split()  # separar (por defecto: whitespace)
+        str.join()  # une n cadenas (parám.) con separador dado
+        "".join(tuple('a', 'b', 'c'))  # devuelve 'abc'
+        str.lower(), str.upper()
+        str.capitalize()  # mayusc. sólo 1er carácter
+        str.casefold()  # minúsc. "agresivas", ej. ß ➡ ss
+      etc.
+
+      ## otras operaciones y tests
+        str.islower()
+        str.isupper()
+        str.isalpha()
+        str.isdecimal()
+        str.startswith()
+        str.endswith()
+      etc.
+
+      ## búsqueda (subcadenas)
+      Devuelve la posición de la 1ª ocurrencia de sub, o -1
+        str.find(sub)
+      Lo mismo pero genera error si no hay ocurrencia
+        str.index(sub)
+      Similar: pertenencia en cadenas
+        x in y == True ⇔ x is a substring of y
+        x in y == True ⇔ y.find(x) != -1
+
+      ## operador % (de cadenas)
+      Nota: en desuso (Python 2)
+      Como vimos, es lo más similar al printf() de otros lenguajes
+      Ejemplos:
+        "size = %0.3f" % ( 5 / 7 )  # flotante; también %g %e %E
+        "percent = %02d %%" % 5  # entero; también %i %u
+        "%d = octal %o = hexadecimal %x" % (13, 13, 13)
+        "%-4d = carácter %c" % (65, 65)  # alineación izda.
+      Otros formatos interesantes: <pre>%X %s </pre>
+
+      # f-strings avanzadas
+      La sintaxis de lo que permite una f-string es:
+        ... ::=  "{" f_expression ["="] ["!" conversion] [":" format_spec] "}"
+      Es decir, una expresión entre llaves, y opc. con un "=", conversión (!) y/o formato (:)
+      Ejemplos:
+        hola = 59
+        f"hola, {hola=}"   # útil para debug, etc.
+        f"hola, {hola!s}"  # avanzado: conversiones a str especiales (raro uso)
+        f"hola, {hola:x}"
+        f"{{hola}}, {hola=:x}"  # combinados y con {} "literales"
+      .
+      Los formatos admitidos son los mismos que en str.format()
+      : https://docs.python.org/3/library/string.html#formatspec
+
+      # Escaping
+      Notación para representar caracteres especiales en cadenas
+        \\   Backslash (\)
+        \'   Single quote (')
+        \"   Double quote (")
+        \a   ASCII Bell (BEL)
+        \b   ASCII Backspace (BS)
+        \f   ASCII Formfeed (FF)
+        \n   ASCII Linefeed (LF) - chr(10)
+        \r   ASCII Carriage Return (CR) - chr(13)
+        \t   ASCII Horizontal Tab (TAB) - chr(9)
+
+      # raw strings
+      NO son otro tipo de cadenas! (como tampoco lo son las f-strings)
+      Son sólo una <u>notación</u> diferente para escribir el código fuente
+      de forma más "legible" cuando hay muchas barras invert. (\)
+        r"a\t\nb"
+        len(r"a\t\nb") != len("a\t\nb")
+        # el resultado de usar print() en cada una es igual o no?
+      .
+      Nota: única excepción: si hay barra al final del todo, duplicarla
+      Por qué? Porque siguen "funcionando" las sec. de escape \" y \'
+
+      # triple-quoted strings
+        "In triple-quoted literals, unescaped newlines
+        and quotes are allowed (and are retained)..."
+      Ejemplo:
+        """hola
+        \t"mundo"
+        """
+      .
+      Es decir: se conserva todo (espacios, \n, \t, e
+      incluso las comillas), salvo las tres comillas
+      usadas para iniciar y para terminar la cadena
+      De nuevo, esto es sólo otra <u>notación</u> para str's
+
+      Ejemplo de uso como <u>plantilla</u> (template), con str.format():
+        letter = """
+        Dear {0} {2}.
+          {0}, I have an interesting proposition for you!
+          If you deposit ${3} million into my bank account,
+          I can double your money ...
+        """
+        
+        print(letter.format("Paris", "W.", "Hilton", 2))
+        print(letter.format("Bill", "H.", "Gates", 5))
+
+      # Diccionarios
+      Similares a una lista, pero indexados con "claves" (keys)
+      que pueden ser números, cadenas, tuplas... y tampoco tienen
+      un orden/posición en sus elementos
+      .
+      En otros lenguajes se llaman arrays asociativos o maps:
+      asocian un <u>valor</u> a una <u>clave</u> (en lugar de a una posición)
+        edad['Peter'] = 25
+      .
+      Avanzado: valores permitidos en claves: hashables (ej. inmut.)
+      porque internamente requieren poderlas ordenar, por eficiencia.
+      Son también colecciones pero no secuencias, por el no-orden
+      Son "similares" a una lista de 2-tuplas (pero más eficientes!)
+
+      Algunos métodos son similares a los de otras colecciones,
+      pero no tenemos slicing (no tiene sentido), append(), insert()
+      y otros del estilo, ni +. Se añaden y eliminan elementos así:
+        dic = {}
+        dic['z'] = 5  # añade o modifica el valor asociado a 'z'
+        dic2 = dic.copy()  # como en listas, porque son mutables
+        dic3 = { 'x': 1, 'a': 2 }
+        dic.update(dic3)  # añade lo de dic3
+        lt = [ ('w', 5), ('r', 2) ]
+        dic2.update(lt)  # también sirve! y con tuplas de tuplas
+        dic4 = dict(lt)  # también, para crearlo con ese contenido
+
+      Los repetidos sobreescriben lo previo
+        dic = { 'x': 1, 'a': 2, 'x': 3 }
+        len(dic)
+      Se puede contener cualquier tipo de datos, y anidar
+        d = {'menu': {'id': 'file',
+              'value': 'File',
+              'popup': {'menuitem': [{'value': 'New', 'onclick': 745635},
+                {'value': 'Open', 'onclick': 4535643},
+                {'value': 'Close', 'onclick': 3453455}]}}}
+        d['menu']['value']
+      .
+      Veremos las similitudes con JSON más adelante
+
+      Acceso a los elementos: directo o con "vistas"
+      Directo:
+        dic['z']  # ojo, da error si la clave no existe
+        'z' in dic  # devuelve True si la clave existe
+        del dic['x']
+        dic.pop('z')  # aquí hay que indicar clave siempre
+                      # porque no hay orden: no hay "último"
+        dic.get('x')  # si no existe devuelve None, sin error
+        dic.get('x', val)  # si no existe devuelve val (útil!)
+
+      Vistas (views), son similares a iteradores o a los rangos
+        for k in dic.<u>keys</u>():  # "vista" de las claves del diccionario
+          print("Hay una clave ", k)
+        dic.keys()
+        list(dic.keys())
+        for k in dic:  # por comodidad, igual que con keys()
+          print("Hay una clave ", k)
+        for v in dic.<u>values</u>():  # itera en los valores, no claves
+          print("Hay un valor ", v)
+      Si necesitamos ambas cosas a la vez:
+        for k, v in dic.<u>items</u>():
+            print("Hay una clave ", k, " con valor ", v)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 5: diccionarios con Jupyter<a href="#ejercicio-5" class="link-anchor"> # </a>
+      <blockquote>Repaso de diccionarios, con notebooks de Jupyter de ejemplo, tomados del<br> /NOBR/
+      curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Diccionarios: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/05-Dictionaries.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../05-Dictionaries.ipynb</a>
+      @CLASS@ ejercicio-5
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 6: recorrer diccionarios<a href="#ejercicio-6" class="link-anchor"> # </a>
+      <blockquote>Dado un diccionario con valores de tipo numérico,<br> /NOBR/
+      recorrerlo y crear otro que sólo contenga los elementos<br> /NOBR/
+      del primero (pares clave - valor) con valores enteros.</blockquote>
+      Nota: preguntar cómo saber si son enteros, en caso de
+      duda (se puedehacer de varias formas...). Pistas:
+        type()
+        int()
+        round()
+        ...
+      .
+      @CLASS@ ejercicio-6
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 7 <u>(opcional)</u>: contar frecuencias<a href="#ejercicio-7" class="link-anchor"> # </a>
+      <blockquote>Dada una lista de palabras (cadena), usando diccionarios almacenar<br> /NOBR/
+      la frecuencia de aparición de cada palabra (separador: espacios)<br> /NOBR/
+      y después mostrar sólo las que aparecen más de dos veces.</blockquote>
+      Nota: no usar ninguna función de cadenas no vista hasta ahora
+      .
+      Pistas (opcionales, se puede hacer de otras formas):
+        dic.get(..., 0)  # si no existe devuelve 0
+        for pal, frec in dic.items():
+            ...
+      @CLASS@ ejercicio-7
+
+      Avanzado: unpacking operator (Python >= 3.5):
+      Es un operador especial, unario (no es exponente!)
+        ** diccionario    # devuelve sus elementos (k, v)
+      Ejemplo:
+        >>> fruit_prices = {'apple': 0.40, 'orange': 0.35}
+        >>> vegetable_prices = {'pepper': 0.20, 'onion': 0.55}
+        >>> all_prices = {**vegetable_prices, **fruit_prices}
+        >>> for k in all_prices:
+        ...     print(f"{k} => {all_prices[k]}")
+      .
+      Más detalles (dónde/cuándo se puede usar, etc.)
+      : https://www.python.org/dev/peps/pep-0448/
+
+      Más detalles sobre diccionarios:
+      : https://realpython.com/python-dicts/
+      .
+      <em>Quizz</em> (auto-examen tipo test) sobre diccionarios:
+      : https://realpython.com/quizzes/python-dicts/
+
+      # Conjuntos
+      ## sets
+      Son colecciones no ordenadas de elementos distintos
+      Es decir, no son secuencias: no slicing, indexing...
+      .
+      Avanzado: valores permitidos: hashables (ej. inmut.)
+      Son mutables (existen los frozenset que no lo son...)
+
+      Sintaxis y muchas operaciones similares a los dict,
+      pero sólo con la parte de las claves (no hay valores)
+        s = set()  # vacío, única notación posible para esto
+        s = set({'a', 'b', 'c', 1, 2, 'z'})  # o listas, etc.
+        len()
+        in
+        set.copy(), set.update(), set.pop()...
+      .
+      Útil verlos (y usarlos) como dicc. especializados para
+      saber sólo si una clave existe o no (da igual el valor)
+
+      Operaciones especializadas y otras "especiales"
+        s <= s2  # True si s es un subconjunto de s2
+        s.issubset(s2)  # lo mismo
+        s < s2  # True si s es un subconj. "estricto"
+        s.union(...)
+        s | s2  # equivalente a union
+        s.isdisjoint(s2)  # True si son disjuntos
+        s.intersection(s2)  # equivale a: s & s2
+      etc.
+      .
+      Avanzado: debido a que &lt; tiene este uso "especial",
+      no está definido el orden entre 2 sets
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: eliminar repetidos con sets
+      <blockquote>Dada una lista de palabras como una cadena (separadas por espacios<br> /NOBR/
+      solamente), eliminar las palabras que aparezcan repetidas. Asumir<br> /NOBR/
+      que todo está siempre en minúsculas.<br> /NOBR/
+      No importa si el resultado se da en desorden....</blockquote>
+      Opcional: mejorar lo de las minúsculas (se complica bastante)
+      .
+        c = "hola que tal mi nombre es tal y tal"
+        c += " y dicen que digo mucho tal"
+        l = c.split()
+        s = set(l)  # set, que eliminará los repetidos por definición!
+        print(len(l), len(s), s)
+
+      ## multisets
+      Conjuntos que permiten varias instancias de cada elemento
+      En algunos lenguajes se llaman msets o bags
+      : https://en.wikipedia.org/wiki/Multiset
+      .
+      En Python, se suele usar <u>Counter</u> del módulo collections,
+      que son unos diccionarios especializados con añadidos útiles
+      : https://docs.python.org/3/library/collections.html#collections.Counter
+
+      ## Otras estructuras de datos
+      Dependiendo del ámbito de trabajo, es habitual usar también:
+      - Colas con prioridad
+      - Listas enlazadas
+      - Árboles
+      - etc.
+
+      # Juegos de caracteres<a href="#juegos-caracteres" class="link-anchor"> # </a>
+      ## Unicode
+      Estándar (y organismo) para la codificación, representación
+      y manejo de texto. Define un <u>repertorio/"juego"</u> de todos los
+      posibles caracteres (y algunos símbolos especiales, ej. 🎵 😉)
+      para todos los idiomas (alfabetos) y sistemas de escritura.
+      Actualmente define unos 114K caracteres, ampliables a 1.1M, y
+      a cada uno se le asigna un "code point" (número). Ej: U+1F609
+      .
+      Existen otros juegos de caracteres más antiguos (...)
+      @CLASS@ juegos-caracteres
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-4 (DESDE MODULO 2) -->
+
+      ## Codificación de caracteres (character encoding)
+      Es el mecanismo para procesar, almacenar y transmitir texto
+      (como una secuencia de bytes/números).
+      Son un convenio (reglas/tablas) para asignar code points a
+      caracteres de manera inequívoca
+      Ejemplos: Morse, ASCII, UTF-8 y UTF-16 (éstos, de Unicode)
+
+      ## UTF-8
+      Es la codif. de caracteres más habitual en Web y Linux
+      Es el <u>recomendado</u> siempre
+      .
+      En Python 3, todo es Unicode con UTF-8, y nos "despreocupamos"
+      excepto cuando <u>leemos o escribimos ficheros</u> (hay que definir cómo)
+      o cuando tenemos que interactuar con algo que exija otra codif.
+      Hay funciones para convertir texto entre distintos encodings.
+      Veremos más detalles en el <a href="Módulo 10. Entrada-Salida y manipulación de datos avanzada.html#juegos-caracteres" target="_blank">Módulo 10</a>
+      <!-- REFERENCIA-INTERNA-A-MODULO-10 -->
+
+      # Escaping (cont.)
+        \N{name}     Character named name in the Unicode database
+        \uxxxx       Character with 16-bit hex value xxxx
+        \Uxxxxxxxx   Character with 32-bit hex value xxxxxxxx
+
+      Ejemplos
+        unic = '\N{WINKING FACE}'
+        unic2 = '😉'
+        print(unic)
+        print(unic == unic2)
+        print(unic == '\U0001F609')
+        print(ord('年'))
+        年 = 2018
+        print(年)
+        عام = 2019  # ojo lenguajes RTL!
+        print(عام)
+      Funciones que trabajan con los "code point":
+        len(), chr(), ord()
+
+      # Ejercicios extra
+      <ul><li>Recomendados: notebooks de repaso tipo auto-evaluación, del curso<br> "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub):
+      <ul><li><a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/09-Objects%20and%20Data%20Structures%20Assessment%20Test.ipynb/" target="_blank">Evaluación: Objetos y más (tipos básicos, listas, tuplas, diccionarios, etc.)</a></li></ul> /NOBR/
+      <ul><li><a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb" target="_blank">Evaluación: bucles y range (comprehensions por ahora no, muy avanzado)</a></li></ul></li></ul> /NOBR/
+      - Un poco avanzado: multiplicar dos matrices (con listas de listas y bucles)
+      - Avanzado: ordenar una lista de elementos (del mismo tipo), con varios bucles
+      - The Python Challenge (continuar/repetir el 3, que está resuelto):<br> <a href="http://www.pythonchallenge.com/" target="_blank">www.pythonchallenge.com</a>
+      - En el libro "Automate the Boring Stuff with Python (2ª ed.)", gratuito online<br> (<a href="https://automatetheboringstuff.com/" target="_blank">automatetheboringstuff.com</a>), ver los "Practice Projects" en cada capítulo
+      - NOTA: en Youtube, los primeros temas del libro (es como una "demo"<br> explicada de los conceptos, no son realmente ejercicios tal cual):<br> <a href="https://www.youtube.com/watch?v=1F_OgqRuSdI&list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW" target="_blank">youtube.com/watch?v=1F_OgqRuSdI&list=...</a>
+
+      # Referencias
+      Como otras veces, un buen resumen de lo principal y algunos ejercicios al final:
+      : https://openbookproject.net/thinkcs/python/english3e/lists.html
+      : https://openbookproject.net/thinkcs/python/english3e/tuples.html
+      : https://openbookproject.net/thinkcs/python/english3e/dictionaries.html
+      : https://openbookproject.net/thinkcs/python/english3e/strings.html
+      Muy recomendable y sencillo, bien explicado, sobre f-strings:
+      : https://realpython.com/python-f-strings/
+      Curso "Complete Python Bootcamp", de Jose Portilla:
+      : https://www.udemy.com/course/complete-python-bootcamp/
+
+    </pre>
+  </body>
+</html>
