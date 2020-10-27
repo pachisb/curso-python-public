@@ -85,9 +85,9 @@
         l = [1, 2, [2, 3, [4, 'a'], 5], 7, 8]
 
       Funciones útiles:
-        list.append(e), list.extend(l)  # añade elemento / colecc.
-        list.insert(pos, e), list.remove(e), list.pop()
-        list.count()  # por comodidad, equivale a len()
+        list.append(e), list.extend(l)  # añade 1 elemento / colecc.
+        list.insert(pos, e), list.remove(e), list.pop()  # de 1 en 1
+        list.count(e)  # para contar las ocurrencias del elemento
         len(), min(), max(), sum()
         list.index(e)  # Posición de un elemento
                        # OJO: error si no presente
@@ -121,17 +121,31 @@
       <blockquote>Crear una lista de <u>números</u> similar a lo que<br> /NOBR/
       nos devolvería range(). Hacerlo en la forma<br> /NOBR/
       que recibe dos "parámetros" (inicio, fin).<br> /NOBR/
-      Usar sólo bucles y listas, no funciones.</blockquote>
-      Opcional: hacer que además permita "saltos".
+      Usar sólo bucles y listas (y sus funciones).<br> /NOBR/
+      No crear una función nuestra ni usar range().</blockquote>
+      Opcional: hacer que además permita "saltos" > 1
       .
       Ejemplo de estructura:
         # Valores para los "parámetros"
         inicio = 0
         fin = 10
         salto = 1  # opcional
-        ...
+        lista_num = []  # una posibil.: lista vacía
+        ...  # aquí irá al menos un bucle
         print("La lista final es:", lista_num)
       @CLASS@ ejercicio-1
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1-bis: bucles sencillos<a href="#ejercicio-1-bis" class="link-anchor"> # </a>
+      <blockquote>Crear una serie de <u>bucles</u> para casos sencillos.</blockquote>
+      - Escribir los números del 1 al 10
+      - Escribir los números desde x (entero) a y (entero)<br> siendo x e y variables numéricas ya dadas
+      - Escribir los números impares desde x a y (enteros)<br> siendo x e y variables numéricas ya dadas
+      - Escribir cada una de las letras de una cadena s (str)<br> en una línea separada
+      .
+      Opcional: en lugar de que sean variables con un valor
+      ya dado, pedir al usuario los valores para s, x e y
+      @CLASS@ ejercicio-1-bis
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / demo: media con listas
@@ -178,8 +192,9 @@
         list.sort()
         list.reverse()
       .
-      Nota: casi todas <u>modifican</u> el contenido de la lista,
-      salvo unas pocas:
+      Nota: algunas devuelven el "resultado", y otras no!
+      Nota: casi todas <u>modifican</u> el contenido de la lista
+      con la que operan, salvo unas pocas:
         list.count(), list.index()
       Pero ojo, por ejemplo esto no modifica nada:
         l3 + l2  # por qué?
