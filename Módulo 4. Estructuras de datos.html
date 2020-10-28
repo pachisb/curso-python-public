@@ -401,6 +401,8 @@
       .
       Más adelante se verán los Pandas Datasets!
       : https://realpython.com/pandas-python-explore-dataset/
+      Pandas define las Series (1D) y DataFrames (2D), para
+      tratar con datos tabulares (internamente: NumPy)
 
       # Pilas y colas
       Estructura de datos muy común. En otros lenguajes,
@@ -540,6 +542,23 @@
         print(letter.format("Paris", "W.", "Hilton", 2))
         print(letter.format("Bill", "H.", "Gates", 5))
 
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 4-bis: producto matricial<a href="#ejercicio-4-bis" class="link-anchor"> # </a>
+      <blockquote>Hacer el producto matricial de m ** n, siendo m y n dos matrices de<br> /NOBR/
+       dimensiones adecuadas (...).</blockquote>
+      Notas:
+      - Recordar: este producto no es conmutativo! Se pide m * n, no n * m
+      - Usar sólo listas (cualquier funcionalidad), cadenas (?), bucles, if, etc.
+      - No usar módulos matemáticos, de matrices, o similares
+      - Hacer las comprobaciones necesarias sobre los tamaños!
+      - Opcional: comprobar además que las matrices son 2D
+      - Opcional: comprobar que las matrices contienen sólo flotantes
+      - No preocuparse de la "entrada" de los datos de partida ni de la<br> salida. Usar variables ya "dadas" (probar con varias)
+      .
+      Pistas: pensar en "divide y vencerás" (...)
+      @CLASS@ ejercicio-4-bis
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-4 (DESDE MODULO 5) -->
+
       # Diccionarios
       Similares a una lista, pero indexados con "claves" (keys)
       que pueden ser números, cadenas, tuplas... y tampoco tienen
@@ -565,6 +584,16 @@
         lt = [ ('w', 5), ('r', 2) ]
         dic2.update(lt)  # también sirve! y con tuplas de tuplas
         dic4 = dict(lt)  # también, para crearlo con ese contenido
+
+      Copia: igual que en otras colecciones <u>mutables</u> (listas)
+      Es necesario hacer una copia "explícita" cuando sea preciso:
+        dic2 = dic1.copy()
+        dic2 = dict(dic1)  # hace lo mismo
+        dic2 = { **dic1 }  # también sirve igual (lo veremos)
+        dic2 = dic1[:]     # ERROR, no hay slicing!
+      .
+        dic2 = {}
+        dic2.update(dic1)  # incluso así (2 líneas) también
 
       Los repetidos sobreescriben lo previo
         dic = { 'x': 1, 'a': 2, 'x': 3 }
@@ -747,8 +776,8 @@
       excepto cuando <u>leemos o escribimos ficheros</u> (hay que definir cómo)
       o cuando tenemos que interactuar con algo que exija otra codif.
       Hay funciones para convertir texto entre distintos encodings.
-      Veremos más detalles en el <a href="Módulo 10. Entrada-Salida y manipulación de datos avanzada.html#juegos-caracteres" target="_blank">Módulo 10</a>
       <!-- REFERENCIA-INTERNA-A-MODULO-10 -->
+      Veremos más detalles en el <a href="Módulo 10. Entrada-Salida y manipulación de datos avanzada.html#juegos-caracteres" target="_blank">Módulo 10</a>
 
       # Escaping (cont.)
         \N{name}     Character named name in the Unicode database
@@ -772,8 +801,8 @@
       # Ejercicios extra
       <ul><li>Recomendados: notebooks de repaso tipo auto-evaluación, del curso<br> "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub):
       <ul><li><a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/09-Objects%20and%20Data%20Structures%20Assessment%20Test.ipynb/" target="_blank">Evaluación: Objetos y más (tipos básicos, listas, tuplas, diccionarios, etc.)</a></li></ul> /NOBR/
-      <ul><li><a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb" target="_blank">Evaluación: bucles y range (comprehensions por ahora no, muy avanzado)</a></li></ul></li></ul> /NOBR/
-      - Un poco avanzado: multiplicar dos matrices (con listas de listas y bucles)
+      <ul><li><a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb" target="_blank">Evaluación: bucles y range (comprehensions por ahora no, muy avanzado)</a></li></ul> /NOBR/
+      <ul><li>etc. (hay más...)</li></ul></li></ul> /NOBR/
       - Avanzado: ordenar una lista de elementos (del mismo tipo), con varios bucles
       - The Python Challenge (continuar/repetir el 3, que está resuelto):<br> <a href="http://www.pythonchallenge.com/" target="_blank">www.pythonchallenge.com</a>
       - En el libro "Automate the Boring Stuff with Python (2ª ed.)", gratuito online<br> (<a href="https://automatetheboringstuff.com/" target="_blank">automatetheboringstuff.com</a>), ver los "Practice Projects" en cada capítulo
