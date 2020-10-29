@@ -152,6 +152,15 @@
       Es decir, en el segundo caso el que invoca a la función
       debe/puede ser consciente del nombre/signif. del parám.
 
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: ROT13
+      <blockquote>Escribir una función print_rot13() que reciba una<br> /NOBR/
+      cadena y la escriba por pantalla "encriptada" según<br> /NOBR/
+      el cifrado César con n=13, también llamado ROT13.</blockquote>
+      NOTA: en este caso es cifrado simétrico, ¿por qué?
+      .
+      : https://es.wikipedia.org/wiki/ROT13
+
       ## Limitar la forma de uso de parámetros
       Avanzado, reciente (Python >= 3.8), se puede
       restringir el uso permitido de los parámetros:
@@ -160,19 +169,6 @@
             print(a, b, c, d)
         foo(1, d=4, c=3)     # OK
         foo(a=1, 2, c=3, 4)  # ERROR (doble)!
-
-      ## *args y **kwargs
-      Avanzado: tupla y diccionario que "agrupan"
-      todos los parámetros recibidos, por ejemplo
-      para pasárselos a su vez a otra función:
-        def f(x, *args, **kwargs):
-        ...
-        kwargs['width'] = '14.3c'
-        ...
-        g(x, *args, **kwargs)
-      .
-      args para los posicionales, kwargs los keyword
-      Veremos más adelante un uso similar más frecuente
 
       # Parámetros por asignación
       *IMPORTANTE:*
@@ -255,6 +251,14 @@
         mainfunc()
         range(0, 3)  # ERROR, ya no es una función!!
 
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: juego de la vida<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>A partir del esqueleto inicial común, modificarlo<br> /NOBR/
+      para hacer una simulación del juego de la vida.</blockquote>
+      .
+      : https://es.wikipedia.org/wiki/Juego_de_la_vida
+      @CLASS@ ejercicio-1
+
       # Parámetros y argumentos (cont.)
       ## Valor por defecto
       <u>Nota importante</u>: evitar valores <em>mutables</em> como
@@ -269,6 +273,19 @@
           ...
           price = ... * special_notes['discount']
           # En este caso no hay problemas si <u>sólo leemos</u> su valor
+
+      ## *args y **kwargs
+      Avanzado: tupla y diccionario que "agrupan"
+      todos los parámetros recibidos, por ejemplo
+      para pasárselos a su vez a otra función:
+        def f(x, *args, **kwargs):
+        ...
+        kwargs['width'] = '14.3c'
+        ...
+        g(x, *args, **kwargs)
+      .
+      args para los posicionales, kwargs los keyword
+      Veremos más adelante un uso similar más frecuente
 
       # Alcance (cont.)
       ## Composición
