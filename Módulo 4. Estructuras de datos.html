@@ -613,9 +613,10 @@
         dic['z']  # ojo, da error si la clave no existe
         'z' in dic  # devuelve True si la clave existe
         del dic['x']
-        dic.pop('z')  # aquí hay que indicar clave siempre
-                      # porque no hay orden: no hay "último"
-        dic.get('x')  # si no existe devuelve None, sin error
+        dic.pop('z')   # aquí hay que indicar clave siempre
+                       # porque no hay orden: no hay "último"
+        dic.popitem()  # parecido a list.pop() pero "al azar"
+        dic.get('x')   # si no existe devuelve None, sin error
         dic.get('x', val)  # si no existe devuelve val (útil!)
 
       Vistas (views), son similares a iteradores o a los rangos
@@ -640,8 +641,8 @@
       Diccionarios: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/05-Dictionaries.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../05-Dictionaries.ipynb</a>
       @CLASS@ ejercicio-5
 
-      <!-- EJERCICIO-PARA-CLASE -->
-      # Ejercicio 6: recorrer diccionarios<a href="#ejercicio-6" class="link-anchor"> # </a>
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: recorrer diccionarios
       <blockquote>Dado un diccionario con valores de tipo numérico,<br> /NOBR/
       recorrerlo y crear otro que sólo contenga los elementos<br> /NOBR/
       del primero (pares clave - valor) con valores enteros.</blockquote>
@@ -652,10 +653,10 @@
         round()
         ...
       .
-      @CLASS@ ejercicio-6
+      Solución en: <a href="examples/recorrer-diccionarios.py" target="_blank">recorrer-diccionarios.py</a>
 
-      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
-      # Ejercicio 7 <u>(opcional)</u>: contar frecuencias<a href="#ejercicio-7" class="link-anchor"> # </a>
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: contar frecuencias
       <blockquote>Dada una lista de palabras (cadena), usando diccionarios almacenar<br> /NOBR/
       la frecuencia de aparición de cada palabra (separador: espacios)<br> /NOBR/
       y después mostrar sólo las que aparecen más de dos veces.</blockquote>
@@ -665,7 +666,8 @@
         dic.get(..., 0)  # si no existe devuelve 0
         for pal, frec in dic.items():
             ...
-      @CLASS@ ejercicio-7
+      .
+      Solución en: <a href="examples/contar-frecuencias-diccionarios.py" target="_blank">contar-frecuencias-diccionarios.py</a>
 
       Avanzado: unpacking operator (Python >= 3.5):
       Es un operador especial, unario (no es exponente!)
@@ -780,6 +782,7 @@
       Veremos más detalles en el <a href="Módulo 10. Entrada-Salida y manipulación de datos avanzada.html#juegos-caracteres" target="_blank">Módulo 10</a>
 
       # Escaping (cont.)
+      Se permiten secuencias de escape especiales (Unicode) en Python
         \N{name}     Character named name in the Unicode database
         \uxxxx       Character with 16-bit hex value xxxx
         \Uxxxxxxxx   Character with 32-bit hex value xxxxxxxx
@@ -797,6 +800,17 @@
         print(عام)
       Funciones que trabajan con los "code point":
         len(), chr(), ord()
+
+      Sobre el soporte de Unicode y UTF-8:
+      Para que un programa o Web "funcione bien" en cuanto a la
+      codificación de caracteres (mostrar todos correctamente,
+      etc.) se requiere que esté preparado, y el S.O. también.
+      La consola Windows por ejemplo no suele estarlo.
+      Alternativa recom.: nueva Windows Terminal (opensource)
+      Desde la Windows Store si se puede (recom.):
+      : https://aka.ms/terminal
+      O manual (no se actualiza sola) - msixbundle en "Assets":
+      : https://github.com/microsoft/terminal/releases
 
       # Ejercicios extra
       <ul><li>Recomendados: notebooks de repaso tipo auto-evaluación, del curso<br> "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub):
