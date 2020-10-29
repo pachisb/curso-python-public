@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 5</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 5. Funciones
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Concepto de función
+        Definir funciones. return
+        Valor especial None
+        Built-in functions
+        Docstrings
+        Parámetros y argumentos
+          Valor por defecto. Posicionales y por nombre
+          *args y **kwargs
+      Parámetros por asignación
+        Alcance (scope)
+          Composición. Anidación
+        Recursión o recursividad
+        Iteradores
+        Generadores y yield
+        Ejercicios extra
+        Referencias
+
+      # Concepto de función
+      Engloban a las funciones matemáticas, y también más cosas
+      .
+      Conjunto de sentencias que operan sobre un número de entradas
+      (parámetros), aunque pueden ser 0, y opcionalmente devuelven
+      un resultado (valor, que puede ser compuesto)
+      Subprograma o subrutina: "caja negra" con un cierto algoritmo
+
+      # Definir funciones. return
+      Ejemplos:
+        def myprint(x):
+            print(">>", x, end='.')
+        
+        def multiply(a, b):
+            return a * b
+        
+        def nullfunc():
+            pass
+      .
+      Si no se indica nada, se devuelve None
+
+      # Valor especial None
+      Es un valor inmutable, que no es ni True ni False!
+        None != True
+        None != False
+      Se usa para indicar valores o casos "fuera de rango",
+      o para valores por defecto
+
+      IMPORTANTE: siempre debe compararse mediante <samp>is</samp>
+        In [30]: id(None)
+        Out[30]: 10306432
+        
+        In [31]: a = None
+        
+        In [32]: id(a)
+        Out[32]: 10306432
+        
+        In [33]: a == None  # funciona pero <u>no recomendado</u>
+        Out[33]: True
+        
+        In [34]: a is None  # CORRECTO, mejor
+        Out[34]: True
+
+      Principio de abstracción (abstracción de [flujo de] control):
+      "Each significant piece of functionality in a program should be implemented
+      in just one place in the source code. Where similar functions are carried
+      out by distinct pieces of code, it is generally beneficial to combine them
+      into one by abstracting out the varying parts."
+      -- Benjamin C. Pierce in <a href="https://en.wikipedia.org/wiki/Types_and_Programming_Languages" target="_blank">Types and Programming Languages (2002)</a>
+      .
+      Reutilización: "caja negra" que puede ser modificada/sustituida sin afectarnos
+      .
+      Pero recordar también el "Principio KISS" (Keep it simple, stupid!)
+      : https://en.wikipedia.org/wiki/KISS_principle
+
+      # Built-in functions
+      sum(), max(), min(), pow(), abs(), bool(), str(), int(),
+      round(), hex(), bin(), chr(), len(), format(), help()...
+      : https://www.w3schools.com/python/python_ref_functions.asp
+      Más en detalle:
+      : https://docs.python.org/3/library/functions.html
+
+      Ejemplo: forma de uso de sum()
+      Según la Doc., su "interfaz" es:
+        sum(iterable, /, start=0)
+      .
+      Devuelve la suma de lo que recibe ( + start,
+      que es opcional) y si fuera vacío, 0 + start
+        sum(range(11))  # suma desde 0 a 10
+
+      all()
+      Devuelve True si TODOS los elementos de la secuencia lo son
+      any()
+      Devuelve True si ALGÚN elemento de la secuencia lo es
+      Ejemplos:
+        all([True, 1, 'a'])
+        any([False, 0, 'a'])
+
+      # Docstrings
+        def myprint(x):
+            """Es habitual indicar de esta forma
+            lo que hace y cómo usar esta función...
+            
+            myprint(x), donde x es cualquier objeto
+            que se puede convertir a str, lo escribe
+            por pantalla con estilo tipo terminal"""
+            print(">>", x, end='.')
+
+      # Parámetros y argumentos
+      Parámetros: al definir la función (recibidos)
+      Argumentos: al invocarla (enviados / pasados)
+
+      ## Valor por defecto
+      Se puede asignar un valor que se tomará
+      si se omite el argumento al invocar. Ejemplo:
+        def add_vat(base, vat_type=21):
+          return base * (100 + vat_type) / 100.0
+
+      ## Posicionales
+        def add_vat(base, vat_type=21):
+          return base * (100 + vat_type) / 100.0
+        add_vat(500, 10)
+      ## Por nombre (keyword)
+        add_vat(vat_type=10, base=500)
+      Es decir, en el segundo caso el que invoca a la función
+      debe/puede ser consciente del nombre/signif. del parám.
+
+      ## Limitar la forma de uso de parámetros
+      Avanzado, reciente (Python >= 3.8), se puede
+      restringir el uso permitido de los parámetros:
+        # a y b son sólo posicionales, d sólo keyword
+        def foo(a=0, b=0, /, c=0, *, d=0):
+            print(a, b, c, d)
+        foo(1, d=4, c=3)     # OK
+        foo(a=1, 2, c=3, 4)  # ERROR (doble)!
+
+      ## *args y **kwargs
+      Avanzado: tupla y diccionario que "agrupan"
+      todos los parámetros recibidos, por ejemplo
+      para pasárselos a su vez a otra función:
+        def f(x, *args, **kwargs):
+        ...
+        kwargs['width'] = '14.3c'
+        ...
+        g(x, *args, **kwargs)
+      .
+      args para los posicionales, kwargs los keyword
+      Veremos más adelante un uso similar más frecuente
+
+      # Parámetros por asignación
+      *IMPORTANTE:*
+      Al argumento se le asigna el valor del parámetro recibido.
+      Pero el tipo de dato puede ser mutable (listas, objetos y
+      diccionarios) y eso a veces no es intuitivo / sencillo.
+      Dependiendo del efecto deseado, deberemos <u>hacer una copia</u>
+      nueva dentro de la función, para no alterar lo recibido!
+      .
+      ## Ejercicio opcional:
+      <blockquote>Hacer una función que elimine parte de una lista (parám. recibido),<br> sin devolver nada, y lo mismo con una lista, y ver si se comportan igual</blockquote>
+
+      Avanzado: Pero... ¿se pueden devolver valores (o usar
+      parámetros "de salida" o por ref. como en otros leng.)?
+      Sí, pasando argumentos que sean mutables, o bien,
+      <u>mucho mejor</u>, devolviendo una tupla de n valores
+      .
+      O sea: en Python es habitual (y recom.) <u>devolver tuplas</u>
+      .
+      Más información y ejemplos:
+      <a href="https://docs.python.org/3/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference" target="_blank">https://docs.python.org/faq/...</a>)
+
+      # Alcance (scope)
+      ## global vs. local
+      Las variables (entre otras...) pueden ser globales o locales
+      Ejemplo:
+        x = 20 # global
+        def f():
+            y = 5
+            print(x)
+        f()
+        print(y)  # ERROR! aquí y no "existe"
+
+      ## shadowing
+        x = 20
+        def f():
+            y = 5
+            x = 40
+        f()
+        print(x)
+      Nombres definidos después en otro ámbito pueden "ocultar" o "hacer sombra" a los 1<sup>os</sup>
+      .
+      Regla <u>importante para recordar (y simplificar)</u>: mejor no reutilizar nombres salvo para
+      cosas que sean con certeza temporales (ejemplo: variables para iterar, etc.)
+      .
+      Más detalles (extenso) en:
+      : https://realpython.com/python-namespaces-scope/
+
+      "...if you really do need to modify a value in the global scope from within
+      a function, it is possible in Python using the global declaration:"
+      Ejemplo:
+        x = 20
+        def f():
+            # Para entender la diferencia, omitir la siguiente línea:
+            global x
+            x = 40
+        f()
+        print(x)
+
+      ## Ejemplo: alcance
+        # built-in
+        print(range(5))
+        
+        # global
+        range = 'this is a global "range"'
+        print(range)
+        
+        def mainfunc():
+            # enclosing
+            range = 'this is an enclosed "range"'
+            
+            def enclosing():
+                # local
+                range = 'this is a local "range"'
+                print(range)
+             
+            enclosing()
+            print(range)
+        
+        mainfunc()
+        range(0, 3)  # ERROR, ya no es una función!!
+
+      # Parámetros y argumentos (cont.)
+      ## Valor por defecto
+      <u>Nota importante</u>: evitar valores <em>mutables</em> como
+      valor por defecto (ej. lista, vacía o no) y usar en su
+      lugar None o cadenas, y dentro de la función "ajustarlo".
+      Porque podríamos modificar el valor sin querer! (<a href="https://docs.python.org/3/faq/programming.html#why-are-default-values-shared-between-objects" target="_blank">Doc</a>)
+      .
+      Ejemplo:
+        def add_oder(name, num_items, special_notes={'discount': 0}):
+          # Sería mejor haber tenido arriba special_notes = None y:
+          # current_notes = special_notes or {'discount': 0}
+          ...
+          price = ... * special_notes['discount']
+          # En este caso no hay problemas si <u>sólo leemos</u> su valor
+
+      # Alcance (cont.)
+      ## Composición
+      <u>Llamar</u> a una función dentro de otra
+        def rectangle_area(base, height):
+            return base * height
+        def triangle_area(base, height):
+            return rectangle_area(base, height) / 2
+      .
+      O también esto:
+        str(int(5.5))
+
+      ## Anidación
+      <u>Definir</u> una función dentro de otra!
+      Es algo poco habitual pero se puede hacer, sobre todo
+      si la función interior es solamente "auxiliar"...
+        def triangle_area(base, height):
+            def rectangle_area(base, height):
+                return base * height
+      .
+            return rectangle_area(base, height) / 2
+      .
+      En este caso, rectangle_area() no es visible "fuera"
+      Es decir, su alcance/uso está limitado a la 1ª función
+
+      ! img/recursion.jpg
+
+      # Recursión o recursividad
+      Una función que se llama a sí misma
+      Ejemplo:
+      .
+        def factorial(n):
+        if n == 0:
+            # Define our base (trivial) case
+            return 1 
+        else:
+            return n * factorial(n - 1) 
+        
+        print(factorial(5))
+
+      Una forma distinta de verlo, que puede ayudar a entenderlo:
+      .
+        def factorial_0():
+            return 1  # caso base o trivial, termina siempre
+        
+        def factorial_1():
+            return 1 * factorial_0()
+        
+        def factorial_2():
+            return 2 * factorial_1()
+        
+        def factorial_3():
+            return 3 * factorial_2()
+        
+        (...)
+
+      La recursión normalmente no hace falta y no se suele usar,
+      pero es importante entender cómo funciona.
+      .
+      IMPORTANTE: es necesario asegurar que la ejecución terminará
+      en un número pequeño de niveles de llamada (Python: &lt; 1000).
+      Si una función se llama a sí misma indirectamente, es lo mismo
+      .
+      TODAS las funciones recursivas pueden transformarse en otra
+      equivalente con bucles; generalmente más rápida que la que
+      era recursiva, pero a veces más compleja de escribir/leer!
+
+      Proceso para diseñar un algoritmo recursivo:
+      - <u>Suponer</u> que ya tenemos un algoritmo que nos resuelve una<br> "versión reducida" del problema
+      - Identificar uno o varios subproblemas "triviales" (casos base)
+      - <u>Descomponer</u> el problema en uno o más subproblemas que se<br> puedan resolver con el algoritmo que sabemos que ya existe<br> y cuya solución vaya aproximándose a los casos base
+
+      Cuándo es realmente útil / adecuado utilizar la recursión?
+      - Cuando el código fuente queda más sencillo y corto<br> (pensar en depuración, facilidad de probar y leer...)
+      - (Y) Cuando el número de niveles que se usarán es "pequeño"
+      - (Y) (Opcional, pero deseable) Cuando la solución al problema<br> de nivel n-1 es comparativamente bastante<br> más rápida (menos costosa) que la del n
+
+      Ejemplos:
+      Para recorrer por completo el sistema de ficheros (carpetas dentro de
+      carpetas!) o cualquier estructura de datos similar (árboles, etc.)
+      Para calcular "cosas" o estructuras como los fractales (...)
+      : https://en.wikipedia.org/wiki/Fractal
+      .
+      Para resolver un problema en el que la técnica "divide y vencerás"
+      sea la más clara (fácil de entender) sin perder mucha eficiencia,
+      como por ejemplo ordenar una lista parcialmente ordenada al inicio
+        [5, 2, 1, 3, 4,    11, 19, 18, 12, 16] 
+      .
+      Factorial de un número? NO ES EL MEJOR USO, salvo para aprender,
+      porque lo de "código sencillo" es opinable, lo del "numero de niveles
+      pequeño" no lo cumple (para números grandes), y lo de la rapidez del
+      subproblema en realidad tampoco. Lo que indica que es mejor un bucle!
+      .
+      : https://openbookproject.net/thinkcs/python/english3e/recursion.html
+
+      # Iteradores
+      Tipo de objetos que representan un stream (flujo) de datos,
+      y nos van proporcionando sucesivos elementos
+        it = iter([1, 2, 3])  # produce un iterador para la lista
+      El iterador es similar a un rango, no podemos verlo "tal cual"
+      Pero sí utilizarlos, por ejemplo (y sobre todo) en bucles for
+        for i in it:
+            ...
+      En realidad los estábamos usando siempre, aún sin saberlo:
+        for i in [1, 2, 3]:  # de hecho equivale a lo siguiente
+        for i in iter([1, 2, 3]):
+            ...
+
+      Dónde más se usan: ej. la función list()
+      se puede usar para convertir cadenas,
+      diccionarios (ojo: sólo las claves),
+      tuplas, y otros similares, en una lista.
+      En realidad trabaja con <em>iterables</em>
+      (iteradores, secuencias, generadores...)
+      .
+      Va consumiendo el "contenido" del iterador
+        list(range(5))
+      <samp>[0, 1, 2, 3, 4]</samp>
+        list("hola")
+
+      Lo mismo para otros tipos de colecciones:
+        str()
+        tuple()
+        set()
+        dict()  # Ojo, espera recibir tuplas clave - valor
+
+      ## enumerate()
+      Para comodidad en los bucles, podemos esusar esta función
+      que gestiona la variable "contadora" por nosotros
+      Ejemplo:
+        for i, word in enumerate(['hola', 'que', 'tal']):
+            print(f"At index {i} the item is {word}")
+
+      ## Módulo <em>itertools</em>
+      Tema avanzado (...) Es un módulo que define
+      <em>"functions that “operate” on iterators to
+      produce more complex iterators"</em>
+      .
+      Ejemplo:
+        list(<u>zip</u>([1, 2, 3], ['a', 'b', 'c']))
+      <samp>[(1, 'a'), (2, 'b'), (3, 'c')]</samp>
+      .
+      Nota: <u>zip</u> y <u>map</u> (lo veremos) son "built-ins"
+      En itertools tenemos otros similares para otras cosas
+
+      Otro ejemplo:
+      Iterador que nos da los números impares: se
+      comporta similar a range() pero sin fin...
+        import itertools
+        odds = itertools.<u>count</u>(start=1, step=2)
+        while True:
+            print(next(odds))
+
+      Otros ejemplos avanzados / ejercicios:
+      - Analyzing the S&P500
+      - Building Relay Teams from Swimmer Data
+      .
+      Ambos en:
+      : https://realpython.com/python-itertools/
+      Código en GitHub: 
+      <a href="https://github.com/realpython/materials/tree/master/itertools-in-python3" target="_blank">https://github.com/realpython/materials/...</a>
+
+      # Generadores y yield
+      <blockquote>"A generator is a recipe for producing values"</blockquote>Una función generadora se comporta como un iterador
+        def gen():
+            for n in range(12):
+                yield n ** 2
+        
+        list(gen())
+      .
+      Más detalles y ejemplos, muy claro y recomendable:
+      : https://realpython.com/introduction-to-python-generators/
+
+      Si la función acaba "normal" (return explícito o implícito -final-),
+      se indica que es el final. Los bucles, etc. esperan justo esto!
+        def gen():
+            for n in range(25):
+                if n == 10:
+                    return
+                yield n ** 2
+        
+        for i in gen():
+            print(i)
+        print(list(gen()))
+
+      # Ejercicios extra
+      - Variación del de los billetes, con número ilimitado de cada uno
+      <!-- REFERENCIA-INTERNA-A-MODULO-4 -->
+      - Cualquiera de los ejercicios ya hechos, convertir el código que<br> resulte adecuado (elegir cuál...!) en una o varias funciones.<br> Sobre todo, recom.: producto matricial: <a href="Módulo 4. Estructuras de datos.html#ejercicio-4-bis" target="_blank">Módulo 4, ejcio. 4-bis</a>
+      <ul><li>Repasar los ejercicios extra de los Módulos 3 y 4, del libro<br> <a href="https://openbookproject.net/thinkcs/python/english3e/" target="_blank">"How to Think Like a Computer Scientist..."</a>, omitidos porque<br> requerían usar funciones, y además los siguientes (nuevos):
+      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/functions.html#exercises">https://openbookproject.net/thinkcs/python/english3e/functions...</a></li></ul> /NOBR/
+      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html#exercises">https://openbookproject.net/thinkcs/python/english3e/fruitful...</a></li></ul></li></ul> /NOBR/
+
+      # Referencias
+      Como otras veces, un buen resumen de lo principal y algunos ejercicios al final:
+      : https://openbookproject.net/thinkcs/python/english3e/functions.html
+      : https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html
+
+    </pre>
+  </body>
+</html>
