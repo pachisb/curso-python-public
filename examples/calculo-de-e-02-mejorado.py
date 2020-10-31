@@ -36,6 +36,5 @@ print(e)
 
 import math
 
-print("Valores según el módulo math:")
-print(math.exp(1.0))
+print("Valor según el módulo math:")
 print(math.e)
