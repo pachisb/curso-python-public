@@ -22,18 +22,20 @@ dicc2 = {
 frutas = dicc1
 
 
+# Primera forma de solucionarlo: recorriendo las claves del diccionario
+
 for fruta in frutas.keys():  # si no indico nada, es como keys()
-    # MODIFICAR para que cumpla lo que se pide:
+    # MODIFICAR para que cumpla lo que nos pedían:
     if frutas[fruta] > 0:
         print("La cantidad de:", fruta, "es", frutas[fruta])
 
 print()
 
 
-# Alternativa: recorrer los items (tuplas clave-valor)
+# Alternativa: recorrer los elementos o items (tuplas clave-valor)
 
 for fruta, cantidad in frutas.items():
-    # MODIFICAR para que cumpla lo que se pide:
+    # MODIFICAR para que cumpla lo que nos pedían:
     if cantidad > 0:
         print("La cantidad de:", fruta, "es", cantidad)
 
@@ -44,10 +46,9 @@ print()
 # No es recomendable simplemente por eficiencia, tenemos que hacer primero una copia
 # porque no sabemos si luego haría falta la lista original de nuevo (probable...)
 
-copia_frutas = dict(frutas)  # copia
-# copia_frutas = frutas.copy()  # alternativa (mejor) para copia
+copia_frutas = frutas.copy()  # hacer una copia
 while len(copia_frutas) > 0:
     fruta, cantidad = copia_frutas.popitem()
-    # MODIFICAR para que cumpla lo que se pide:
+    # MODIFICAR para que cumpla lo que nos pedían:
     if cantidad > 0:
         print("La cantidad de:", fruta, "es", cantidad)
