@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Esqueleto para el # Ejercicio 4-bis "producto matricial" del Módulo 4
+# Solución para el Ejercicio 4-bis "producto matricial" del Módulo 4 (esqueleto inicial)
 
 m = [[1,2],[3,4],[5,6]]  # matriz 3*2 (filas*columnas)
 n = [[5,10,15,0],[0,0,20,0]]  # matriz 2*4
