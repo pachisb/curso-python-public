@@ -1,0 +1,34 @@
+S1-D2
+1. Introducción (~1d)
+2. Tipos de datos y operaciones básicas (~1d)
+++ (margen 1d)
+
+FESTIVOS PILAR
+
+S2-D1
+3. Flujo de control (~2d)
+4. Estructuras de datos (~2d)
+
+S3-D1
+4. Estructuras de datos (~2d)
+5. Funciones (~2d)
+
+FESTIVO 2 NOV (S4-D1)
+
+S4-D2
+5. Funciones (~2d)
+6. Módulos y paquetes (~1d)
+8. Funciones avanzadas (~1d)
+(cambio de orden)
+
+S5-D1
+7. Objetos, errores y excepciones (~1d) (AJUST.)
+9. Entrada/Salida y manipulación de datos básica (~3d)
+
+S6-D1
+10. Entrada/Salida y manipulación de datos avanzada (~3d) (AJUST.)
+11. Herramientas y metodologías de desarrollo (~1d)
+
+S7-D1
+12. Extras: logging y otros. Entornos de desarrollo (~1d) (AJUST.)
+++ (margen 1d)
