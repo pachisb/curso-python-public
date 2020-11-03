@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Solución para el Ejercicio 3 "polígonos y tortugas" del Módulo 3 (esqueleto inicial)
+
 import turtle
 
 # Inicialización: crear una "tortuga" t. Dejar tal cual
