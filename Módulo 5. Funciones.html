@@ -36,12 +36,11 @@
         Parámetros y argumentos
           Valor por defecto. Posicionales y por nombre
           *args y **kwargs
-      Parámetros por asignación
+        Parámetros por asignación
         Alcance (scope)
           Composición. Anidación
         Recursión o recursividad
         Iteradores
-        Generadores y yield
         Ejercicios extra
         Referencias
 
@@ -132,6 +131,9 @@
             que se puede convertir a str, lo escribe
             por pantalla con estilo tipo terminal"""
             print(">>", x, end='.')
+      .
+      Si está en el lugar correcto, una triple-quoted string
+      se toma automáticam. como Docstring para la función
 
       # Parámetros y argumentos
       Parámetros: al definir la función (recibidos)
@@ -177,9 +179,37 @@
       diccionarios) y eso a veces no es intuitivo / sencillo.
       Dependiendo del efecto deseado, deberemos <u>hacer una copia</u>
       nueva dentro de la función, para no alterar lo recibido!
-      .
-      ## Ejercicio opcional:
-      <blockquote>Hacer una función que elimine parte de una lista (parám. recibido),<br> sin devolver nada, y lo mismo con una lista, y ver si se comportan igual</blockquote>
+
+      Ejemplo
+        # Función que modifica parámetros recibidos
+        def my_func(n, l):
+            print(">>my_func():", n, l)
+            n = 0
+            l[0] = "hola"
+        
+        x = 5
+        y = [ "hello" ]
+        # Para entenderlo: como si al iniciar my_func() se hace: n, l = x, y
+        my_func(x, y)
+        print(x, y)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: borrar de una lista<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Hacer una función similar a la del ejemplo anterior, pero<br> /NOBR/
+      que elimine el primer elemento de una lista (recibida<br> /NOBR/
+      como parámetro), y luego la muestre por pantalla, sin<br> /NOBR/
+      devolver nada. Quien la invoque deberá "ver" los cambios<br> /NOBR/
+      en la variable que pasó a la función como argumento.<br> /NOBR/
+      Después, hacer otra función similar pero que <u>no</u> provoque<br> /NOBR/
+      cambios en las variables que se pasaron como argumento.</blockquote>
+      Ejemplo de estructura para la función y forma de usarla:
+        def print_all_after_delete_first(l):
+            ...
+        
+        lista = [1, 2, 3, 4, 5, 6]
+        print_all_after_delete_first(lista)
+        print(lista)  # comprobar si sigue completa o no...
+      @CLASS@ ejercicio-1
 
       Avanzado: Pero... ¿se pueden devolver valores (o usar
       parámetros "de salida" o por ref. como en otros leng.)?
@@ -197,15 +227,15 @@
       Ejemplo:
         x = 20 # global
         def f():
-            y = 5
+            z = 5  # local
             print(x)
         f()
-        print(y)  # ERROR! aquí y no "existe"
+        print(z)  # ERROR! aquí z no "existe"
 
       ## shadowing
         x = 20
         def f():
-            y = 5
+            z = 5
             x = 40
         f()
         print(x)
@@ -217,18 +247,61 @@
       Más detalles (extenso) en:
       : https://realpython.com/python-namespaces-scope/
 
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: funciones sencillas<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Crear una serie de <u>funciones</u> para acciones sencillas.</blockquote>
+      - Calcular y devolver el área de una circunferencia de radio r<br> (valor de r recibido como parámetro)
+      - Devolver la palabra más larga de una lista de cadenas recibidas.
+      - Devolver la longitud total de las palabras que contenga una<br> lista de cadenas recibidas.<br> Ejemplo: para ['hola', 'mundo'] deberá devolver 9
+      .
+      Opcional: hacer además, <u>con funciones</u>, el primer ejercicio del
+      libro "How to Think Like a Computer Scientist...", capítulo 4,
+      dibujando con turtle. Más info en la página siguiente...
+      @CLASS@ ejercicio-2
+
+      .
+      ! https://openbookproject.net/thinkcs/python/english3e/_images/five_squares.png
+      Ver <a href="https://openbookproject.net/thinkcs/python/english3e/functions.html#exercises" target="_blank">openbookproject.net/.../functions.html</a>
+      Ejemplo de base en: <a href="examples/turtle-square-exercise.py" target="_blank">turtle-square-exercise.py</a>
+      .
+      Mejora opcional: permitir dibujar 5 polígonos
+      regulares de n lados (n recibido como parám.) 
+
+      ## Palabra clave <em>global</em>
       "...if you really do need to modify a value in the global scope from within
       a function, it is possible in Python using the global declaration:"
       Ejemplo:
         x = 20
         def f():
             # Para entender la diferencia, omitir la siguiente línea:
-            global x
+            <u>global</u> x
             x = 40
         f()
         print(x)
 
       ## Ejemplo: alcance
+        # global
+        text = 'this is a global variable'
+        def justprint():
+            print(1, text)  # se puede "leer" la global sin problema
+        justprint()
+
+        def my_func():
+            def enclosing():
+                # local
+                text = 'this is a local variable'
+                print(3, text)
+            
+            global text  # podremos leer y modificar la global
+            print(2, text)
+            enclosing()
+            text = "modified"
+            print(5, text)
+        
+        my_func()
+        print(6, text)
+
+      ## Ejemplo avanzado: alcance
         # built-in
         print(range(5))
         
@@ -236,7 +309,7 @@
         range = 'this is a global "range"'
         print(range)
         
-        def mainfunc():
+        def my_func():
             # enclosing
             range = 'this is an enclosed "range"'
             
@@ -245,19 +318,25 @@
                 range = 'this is a local "range"'
                 print(range)
              
-            enclosing()
+            enclosing()  # no afectará a nuestra propia local
             print(range)
         
-        mainfunc()
+        my_func()
         range(0, 3)  # ERROR, ya no es una función!!
 
       <!-- EJERCICIO-PARA-CLASE -->
-      # Ejercicio 1: juego de la vida<a href="#ejercicio-1" class="link-anchor"> # </a>
-      <blockquote>A partir del esqueleto inicial común, modificarlo<br> /NOBR/
-      para hacer una simulación del juego de la vida.</blockquote>
-      .
-      : https://es.wikipedia.org/wiki/Juego_de_la_vida
-      @CLASS@ ejercicio-1
+      # Ejercicio 3: juego de la vida (parte 1)<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>A partir del esqueleto inicial dado, modificarlo para<br> /NOBR/
+      hacer una parte de la simulación del juego de la vida.<br> /NOBR/
+      Función num_vecinos(m, x, y) que devuelve un entero<br> /NOBR/
+      (rango 0..8) que indica el número de vecinos de la<br> /NOBR/
+      celda que ocupa la posición (x, y) en la matriz m.<br> /NOBR/
+      </blockquote>
+      Notas:
+      - (0, 0) representa la posición de más arriba e izda.
+      - cuidado con las esquinas, fila superior, etc.! (se<br> supone un tablero finito, y plano)
+      Ejemplo de base en: <a href="examples/juego-vida-01-esqueleto.py" target="_blank">juego-vida-01-esqueleto.py</a>
+      @CLASS@ ejercicio-3
 
       # Parámetros y argumentos (cont.)
       ## Valor por defecto
@@ -274,18 +353,53 @@
           price = ... * special_notes['discount']
           # En este caso no hay problemas si <u>sólo leemos</u> su valor
 
+      Ejemplo
+        # Función que usa (mal!) un valor por defecto mutable
+        def my_func(s = [ "au revoir" ]):
+            print(">>my_func():", s)
+            s[0] = "hola"
+        
+        x = [ "hello" ]
+        my_func(x)
+        print(x)
+        my_func()
+        print(x)
+        my_func()
+        print(x)  # COMPROBAR qué se espera y qué ocurre aquí
+      En la segunda invocación sin parámetro, no es lo esperado!
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 4: parámetros<a href="#ejercicio-4" class="link-anchor"> # </a>
+      <blockquote>Crear una serie de <u>funciones</u> con parámetros, para cálculos sencillos.</blockquote>
+      - Calcular y devolver el valor del IRPF para un salario base (por ejemplo<br> mensual) y tipo (porcentaje) recibidos como parámetros<br> Ejemplo de uso esperado: x = calcula_irpf(1000.0, 12.5)
+      - Igual, pero suponiendo un tipo de IRPF por defecto si no se recibe
+      - Igual, pero permitiendo que los dos parámetros se usen por nombre<br> (y por tanto, si se desea, en desorden)
+      - Además, comprobar si los dos parámetros son flotantes, y si no,<br> devolver None
+      - Añadir un tercer parámetro opcional (booleano) que indique si se<br> debe calcular el IRPF prorrateando las pagas extras
+      - Añadir a la definición de la función una Docstring adecuada
+      @CLASS@ ejercicio-4
+
       ## *args y **kwargs
       Avanzado: tupla y diccionario que "agrupan"
       todos los parámetros recibidos, por ejemplo
       para pasárselos a su vez a otra función:
         def f(x, *args, **kwargs):
-        ...
-        kwargs['width'] = '14.3c'
-        ...
-        g(x, *args, **kwargs)
+            ...
+            kwargs['width'] = 14.3  # se pueden modificar
+            ...
+            g(x, *args, **kwargs)
       .
       args para los posicionales, kwargs los keyword
       Veremos más adelante un uso similar más frecuente
+
+      Ejemplo:
+        def my_print(*args, **kwargs):
+            # separador para print(), por defecto " "
+            kwargs['sep'] = ""
+            print(*args, **kwargs)
+      .
+      Función que recibe n parámetros, y es un "sustituto"
+      de print() pero modificando su comportamiento
 
       # Alcance (cont.)
       ## Composición
@@ -314,8 +428,7 @@
       ! img/recursion.jpg
 
       # Recursión o recursividad
-      Una función que se llama a sí misma
-      Ejemplo:
+      Una función que <u>se llama a sí misma</u>. Ejemplo:
       .
         def factorial(n):
         if n == 0:
@@ -325,6 +438,8 @@
             return n * factorial(n - 1) 
         
         print(factorial(5))
+      .
+      Es otra técnica más de tipo "divide y vencerás" (...)
 
       Una forma distinta de verlo, que puede ayudar a entenderlo:
       .
@@ -342,6 +457,72 @@
         
         (...)
 
+      Proceso para diseñar un algoritmo recursivo:
+      - <u>Suponer</u> que ya tenemos un algoritmo que nos resuelve una<br> "versión reducida" del problema
+      - Identificar uno o varios subproblemas "triviales" (casos base)
+      - <u>Descomponer</u> el problema en uno o más subproblemas que se<br> puedan resolver con el algoritmo que sabemos que ya existe<br> y cuya solución vaya aproximándose a los casos base
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: recursión
+      <blockquote>Ver paso a paso la ejecución para algunas<br> /NOBR/
+      funciones recursivas.</blockquote>
+      - Factorial
+      - Cálculos arbitrarios "sube y baja"
+      - Recorrer en orden inverso una lista
+      Ver en papel/pizarra, y/o con <a href="http://pythontutor.com/index.html" target="_blank">pythontutor.com</a>
+      .
+      Código en: <a href="examples/recursion-baja_y_sube.py" target="_blank">recursion-baja_y_sube.py</a>
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 5 <u>(opcional)</u>: copo de nieve Koch<a href="#ejercicio-5" class="link-anchor"> # </a>
+      <blockquote>Crear una <u>función recursiva</u> que dibuje, usando turtle, un lado<br> /NOBR/
+      del fractal de Koch o "copo de nieve".</blockquote>
+      Nota: partir del esqueleto inicial dado, que irá dibujando el lado
+      con niveles de profundidad crecientes (útil para depurar).
+      Mejora opcional: una vez hecho, modificarlo para que dibuje un
+      copo de nieve completo (basado en un triángulo de 3 lados).
+      .
+      Ejemplo de base en: <a href="examples/turtle-koch-01-esqueleto.py" target="_blank">turtle-koch-01-esqueleto.py</a>
+      .
+      Ver más detalles en la siguiente página, y opcionalmente en:
+      : https://en.wikipedia.org/wiki/Koch_snowflake
+      @CLASS@ ejercicio-5
+
+      Cada uno de los 6 lados del "Copo de nieve" fractal de Koch es:
+      .
+      ! https://openbookproject.net/thinkcs/python/english3e/_images/koch_1.png
+      .
+      ! https://openbookproject.net/thinkcs/python/english3e/_images/koch_2.png
+      .
+      ! https://openbookproject.net/thinkcs/python/english3e/_images/koch_3.png
+      .
+      Ejemplo de ampliación (zoom) infinita de un lado del fractal:
+      .
+      ! https://upload.wikimedia.org/wikipedia/commons/6/65/Kochsim.gif
+      @ZOOM@ 110
+
+      ## Fractales
+      Estructuras auto-similares (...)
+      : https://en.wikipedia.org/wiki/Fractal
+      .
+      Otro ejemplo con código (con turtle):
+      Árbol fractal en: <a href="examples/turtle-tree-fractal.py" target="_blank">turtle-tree-fractal.py</a>
+
+      Ejemplo de zoom en el fractal de Mandelbrot:
+      ! https://upload.wikimedia.org/wikipedia/commons/a/a4/Mandelbrot_sequence_new.gif
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 6: potencia de un número<a href="#ejercicio-6" class="link-anchor"> # </a>
+      <blockquote>Crear una función recursiva que calcule la n-ésima potencia<br> /NOBR/
+      de un número, y la devuelva.</blockquote>
+      Opcional: comprobar que se reciben valores adecuados (type)
+      .
+      Ejemplo de la forma que puede adoptar:
+        def potencia(base, exponente):
+            ...
+      Al usar entonces <code>print(potencia(2, 8))</code> deberá obtenerse <samp>256</samp>
+      @CLASS@ ejercicio-6
+
       La recursión normalmente no hace falta y no se suele usar,
       pero es importante entender cómo funciona.
       .
@@ -353,33 +534,59 @@
       equivalente con bucles; generalmente más rápida que la que
       era recursiva, pero a veces más compleja de escribir/leer!
 
-      Proceso para diseñar un algoritmo recursivo:
-      - <u>Suponer</u> que ya tenemos un algoritmo que nos resuelve una<br> "versión reducida" del problema
-      - Identificar uno o varios subproblemas "triviales" (casos base)
-      - <u>Descomponer</u> el problema en uno o más subproblemas que se<br> puedan resolver con el algoritmo que sabemos que ya existe<br> y cuya solución vaya aproximándose a los casos base
-
       Cuándo es realmente útil / adecuado utilizar la recursión?
       - Cuando el código fuente queda más sencillo y corto<br> (pensar en depuración, facilidad de probar y leer...)
-      - (Y) Cuando el número de niveles que se usarán es "pequeño"
-      - (Y) (Opcional, pero deseable) Cuando la solución al problema<br> de nivel n-1 es comparativamente bastante<br> más rápida (menos costosa) que la del n
+      - (Y) Cuando el número de niveles de prof. es "pequeño"
+      - (Y) (Opcional, pero deseable) Cuando la solución al<br> problema de nivel n-1 es comparativamente bastante<br> más rápida (menos costosa) que la del n
 
       Ejemplos:
       Para recorrer por completo el sistema de ficheros (carpetas dentro de
       carpetas!) o cualquier estructura de datos similar (árboles, etc.)
-      Para calcular "cosas" o estructuras como los fractales (...)
-      : https://en.wikipedia.org/wiki/Fractal
+      Ejemplo para procesar listas de listas recursivamente: <a href="https://openbookproject.net/thinkcs/python/english3e/recursion.html#processing-recursive-number-lists" target="_blank">aquí</a> (...)
       .
-      Para resolver un problema en el que la técnica "divide y vencerás"
+      Para resolver un problema en el que la solcuón en forma recursiva
       sea la más clara (fácil de entender) sin perder mucha eficiencia,
-      como por ejemplo ordenar una lista parcialmente ordenada al inicio
+      como por ejemplo ordenar una lista que esté casi ordenada al inicio
         [5, 2, 1, 3, 4,    11, 19, 18, 12, 16] 
       .
       Factorial de un número? NO ES EL MEJOR USO, salvo para aprender,
       porque lo de "código sencillo" es opinable, lo del "numero de niveles
       pequeño" no lo cumple (para números grandes), y lo de la rapidez del
       subproblema en realidad tampoco. Lo que indica que es mejor un bucle!
+
+      Otro ejemplo: función que reciba un entero n y nos
+      devuelva el n-ésimo número de la serie de Fibonacci.
+      : https://es.wikipedia.org/wiki/Serie_de_Fibonacci
+      Nota: la serie de Fibonacci es: 0, 1, 1, 2, 3, 5, 8, 13...
       .
-      : https://openbookproject.net/thinkcs/python/english3e/recursion.html
+        def fibonacci(n):
+            if n <= 0:  # Caso base (trivial) 1
+                return 0
+            elif n == 1:  # Caso base (trivial) 2
+                return 1
+            else:
+                return fibonacci(n) + fibonacci(n-1)
+      .
+      Éste es un ejemplo de uso de recursión por sencillez y brevedad,
+      aunque el programa resultante es mucho más lento que un bucle!
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 7 <u>(opcional)</u>: billetes<a href="#ejercicio-7" class="link-anchor"> # </a>
+      <blockquote> Dispones de los siguentes billetes:<br> /NOBR/
+      3 x 20€, 5 x 10€, 2 x 5€.<br> /NOBR/
+      Calcula todas las posibles formas de cambiar<br> /NOBR/
+      un billete de 100€ con ellos.</blockquote>
+      Ejercicio avanzado...
+      Encontrar una solución <u>usando recursión</u>.
+      Opcional (más complejo?): hacerlo también sin.
+      .
+      Pistas: son <u>combinaciones</u>; no dar resultados
+      repetidos; salen tres resultados con esos datos.
+      <!-- https://realpython.com/python-itertools/#et-tu-brute-force -->
+      <!-- {(20, 20, 20, 10, 10, 10, 10), (20, 20, 10, 10, 10, 10, 10, 5, 5), (20, 20, 20, 10, 10, 10, 5, 5)} -->
+      @CLASS@ ejercicio-7
+      <!-- SOLUCIÓN YO: billetes-recursion.py -->
+      <!-- PENDIENTE: subir y enlazar solución y URL de realpython -->
 
       # Iteradores
       Tipo de objetos que representan un stream (flujo) de datos,
@@ -407,20 +614,20 @@
         list("hola")
 
       Lo mismo para otros tipos de colecciones:
-        str()
+        str()  # espera, como las siguientes, un iterable
         tuple()
         set()
-        dict()  # Ojo, espera recibir tuplas clave - valor
+        dict()  # Ojo, espera iterables de tuplas clave - valor
 
-      ## enumerate()
+      ## Avanzado: enumerate()
       Para comodidad en los bucles, podemos esusar esta función
       que gestiona la variable "contadora" por nosotros
       Ejemplo:
         for i, word in enumerate(['hola', 'que', 'tal']):
             print(f"At index {i} the item is {word}")
 
-      ## Módulo <em>itertools</em>
-      Tema avanzado (...) Es un módulo que define
+      ## Avanzado: módulo <em>itertools</em>
+      Tema algo complejo (...) Es un módulo que define
       <em>"functions that “operate” on iterators to
       produce more complex iterators"</em>
       .
@@ -439,49 +646,34 @@
         while True:
             print(next(odds))
 
-      Otros ejemplos avanzados / ejercicios:
-      - Analyzing the S&P500
-      - Building Relay Teams from Swimmer Data
-      .
-      Ambos en:
-      : https://realpython.com/python-itertools/
-      Código en GitHub: 
-      <a href="https://github.com/realpython/materials/tree/master/itertools-in-python3" target="_blank">https://github.com/realpython/materials/...</a>
-
-      # Generadores y yield
-      <blockquote>"A generator is a recipe for producing values"</blockquote>Una función generadora se comporta como un iterador
-        def gen():
-            for n in range(12):
-                yield n ** 2
-        
-        list(gen())
-      .
-      Más detalles y ejemplos, muy claro y recomendable:
-      : https://realpython.com/introduction-to-python-generators/
-
-      Si la función acaba "normal" (return explícito o implícito -final-),
-      se indica que es el final. Los bucles, etc. esperan justo esto!
-        def gen():
-            for n in range(25):
-                if n == 10:
-                    return
-                yield n ** 2
-        
-        for i in gen():
-            print(i)
-        print(list(gen()))
-
       # Ejercicios extra
       - Variación del de los billetes, con número ilimitado de cada uno
       <!-- REFERENCIA-INTERNA-A-MODULO-4 -->
       - Cualquiera de los ejercicios ya hechos, convertir el código que<br> resulte adecuado (elegir cuál...!) en una o varias funciones.<br> Sobre todo, recom.: producto matricial: <a href="Módulo 4. Estructuras de datos.html#ejercicio-4-bis" target="_blank">Módulo 4, ejcio. 4-bis</a>
       <ul><li>Repasar los ejercicios extra de los Módulos 3 y 4, del libro<br> <a href="https://openbookproject.net/thinkcs/python/english3e/" target="_blank">"How to Think Like a Computer Scientist..."</a>, omitidos porque<br> requerían usar funciones, y además los siguientes (nuevos):
-      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/functions.html#exercises">https://openbookproject.net/thinkcs/python/english3e/functions...</a></li></ul> /NOBR/
-      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html#exercises">https://openbookproject.net/thinkcs/python/english3e/fruitful...</a></li></ul></li></ul> /NOBR/
+      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/functions.html#exercises" target="_blank">https://openbookproject.net/thinkcs/python/english3e/functions...</a></li></ul> /NOBR/
+      <ul><li><a href="https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html#exercises" target="_blank">https://openbookproject.net/thinkcs/python/english3e/fruitful...</a></li></ul></li></ul> /NOBR/
+
+      ## Ejercicios extra más avanzados
+      Dibujar otros fractales con turtle: triángulo de Sierpinski, Cesaro...
+      : https://openbookproject.net/thinkcs/python/english3e/recursion.html#exercises
+      .
+      Partiendo de lo ya hecho para ver si un número es primo (Módulo 3), modificarlo
+      usando funciones, y añadir otra que obtenga los factores divisores de un número
+      .
+      Complejo: ordenar una lista de enteros, usando recursión.
+      .
+      "Analyzing the S&P500", y "Building Relay Teams from Swimmer Data":
+      : https://realpython.com/python-itertools/
+      Código en GitHub (quizás lo veamos más adelante): 
+      <a href="https://github.com/realpython/materials/tree/master/itertools-in-python3" target="_blank">https://github.com/realpython/materials/...</a>
 
       # Referencias
       Como otras veces, un buen resumen de lo principal y algunos ejercicios al final:
       : https://openbookproject.net/thinkcs/python/english3e/functions.html
+      Continuación sobre funciones (temas recomend.: 6.1 hasta 6.6, no más), y ejercicios;
+      los ejercicios usan "unit tests" que por ahora no hemos visto, se pueden hacer pero
+      entendiendo los tests dados como una "explicación" del comportamiento esperado:
       : https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html
 
     </pre>
