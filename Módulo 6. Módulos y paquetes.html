@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 6</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 6. Módulos y paquetes
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Definiciones
+        Usar módulos
+          Formas de usar import
+        Crear módulos
+          Variable especial __name__
+        Usar paquetes
+        Compilación
+        hashbangs (shebangs)
+        Paquetes
+          Instalación de paquetes
+          Dependencias
+        Conda, Miniconda y Anaconda
+        Ejercicios extra
+        Referencias
+
+      # Definiciones
+      <a href="https://en.wikipedia.org/wiki/Modular_programming" target="_blank">Módulo</a> = Porción de código que se implementa de forma
+      independiente al resto, con un interfaz (recordar el
+      principio de abstracción!).
+      Término ambiguo (...). Para <u>reutilización y organización</u>.
+      .
+      <u>Paquete</u> = Colección de módulos (relacionados)
+      Facilita además la gestión de nombres, evitando colisiones
+
+      <a href="https://en.wikipedia.org/wiki/Library_(computing)" target="_blank">Biblioteca</a> (<u>librería</u>) = colección de recursos usados por
+      programas (documentación, datos, <u>código</u>...), con una API
+      o interfaz definido, y normalmente reutilizable
+      Término ambiguo (...). Puede ser un conj. de módulos, un paquete.
+      .
+      <u>Biblioteca estándar</u> = algoritmos, estructuras de datos y
+      mecanismos de I/O de uso común, que están disponibles en
+      cualquier implementación del lenguaje (vienen "de serie")
+      Para el programador, suele verse como parte del lenguaje
+      .
+      Más detalles y demo (vídeo):
+      <a href="https://realpython.com/lessons/scripts-modules-packages-and-libraries/" target="_blank">realpython.com/lessons/scripts-modules-packages-and-libraries</a>
+
+      "Python has a <em>batteries included</em> philosophy"
+      -- <a href="https://docs.python.org/3/tutorial/stdlib.html#batteries-included" target="_blank">The Python Tutorial (docs.python.org)</a>
+      .
+      En contraste con C y otros lenguajes, la biblioteca
+      estándar de Python es muy amplia y cubre todo tipo
+      de funcionalidades
+
+      # Usar módulos
+      Ejemplo (mejor probar en IPython):
+        import math
+        math.e  # "constante" (aunque minúsc.)
+        math.pi
+        math.cos(math.pi)  # función
+
+      Otro ejemplo (mejor probar en IPython):
+        x = math.pi * 2
+        dir()
+        import sys
+        sys.executable
+        dir(sys)
+        dir()
+      .
+      Concepto de "namespace" (avanzado, Módulo 5) (...)
+
+      ## import this
+      Recordar: PEP 20: The Zen of Python
+        import this
+        this.s
+        this.d
+        this??  # esto sólo funciona en IPython
+      .
+      El nombre "this" es una especie de broma (...)
+
+      ## Formas de usar import
+      *Very bad*
+        from math import *
+        x = sqrt(4)  # Is sqrt part of math? A builtin? Defined above?
+        dir()  # "Invasión" del espacio de nombres!
+      .
+      *Better*
+        from math import sqrt
+        x = sqrt(4)  # sqrt may be part of math, if not redefined later
+      .
+      *<u>Best</u> (recomendada y más clara!)*
+        import math
+        x = math.sqrt(4)  # sqrt is visibly part of math's namespace
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: usar módulos<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Con un programa dado, probar el uso de algunos<br> /NOBR/
+      módulos incluidos con el paquete matplotlib.</blockquote>
+      NOTA: programa dado: plots-01.py
+      .
+      Opcional: probar además otras funciones del módulo
+      matplotlib.pyplot, o del módulo seaborn (necesario
+      instalarlo antes).
+      @CLASS@ ejercicio-1
+
+      # Crear módulos
+      Colocarlos en la misma carpeta desde donde se vayan a usar, o bien en
+      una carpeta que se encuentre entre las del <u>PYTHONPATH</u>
+      En seguida veremos que normalmente se meterán en un paquete (...)
+      Para comprobar qué está en el PYTHONPATH:
+        import sys
+        print(sys.path)
+      .
+      IMPORTANTE: reglas para nombrado de módulos:
+      "To keep in line with the style guide, keep module names short, lowercase,
+      and be sure to avoid using special symbols like the dot (.) (...)"
+      -- <a href="https://docs.python-guide.org/writing/structure/#modules" target="_blank">The Hitchhiker’s Guide to Python - O’Reilly</a>
+      Tampoco usar guiones, guiones bajos, u otros signos de puntuación!
+
+      # Ejercicio / demo: módulo my_rot13
+      <blockquote>Crear un módulo con la función print_rot13() que<br> /NOBR/
+      se vio en el ejercicio / demo del Módulo 5.<br> /NOBR/
+      Opcionalmente, mejorarlo para separar la parte de<br> /NOBR/
+      "traducción" de cadenas de la del print().</blockquote>
+      Usarlo desde la carpeta actual y desde <samp>site-packages</samp>
+      <!-- NOTA: por ahora, sin paquetes: copiar en site-packages "tal cual" -->
+      .
+      NOTA: llamar al módulo exactamente "my_rot13" (...)
+      No es un nombre recomendado pero para aprender sí!
+      .
+      : https://es.wikipedia.org/wiki/ROT13
+
+      ## Avanzado: documentación de módulos
+      ## pydoc
+      Documentation generator
+      : https://docs.python.org/3/library/pydoc.html
+      Ejemplos:
+        # Doc en consola, interactivo, salir con q
+        > py.exe -m pydoc math
+        > python3 -m pydoc math
+        # Generar doc en formato HTML
+        > python3 -m pydoc -w math
+      .
+      NOTA: se puede usar también directamente: pydoc3 math
+      pero es preferible (como con pip) la otra forma
+
+      ## Doc HTML "navegable"
+      pydoc nos la sirve mediante un servidor Web temporal
+        py.exe -m pydoc -b
+        # En Linux funciona igual pero es mejor esto:
+        python3 -m pydoc -p0
+      .
+      La consultaremos con un navegador Web, en la URL
+      que nos haya indicado pydoc al lanzarlo...
+
+      ## Avanzado: alcance e inicialización en los módulos
+      También podemos definir constantes y/o variables en el módulo
+      Pueden ser necesarias para inicializar cosas, o para los usuarios del módulo
+      Ejemplo: (dentro de un módulo "modu.py", "global", no dentro de una función)
+        SAMPLE_PRIME = 122164747
+      Desde fuera, se usaría así:
+        import modu
+        x = <samp>modu.SAMPLE_PRIME</samp> * 17  # Queda dentro del "namespace" del módulo
+      A esa constante le seguimos llamando global aunque esté "dentro" del módulo
+      .
+      IMPORTANTE: esta parte, como todas las del módulo, se ejecuta UNA SOLA VEZ
+      Cuidado con qué se hace, porque <u>no se repetirá</u> (incluso si hay varios import!)
+      Cuidado con modificar su valor (se permite, pero no se debe!): <em>math.pi = 3.15</em>
+
+      ## Variable especial __name__
+      El módulo puede <u>ejecutar</u> instrucciones, no sólo definir variables, etc.
+      Pero no es lo recomendable (o esperado por los usuarios), salvo esto:
+        if __name__ == "__main__":
+            # Si se usa como programa independiente (no con import),
+            # se entra aquí y se ejecuta el código que sea...
+            ...
+      .
+      Ejemplo:
+        >>> import http.server  # no hace nada "especial"
+      Pero si lo invocamos así ("suelto"), lanza un servidor Web para pruebas:
+        > python3 <samp>-m</samp> http.server
+      .
+      NOTA: estamos usando esto todo el rato para utilizar <u>pip</u>!
+        > python3 <samp>-m pip</samp> ...
+
+      # Usar paquetes
+      En realidad usamos módulos, que están dentro de paquetes
+      Por abreviar, muchas veces para algunos se "cambia el nombre":
+        import matplotlib.pyplot as plt
+        import pandas as pd
+      Ojo, recomendable utilizar sólo nombres comúnmente aceptados!
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: paquetes cowsay<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Investigar (y estudiar la doc. de) uno o varios paquetes<br> /NOBR/
+      de Python que provean funcionalidad tipo "cowsay"
+      o alguna de sus variantes (Chuck...). Instalarlo, y hacer
+      un programa sencillo que haga uso de él.</blockquote>
+      Anotar además la fuente de documentación consultada.
+      NOTA: utilizar python3 -m pip search ...
+      NOTA: utilizar luego python3 -m pip install ...
+      .
+      : https://en.wikipedia.org/wiki/Cowsay
+      .
+      Opcional: hacer un programa similar a mano (cadenas).
+      @CLASS@ ejercicio-2
+
+      ## Crear paquetes
+      Fichero <samp>__init__.py</samp>
+      .
+      Necesario (incluso vacío!) para que una carpeta
+      se interprete como un paquete
+      Avanzado: sirve también para inicializar (...)
+      .
+      Mismas reglas de nombrado y sobre el PYTHONPATH
+      que para los módulos... Normalmente nosotros no
+      crearemos paquetes (salvo compartir entre proy.)
+
+      # Compilación
+      Se usa el módulo py_compile. Ejemplo:
+        python3 -m py_compile collatz.py
+      ## Ficheros .pyc
+      Ruta de los ficheros generados. Ejemplo:
+        > ls __pycache__
+        <samp>collatz.cpython-36.pyc</samp>
+        > python3 __pycache__/collatz.cpython-36.pyc
+        <samp>Número para empezar? ...</samp>
+      .
+      : https://docs.python.org/3/library/py_compile.html
+
+      # hashbangs (shebangs)<a href="#shebangs" class="link-anchor"> # </a>
+      Para que se puedan ejecutar (en Linux)
+      Para indicar la versión de Python a utilizar (2 vs. 3 al menos)
+        #!/usr/bin/env python3
+      .
+      ## Python Launcher for Windows (Python >= 3.3) py.exe
+      : https://docs.python.org/3/using/windows.html#launcher
+      @CLASS@ shebangs
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-6 (DESDE MODULO 10) -->
+
+      ## Varias versiones de Python
+      Windows:
+        py.exe -0
+      Linux:
+        which -a python
+        which -a python3
+        type -a python
+        type -a python3
+
+      ## Otras "marcas especiales" en ficheros de código fuente
+      Para indicar el encoding usado:
+        # -*- coding: utf-8 -*-
+      Para otros temas (según el editor y el entorno)
+      ....
+
+      # Paquetes
+      ## Wheels y Eggs
+      Paquetes de distribución (término exacto)
+      La forma en que se distribuyen e instalan los paquetes,
+      listos para usar (no para su desarrollo)
+      Eggs está en desuso ya. Wheels es lo que usa <u>pip</u>
+      : https://packaging.python.org/glossary/#term-Wheel
+      .
+      Más detalles (avanzado):
+      : https://realpython.com/python-wheels/
+
+      ## Instalación de paquetes
+      The Python Package Index (PyPI)
+      : https://pypi.org/
+      .
+      Estadísticas: PyPi, GitHub, Libraries.io. Ej.:
+      : https://libraries.io/search?q=qr&sort=rank
+      Uso / Popularidad
+      Mantenimiento
+      Vulnerabilidades
+
+      ## Avanzado: caso especial (Jupyter, etc.)
+      Si no tenemos acceso a un shell (estamos "dentro" de
+      un intérprete Python), usar esto para invocar a pip:
+        import subprocess
+        import sys
+        cmd = [sys.executable, '-m', 'pip', 'install', name]
+        subprocess.run(cmd)
+
+      ## Dependencias
+      <u>requirements.txt</u>
+      Fichero con nombre (y versión) de TODOS los módulos usados
+        python3 -m pip install -r requirements.txt
+      Se genera así (a partir de un estado actual <u>adecuado</u>!)
+        python3 -m pip freeze > requirements.txt
+      .
+      Buena práctica: definir mejor sólo lo imprescindible en:
+      requirements.in
+      Y generar después de forma autom. el .txt haciendo:
+        python3 -m pip install -r requirements.in
+        python3 -m pip freeze > requirements.txt
+
+      Avanzado: hay muchos (!) gestores de dependencias,
+      alternativos o que complementan/mejoran a pip
+      Ejemplo: pip-compile (pip-tools)
+      : https://github.com/jazzband/pip-tools
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio / demo: instalar paquetes
+      <blockquote>Instalar con pip la lista de paquetes (con versiones<br> /NOBR/
+      concretas) de un proyecto, a partir de un fichero
+      <u>requirements.txt</u></blockquote>
+      Generar el requirements.txt resultante y comprobarlo
+      instalando de nuevo (y viendo que no cambia nada)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 3: instalar dependencias<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>A partir de la lista de dependencias generada<br> /NOBR/
+      en el ejercicio / demo anterior, modificarla
+      para incluir <u>seaborn</u> y <u>rope</u>.</blockquote>
+      NOTA: guardar los ficheros .txt de cada paso
+      NOTA: al final, utilizar luego python3 -m pip install ...
+      @CLASS@ ejercicio-3
+
+      # Conda, Miniconda y Anaconda
+      Conda (gestor de paquetes y dependencias; mejora sobre pip)
+      : https://github.com/conda/conda
+      En realidad no sólo para Python
+      Por defecto usa paquetes de <a href="https://repo.anaconda.com/" target="_blank">repo.anaconda.com/</a>
+      Anaconda (distribución de software)
+      : https://docs.continuum.io/anaconda/
+      : https://conda-forge.org/
+      Miniconda (dsitrib. reducida, sólo con el gestor conda)
+      : https://docs.conda.io/en/latest/miniconda.html
+      .
+      Conda vs pip, aclaraciones y explicación detallada de conda:
+      : https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/
+
+      # Ejercicios extra
+      - Partiendo de lo ya hecho para ver si un número es primo (Módulos 3 y 5),<br> incluida la función que devuelva TODOS los factores divisores de un número<br> (en una lista), convertir el programa resultante en módulo (ver siguiente línea)
+      - "Convertir" en módulos alguno de los programas previos, opcionalmente<br> con una parte "__main__" en la que se use alguna de las funciones definidas<br> en el módulo tras preguntar datos al usuario con input(), etc.
+      - Organizar alguno de esos módulos (idealmente más de uno) en un paquete
+      - Ejercicio tipo examen/test de repaso (quizz), <u>bastante recomendable</u>:<br> <a href="realpython.com/quizzes/run-python-scripts/" target="_blank">https://realpython.com/quizzes/run-python-scripts/</a>
+      - Seguir algún tutorial sobre conda (instalar con pip o Miniconda, <u>no Anaconda</u>)
+
+      # Referencias
+      The Python Tutorial (docs.python.org), oficial (pero informal):
+      : https://docs.python.org/3/tutorial/modules.html
+      The Hitchhiker’s Guide to Python - O’Reilly:
+      : https://docs.python-guide.org/
+      : https://docs.python-guide.org/writing/structure/
+
+    </pre>
+  </body>
+</html>

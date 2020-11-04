@@ -3,11 +3,11 @@
 
 # Solución para el Ejercicio 4-bis "producto matricial" del Módulo 4 (esqueleto inicial)
 
-m = [[1,2],[3,4],[5,6]]  # matriz 3*2 (filas*columnas)
-n = [[5,10,15,0],[0,0,20,0]]  # matriz 2*4
+m = [[1, 2], [3, 4], [5, 6]]  # matriz 3*2 (filas*columnas)
+n = [[5, 10, 15, 0], [0, 0, 20, 0]]  # matriz 2*4
 
-# m = [[1,2,6],[3,4,6]]  # matriz 2*3 (filas*columnas)
-# n = [[5,10,15,0,20],[0,0,20,0,10],[10,0,10,0,30]]  # matriz 3*5
+# m = [[1, 2, 6], [3, 4, 6]]  # matriz 2*3 (filas*columnas)
+# n = [[5, 10, 15, 0, 20], [0, 0, 20, 0, 10], [10, 0, 10, 0, 30]]  # matriz 3*5
 
 
 # Filas y columnas del resultado
@@ -29,8 +29,8 @@ if b != c:
 
 # Como ejemplo, se empieza por calcular r[0][0], a lo que le llamo x
 x = 0
-for ...
-    for ...
+for variable in {}:  # MODIFICAR ESTO !!!
+    for variable in {}:  # MODIFICAR ESTO !!!
         # Resultado para una celda dada
         for i in range(b):
             sumando = m[0][i] * n[i][0]

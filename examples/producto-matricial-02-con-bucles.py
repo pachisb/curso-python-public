@@ -3,11 +3,11 @@
 
 # Solución para el Ejercicio 4-bis "producto matricial" del Módulo 4 (COMPLETA)
 
-m = [[1,2],[3,4],[5,6]]  # matriz 3*2 (filas*columnas)
-n = [[5,10,15,0],[0,0,20,0]]  # matriz 2*4
+m = [[1, 2], [3, 4], [5, 6]]  # matriz 3*2 (filas*columnas)
+n = [[5, 10, 15, 0], [0, 0, 20, 0]]  # matriz 2*4
 
-# m = [[1,2,6],[3,4,6]]  # matriz 2*3 (filas*columnas)
-# n = [[5,10,15,0,20],[0,0,20,0,10],[10,0,10,0,30]]  # matriz 3*5
+# m = [[1, 2, 6], [3, 4, 6]]  # matriz 2*3 (filas*columnas)
+# n = [[5, 10, 15, 0, 20], [0, 0, 20, 0, 10], [10, 0, 10, 0, 30]]  # matriz 3*5
 
 
 # Filas y columnas del resultado
