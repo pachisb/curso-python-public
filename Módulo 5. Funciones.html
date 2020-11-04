@@ -287,7 +287,7 @@
         def justprint():
             print(1, text)  # se puede "leer" la global sin problema
         justprint()
-
+        
         def my_func():
             def enclosing():
                 # local
@@ -304,11 +304,11 @@
         print(6, text)
 
       ## Ejemplo avanzado: alcance
-        # built-in
+        # built-in function range()
         print(range(5))
         
         # global
-        range = 'this is a global "range"'
+        range = 'this is a global "range"'  # OJO al nombre de la variable!
         print(range)
         
         def my_func():
@@ -320,7 +320,7 @@
                 range = 'this is a local "range"'
                 print(range)
              
-            enclosing()  # no afectará a nuestra propia local
+            enclosing()  # no afectará a nuestra propia variable local
             print(range)
         
         my_func()
@@ -411,7 +411,7 @@
         def triangle_area(base, height):
             return rectangle_area(base, height) / 2
       .
-      O también esto:
+      O también esto ("encadenar" llamadas a funciones):
         str(int(5.5))
 
       ## Anidación
@@ -515,7 +515,7 @@
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 6: potencia de un número<a href="#ejercicio-6" class="link-anchor"> # </a>
-      <blockquote>Crear una función recursiva que calcule la n-ésima potencia<br> /NOBR/
+      <blockquote>Crear una función <u>recursiva</u> que calcule la n-ésima potencia<br> /NOBR/
       de un número, y la devuelva.</blockquote>
       Opcional: comprobar que se reciben valores adecuados (type)
       .
