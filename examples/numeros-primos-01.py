@@ -20,8 +20,8 @@ while factor <= max_factor:
         print(f"Encontrado al menos un factor: {factor}")
         break  # no hace falta seguir
     # Opcional: mensaje informativo de vez en cuando si tardamos mucho...!
-    if factor % 1_000_000 == 1:
-        print(f"Un millón de factores comprobados! ({factor // 1_000_000} total)")
+    if factor % 10_000_000 == 1:
+        print(f"Diez millones de factores comprobados! ({factor // 1_000_000} total)")
     factor = factor + salto
     salto = 2  # después del 2, no hace falta comprobar ningún otro factor par!
 
