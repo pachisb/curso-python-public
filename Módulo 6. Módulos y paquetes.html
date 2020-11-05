@@ -212,13 +212,16 @@
       NOTA: estamos usando esto todo el rato para utilizar <u>pip</u>!
         > python3 <samp>-m pip</samp> ...
 
-      # Usar paquetes
+      # Usar paquetes (3rd-party)
       En realidad usamos módulos, que están dentro de paquetes
+      Nos los proporcionarán en el proyecto o, más probable, serán de
+      terceros (externos, 3rd-party). Considerar temas de <u>licencias</u>...!
+      .
       Por abreviar, muchas veces para algunos se "cambia el nombre":
         import matplotlib.pyplot as plt
         import pandas as pd
       .
-      Ojo, recomendable utilizar sólo nombres comúnmente aceptados!
+      Ojo, recomendable utilizar sólo <u>nombres comúnmente aceptados</u>!
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 2: paquetes cowsay<a href="#ejercicio-2" class="link-anchor"> # </a>
@@ -235,7 +238,7 @@
       Opcional: hacer un programa similar a mano (cadenas).
       @CLASS@ ejercicio-2
 
-      ## Crear paquetes
+      ## Avanzado: crear paquetes
       Fichero <samp>__init__.py</samp>
       .
       Necesario (incluso vacío!) para que una carpeta
@@ -284,6 +287,9 @@
       ....
 
       # Paquetes
+      ## pip (Pip Installs Packages)
+      : https://en.wikipedia.org/wiki/Pip_(package_manager)
+      .
       ## Wheels y Eggs
       Paquetes de distribución (término exacto)
       La forma en que se distribuyen e instalan los paquetes,
@@ -296,6 +302,8 @@
 
       ## Instalación de paquetes
       The Python Package Index (PyPI)
+      Es el repositorio habitual y más usado (pip lo usa),
+      excepto si usamos conda o Anaconda (más adelante)
       : https://pypi.org/
       .
       Estadísticas: PyPi, GitHub, Libraries.io. Ej.:
@@ -305,7 +313,7 @@
       Vulnerabilidades
 
       Ejemplos (usar py.exe si es posible, en Windows):
-        <samp>python3 -m pip</samp> help [...]
+        > <samp>python3 -m pip</samp> help [...]
         python3 -m pip search pyttsx3
         python3 -m pip <u>install</u> pyttsx3
         python3 -m pip show pandas
@@ -321,8 +329,9 @@
         python3 -m pip list
         python3 -m pip <u>freeze</u>
       .
-      NOTA: se puede usar también directamente: pip3 ...
+      NOTA: se puede usar también directamente: <code>> pip3</code> ...
       pero es mejor (y funciona siempre!) la forma ... -m pip
+      IMPORTANTE: no usar directamente <code>> pip</code> (en Linux): Python 2!
 
       ## Avanzado: casos especiales (Jupyter, etc.)
       1) Si no tenemos acceso a un shell (estamos "dentro" de
