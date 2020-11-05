@@ -2,6 +2,5 @@ pandas
 numpy
 matplotlib
 requests
-pydocs
 IPython
 jupyter

@@ -156,18 +156,27 @@
       : https://docs.python.org/3/library/pydoc.html
       Ejemplos:
         # Doc en consola, interactivo, salir con q
-        > py.exe -m pydoc math
         > python3 -m pydoc math
         # Generar doc en formato HTML
         > python3 -m pydoc -w math
       .
+      NOTA: en Windows usar py.exe mejor que python3, si se puede
       NOTA: se puede usar también directamente: pydoc3 math
-      pero es preferible (como con pip) la otra forma
+      pero es preferible (como con pip) la otra forma!
+
+      Otro ejemplo más habitual:
+      Generar la documentación de un módulo nuestro
+        python3 -m pydoc -w my_rot13
+      .
+      Producirá un fichero <em>my_rot13.html</em> que podremos
+      ver con un navegador Web
 
       ## Doc HTML "navegable"
       pydoc nos la sirve mediante un servidor Web temporal
         py.exe -m pydoc -b
-        # En Linux funciona igual pero es mejor esto:
+        
+      En Linux ese comando funciona igual pero es mejor éste
+      para que no nos abra un navegador Web "raro"
         python3 -m pydoc -p0
       .
       La consultaremos con un navegador Web, en la URL
@@ -208,6 +217,7 @@
       Por abreviar, muchas veces para algunos se "cambia el nombre":
         import matplotlib.pyplot as plt
         import pandas as pd
+      .
       Ojo, recomendable utilizar sólo nombres comúnmente aceptados!
 
       <!-- EJERCICIO-PARA-CLASE -->
@@ -294,13 +304,39 @@
       Mantenimiento
       Vulnerabilidades
 
-      ## Avanzado: caso especial (Jupyter, etc.)
-      Si no tenemos acceso a un shell (estamos "dentro" de
+      Ejemplos (usar py.exe si es posible, en Windows):
+        <samp>python3 -m pip</samp> help [...]
+        python3 -m pip search pyttsx3
+        python3 -m pip <u>install</u> pyttsx3
+        python3 -m pip show pandas
+      Desinstalar (OJO, no quita sus dependencias!)
+        python3 -m pip <u>uninstall</u> pandas
+      Recomendable, comprobar que no hemos "roto" dep's:
+        python3 -m pip check
+
+      Ejemplos (cont.):
+      Actualizar un paquete ya instalado:
+        python3 -m pip install --upgrade pip
+      Ver lo instalado (la 2ª forma es importante, la veremos):
+        python3 -m pip list
+        python3 -m pip <u>freeze</u>
+      .
+      NOTA: se puede usar también directamente: pip3 ...
+      pero es mejor (y funciona siempre!) la forma ... -m pip
+
+      ## Avanzado: casos especiales (Jupyter, etc.)
+      1) Si no tenemos acceso a un shell (estamos "dentro" de
       un intérprete Python), usar esto para invocar a pip:
+        >>> ...
         import subprocess
         import sys
         cmd = [sys.executable, '-m', 'pip', 'install', name]
         subprocess.run(cmd)
+      Sirve por ejemplo para entornos tipo nube / playground (!)
+      .
+      2) En Linux, normalmente por permisos no podemos/debemos
+      instalar paquetes sin más, sino añadiendo <samp>--user</samp> a los
+      comandos pip install, uninstall, freeze / list, check.
 
       ## Dependencias
       <u>requirements.txt</u>
@@ -309,16 +345,27 @@
       Se genera así (a partir de un estado actual <u>adecuado</u>!)
         python3 -m pip freeze > requirements.txt
       .
-      Buena práctica: definir mejor sólo lo imprescindible en:
-      requirements.in
-      Y generar después de forma autom. el .txt haciendo:
+      Adecuado significa que no sobra nada, versiones actuales (o no), etc.
+      Es habitual que sobren cosas por dependencias de paquetes "viejos"!
+
+      <u>Buena práctica</u>: mejor listar sólo lo imprescindible en:
+        requirements.in
+      sin versiones (salvo casos concretos imprescindibles (...))
+      Y generar después de forma automática el .txt haciendo:
         python3 -m pip install -r requirements.in
         python3 -m pip freeze > requirements.txt
+      .
+      Buena práctica <u>imprescindible</u>: guardar siempre el fichero
+      requirements.txt actual, y controlado en el Git (proyecto)
+      Además, partir siempre de "cero" (entorno limpio) antes (...)
 
       Avanzado: hay muchos (!) gestores de dependencias,
       alternativos o que complementan/mejoran a pip
       Ejemplo: pip-compile (pip-tools)
       : https://github.com/jazzband/pip-tools
+      .
+      Otro ejemplo que sí veremos y se usará más tarde:
+      <u>conda</u>
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio / demo: instalar paquetes
@@ -330,11 +377,13 @@
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 3: instalar dependencias<a href="#ejercicio-3" class="link-anchor"> # </a>
-      <blockquote>A partir de la lista de dependencias generada<br> /NOBR/
-      en el ejercicio / demo anterior, modificarla
-      para incluir <u>seaborn</u> y <u>rope</u>.</blockquote>
-      NOTA: guardar los ficheros .txt de cada paso
+      <blockquote>A partir de la lista de dependencias generada en el<br> /NOBR/
+      ejercicio / demo anterior, modificarla para incluir
+      los paquetes <u>seaborn</u> y <u>scipy</u>.</blockquote>
+      NOTA: guardar los ficheros requirements de cada paso
       NOTA: al final, utilizar luego python3 -m pip install ...
+      .
+      Opcional (recom.): añadir, rope + autopep8, quitar black
       @CLASS@ ejercicio-3
 
       # Conda, Miniconda y Anaconda
