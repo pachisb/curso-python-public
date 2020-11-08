@@ -7,6 +7,7 @@
 # Solución 1: Fila penultima
 
 def potencia(base, exponente):
+    """Función RECURSIVA que calcula la potencia "base elevado a exponente" con exp. entero"""
     if exponente < 0:
         # Mejora interesante: aceptar (y gestionar bien) exponentes negativos
         return 1 / potencia(base, -exponente)
@@ -28,6 +29,7 @@ print(x)
 # Con print()'s útiles para entender el orden de ejecución!
 
 def potencia(base, exponente):
+    """Función RECURSIVA que calcula la potencia "base elevado a exponente" con exp. >= 0"""
     if exponente < 0:
         # Devuelvo un error intencionadamente, mejor que no parar "nunca"
         return None

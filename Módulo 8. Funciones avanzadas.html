@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 8</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 8. Funciones avanzadas
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Funciones de primera clase
+        Funciones Lambda (anónimas)
+        Clausuras (closures)
+        Manipulación de estructuras de datos
+          zip(), map(), reduce(), etc.
+        eval()
+        Co-rutinas
+        Generadores y yield
+        Ejercicios extra
+        Referencias
+      @ZOOM@ 110
+
+      # Funciones de primera clase
+      En Python, las funciones son como cualquier otro objeto.
+      Por tanto se soportan <em>funciones de orden superior</em> (funciones
+      que reciben funciones como parámetros, o las devuelven).
+      .
+      Avanzado: Programación funcional (paradigma)
+      : https://es.wikipedia.org/wiki/Programaci%C3%B3n_funcional
+      .
+      Otros: programación <u>imperativa</u> (la más común), funcional, lógica...
+      Un lenguaje puede implementar uno o varios de esos paradigmas
+
+      Al ser objetos, las funciones pueden (y suelen) tener atributos!
+      .
+        >>> abs.__doc__
+      Nos devuelve la Docstring (o None si no está definida)
+        >>> abs.__dir__()
+      Devuelve lo equivalente a dir(f)
+        >>> type(f)
+        <samp>function</samp>
+
+      # Funciones Lambda (anónimas)
+      Avanzado (...)
+      : https://en.wikipedia.org/wiki/Closure_(computer_programming)#Anonymous_functions
+      .
+      Ejemplo:
+        lambda x: x + 1
+        (lambda x: x + 1)(2)
+      .
+      En Python, en resumen, son funciones sin nombre escritas en una notación breve,
+      que siempre devuelven un valor (funciones "tipo matemático" o "productivas")
+      .
+      Largo pero bien explicado, <u>interesante</u> y con ejemplos:
+      : https://realpython.com/python-lambda/
+
+      # Clausuras (closures)
+      Muy avanzado (...)
+      <!-- : https://en.wikipedia.org/wiki/Closure_(computer_programming) -->
+      Ejemplo:
+        def by_factor(factor):
+            def multiply(number):
+                return factor * number
+            return multiply  # será una función con 1 parámetro ("number")!
+        f = by_factor(2)
+        f(5)
+      .
+      En resumen y simplificado (...), funciones que devuelven otras funciones
+      (definidas dentro de ellas) a las que se les ha "fijado" algún parámetro
+      Es decir, tienen variables "capturadas" (función con un "estado" / valores)
+      : https://realpython.com/python-return-statement/#returning-functions-closures
+      Son un caso particular de funciones de orden superior (devuelven funciones)
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: lambda y composición
+      <blockquote>Función que reciba a su vez dos funciones (como parámetros) y<br> /NOBR/
+      nos devuelva otra cuyo efecto es aplicar anidadas las otras dos.</blockquote>
+      NOTA: puede ser más sencillo de entender empezando por una que
+      simplemente haga el efecto (aplicar ambas) pero no devuelva
+      otra función. Solución real completa en la siguiente página
+      Ejemplo:
+        def f1(l): return l[0]
+        def f2(s): return s.upper()
+        def f_comp(primero, segundo, x):
+            intermedio = primero(x)
+            final = segundo(intermedio)
+            return final  # o directamente: segundo(primero(x))
+      .
+        f_comp(f1, f2, l)
+
+      Solución:
+        def f_comp_creator(primero, segundo):
+            # devolvemos una función!
+            f = lambda x: segundo(primero(x))
+            return f
+        f_comp_creator(f1, f2)(l)
+
+      # Manipulación de estructuras de datos
+      : https://docs.python.org/3/tutorial/datastructures.html
+      : https://docs.python.org/3/library/functions.html
+      ## zip()
+        zip(<u>*</u>iterables)
+      "Make an iterator that aggregates elements from each of the iterables"
+      NOTA: no tienen por qué ser solamente 2 los parámetros que recibe!
+      .
+      ## map()
+        map(function, iterable, ...)
+      "Return an iterator that applies function to every item of iterable (...)"
+      Más detalles en:
+      : https://realpython.com/python-map-function/
+
+      Ejemplo:
+        def square(number):
+            return number*number
+        numbers = [1,2,3,4,5]
+      .
+        # Sin map(), forma "sencilla", sería:
+        squared_numbers = []
+        for number in numbers:
+            squared = square(number)
+            squared_numbers.append(squared)
+      .
+        # Lo mismo con map() sería:
+        squared_numbers = map(square, numbers)
+
+      ## reduce()
+        reduce(function, sequence[, initial])
+      "Apply a function of two arguments cumulatively to the items of a sequence (...)"
+      Es decir, los va procesando por pares progresivamente (con la función) y "acumulando"
+      Ejemplo:
+        from functools import reduce  # No es una built-in, pero sí en bibl. estándar
+        l = [3, 6, 8, 9, 2, 4, 5]
+        product = reduce(lambda a, b : a*b, l)
+
+      ## filter()
+        filter(function, iterable)
+      "Construct an iterator from those elements of iterable for which function returns true"
+      Es decir, nos sirve para <u>filtrar (eliminar) los que no cumplen</u> alguna condición
+      Ejemplos:
+        # filter devuelve un iterador, por eso al final lo convierto a list
+        iter = filter(str.islower, ["hola", "Hello", "abc", "ABC"])
+        new_list = list(iter)
+
+      Para todas las funciones anteriores, salvo zip(), es habitual utilizar
+      funciones lambda para pasar como argumento una función anónima ("temporal"
+      o auxiliar, que se define justo donde la usamos por claridad y brevedad).
+      Ejemplo alternativo:
+        # reduce() no es built-in (import!), pero está en la bibl. estándar
+        from <u>functools</u> import reduce
+        l = [3, 6, 8, 9, 2, 4, 5]
+        # product = reduce(<u>lambda a, b : a*b</u>, l)
+        def mult2(a, b): return a * b
+        product = reduce(mult2, l)
+      .
+      Más detalles en un artículo sencillo con ejemplos: <a href="https://medium.com/@lokeshsharma596/python-lambda-map-filter-reduce-and-zip-function-c59d8946a3ce" target="_blank">aquí</a>
+
+      A veces es más sencillo usar funciones ya existentes (no lambda)
+      por ejemplo alguna del módulo <u>operator</u>, que nos da funciones
+      equivalentes para cosas habituales que no lo son (suma, etc.).
+        import operator
+        from functools import reduce
+        new_list = reduce(operator.concat, ["hola", "Hola", "abc", "ABC"])
+        suma = reduce(operator.add, [3, 6, 8, 9, 2, 4, 5])
+      .
+        people = [ {'nombre': 'Peter', 'apellido': 'Parker'},
+                   {'nombre': 'John', 'apellido': 'Smith'} ]
+        sorted(people, key=operator.itemgetter('apellido'))
+      .
+      : https://docs.python.org/3/library/operator.html
+
+      ## list.copy(), dict.copy(), etc.
+      Devuelven una <u>copia superficial ("shallow", de primer nivel</u> sólo) de
+      la estructura original.
+      Esto puede ser un problema (modificar lo copiado, afecta a lo original!)
+      Si queremos copia "completa" o <u>profunda</u> ("deep"; recursiva!), usar
+      el <em>módulo copy</em> de la biblioteca estándar. Ejemplo:
+        import copy
+        x = copy.copy(y)        # make a shallow copy of y
+        x = copy.deepcopy(y)    # make a deep copy of y
+      .
+      Más detalles en la <a href="https://docs.python.org/3/library/copy.html" target="_blank">doc. oficial</a> y también (<u>más sencillo, recom.</u>) en:
+      : https://realpython.com/copying-python-objects/
+
+      ## reversed()
+        Init signature: reversed(sequence, /)
+        Docstring:      Return a reverse <u>iterator</u> over the values
+                        of the given sequence.
+      .
+      Ejemplo:
+        reversed([1, 2, 3])
+        list(reversed([1, 2, 3]))
+
+      ## sorted()
+        sorted(iterable, /, *, key=None, reverse=False)
+      Devuelve otra estructura (nueva) con los elementos de la primera ordenados
+      NOTA: los argumentos 'key' y 'reverse' son opcionales y por nombre siempre
+      .
+      Usamos <em>key</em> (una función que devuelve algo "ordenable") cuando queremos un orden
+      "a medida" (ej. con estr. de datos que no lo tienen o podemos querer otro: dict - keys).
+      Ejemplo con un caso sencillo para entenderlo (listas):
+        l = ['j', 'b', '0', 'W', 'efg', 'zz', 'z', 'za']
+        sorted(l)  # ¿qué ocurre? ¿por qué?
+        sorted(l, <u>key</u>=str.casefold)  # o lower
+        sorted(l, <u>key</u>=len)
+
+      Ejemplos más complejos con diccionarios (por def. se ordenan por clave):
+        diccio = {'0' : 'W', 'b' : 'efg', 'j' : 'z', 'h' : 'z', 'za' : 'zz'}
+        sorted(diccio)
+      .
+        def comp_dicc_value(diccitem):
+            return diccitem[1]  # si recibe un item (tupla c-v), devuelve el valor
+        sorted(diccio, <u>key</u>=comp_dicc_value))  # ordenados por valor
+      .
+        sorted(diccio.items(), key = lambda x: x[1])  # lo mismo con lambdas
+      Si puede haber valores repetidos, podemos "desempatar" con las claves:
+        sorted(diccio.items(), key = lambda x: x[1] + x[0])  # valor y clave "seguidos"
+
+      Avanzado: otros usos de ordenación con parámetro <u>key</u>:
+      .
+      Clases, para ordenar por alguno(s) de sus atributos, usando getattr()
+      de forma similar a como habíamos usado operator.itemgetter() (...)
+      : https://realpython.com/python-sort/#sorted-with-a-key-argument
+      .
+      También para ordenar por ejemplo cadenas que contienen números.
+      Tener en cuenta que el orden alfabético para cadenas no es igual
+      que para números. Ejemplo:
+        1 < 2 < 9 < 10 < 11
+        "1" < "10" < "11" < "2" < "9"  # se mira carácter a carácter!
+
+      ## list.sort()
+      Equivalente a sorted() que ordena una lista (la <u>modifica</u>!), y es más eficiente.
+      OJO, devuelve None para indicar que altera la lista "in place", no crea otra.
+      .
+      Opcional: argumento <em>key</em> (por nombre siempre). Ejemplo:
+        <code>l.sort(<u>key</u>=list.upper)</code>
+      Igual que sorted(), también soporta el argumento <em>reverse</em> opcional (por nombre)
+      .
+      Algoritmos de ordenación en Python:
+      : https://docs.python.org/3/howto/sorting.html#sortinghowto
+      IMPORTANTE: es ordenación <u>estable</u> (no altera orden para los iguales)
+      Eso significa que podemos aplicarla varias veces (orden por <u>varios</u> criterios!)
+      .
+      Curiosidades y bromas: Ineffective sorts:
+      : https://xkcd.com/1185/
+      : https://gkoberger.github.io/stacksort/
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 1 <u>(opcional)</u>: ordenación<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Implementar dos algoritmos de ordenación, y<br> /NOBR/
+      probarlos con varios ejemplos de datos (listas).<br> /NOBR/
+      Opcional: medir su eficiencia de forma aproximada,<br> /NOBR/
+      por ejemplo el núm. de iteraciones de bucle(s).<br> /NOBR/
+      Comparar la sencillez del código y de la depuración.</blockquote>
+      Detalles sobre los algoritmos en páginas siguientes
+      @CLASS@ ejercicio-1
+
+      https://en.wikipedia.org/wiki/Gnome_sort
+      ! https://upload.wikimedia.org/wikipedia/commons/3/37/Sorting_gnomesort_anim.gif
+
+      https://en.wikipedia.org/wiki/Bubble_sort
+      ! https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif
+
+      https://en.wikipedia.org/wiki/Insertion_sort
+      ! https://upload.wikimedia.org/wikipedia/commons/4/42/Insertion_sort.gif
+      ! https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif
+
+      # eval()
+      Evalúa expressions dinámicamente (en el momento)
+      Ejemplo:
+        x = 2
+        if x % 2 == 0:
+            formula = "x * 5"
+        else:
+            formula = "0"
+        y = eval(formula)
+      .
+      Más detalles en:
+      : https://realpython.com/python-eval-function/
+
+      # Co-rutinas
+      Avanzado:
+      "Coroutines are functions that can be stopped
+      and resumed while being run"
+      .
+      Ejemplo que usaremos realmente: generadores
+
+      # Generadores y yield
+      Avanzado: saber al menos usarlos, no definirlos!
+      "A generator is a recipe for producing values"
+      Ejemplo:
+        def gen():
+            for n in range(12):
+                <samp>yield</samp> n ** 2
+        list(gen())
+      .
+      yield es similar a return pero el estado se queda "guardado" para la sig. invocación
+      Se comportan como iterables (produciendo los elementos a demanda / tipo "streaming")
+      .
+      Más detalles y ejemplos, muy claro y recomendable:
+      : https://realpython.com/introduction-to-python-generators/
+
+      Si la función acaba "normal" (return explícito o se llega al final),
+      se indica que ya se ha "agotado" el generador.
+      Los bucles, etc. esperan/comprueban justo esto!
+        def gen():
+            for n in range(25):
+                if n == 10:
+                    <samp>return</samp>  # caso especial, volvemos "del todo"
+                <samp>yield</samp> n ** 2
+        
+        for i in gen():
+            print(i)
+        # y en cualquier sitio donde valga un iterable, también:
+        print(list(gen()))
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: generadores y range
+      <blockquote>Adaptar la función equivelente a range() para que use generadores<br> /NOBR/
+      (y por tanto produzca a demanda los valores).<br> /NOBR/
+      Opcional: que no tenga fin si le pasamos algún parámetro "especial".</blockquote>
+      NOTA: suponemos que partimos de una función ya hecha que cumpla:
+      "Función más o menos equivalente a range(), devolviendo una lista..."
+      .
+      Ejemplo de partida en: <a href="examples/rango-de-numeros.py" target="_blank">rango-de-numeros.py</a>
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: generadores y potencia<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>A partir de la función que calcula la n-ésima potencia,<br> /NOBR/
+      modificarlo para que no sea recursivo (sino un simple<br> /NOBR/
+      bucle), y después adaptarlo para que sea un generador<br> /NOBR/
+      (es decir, que en cada llamada produzca el valor sig.<br> /NOBR/
+      que corresponda, y pueda usarse indefinidamente).</blockquote>
+      NOTA: que el generador reciba como parámetro sólo la
+      base, y empiece calculando base<sup>1</sup>, luego base<sup>2</sup>, etc.
+      Opcional: que le podamos indicar el exponente inicial y
+      final (en lugar de que no tenga fin y empiece en 1).
+      .
+      Ejemplo de esqueleto de función en página siguiente
+      @CLASS@ ejercicio-2
+
+      Función que calcula la n-ésima potencia de un número:
+      .
+        def potencia(base, exponente):
+            resul = 1
+            <!-- i = 1
+            while i <= exponente:
+                resul = resul * base
+                i = i + 1 -->
+            ...
+      .
+            return resul
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: generadores y leer CSV
+      <blockquote>Comparar el uso con y sin generadores para leer y procesar (con<br> /NOBR/
+      más o menos eficiencia) ficheros de texto (ej. CSV).</blockquote>
+      NOTA: buscar ficheros de texto (CSV en UTF-8 preferiblemente)
+      que sean muy <u>grandes</u>, para probar con tiempos mayores
+      .
+      Código en: <a href="examples/generators-csv-data-process.py" target="_blank">generators-csv-data-process.py</a>
+
+      # Ejercicios extra
+      Ejercicio <u>recomendado</u> (sencillo) con generadores:
+      - Generadores: hacer un programa que vaya calculando (y mostrando) progresivamente (a demanda,<br> con un bucle while que los vaya consumiendo) los números primos (en orden) empezando en 2.<br> Se puede partir del ejemplo de base en: <a href="examples/generadores-primos-01-esqueleto.py" target="_blank">generadores-primos-01-esqueleto.py</a>
+      .
+      Ejercicios en un notebook, del curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub),<br> <u>muy recomendables</u> (en especial los dos primeros):
+      - Repaso de funciones: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/03-Methods%20and%20Functions/08-Functions%20and%20Methods%20Homework.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../08-Functions...ipynb</a>
+      - Funciones avanzadas (map, zip, etc.): <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/09-Built-in%20Functions/08-Built-in%20Functions%20Assessment%20Test.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../08-Built-in Functions...ipynb</a>
+      - Más avanzado: generadores: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Iterators and Generators...ipynb</a>
+      .
+      Ejercicio tipo examen/test de repaso (quizz) de realpython.com (algo avanzado):
+      - Lambdas y func. avanzadas <a href="https://realpython.com/quizzes/python-lambda/" target="_blank">realpython.com/quizzes/python-lambda</a>
+      @ZOOM@ 110
+
+      # Referencias
+      : https://docs.python.org/
+      : https://realpython.com/tutorials/
+      : https://en.wikipedia.org/
+
+    </pre>
+  </body>
+</html>

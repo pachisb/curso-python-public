@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Solución para el Ejercicio / demo "recorrer diccionarios" del Módulo 4
+# Solución para el Ejercicio / demo "recorrer diccionarios" del Módulo 4 (esqueleto inicial)
 
 dicc1 = {
     "Naranjas": 25,

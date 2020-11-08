@@ -398,3 +398,4 @@ MigrationBackup/
 
 ### Belerofontech specific ignored items ###
 .vscode/settings.json
+.vscode/tasks.json

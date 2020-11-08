@@ -42,6 +42,7 @@
         Conda, Miniconda y Anaconda
         Ejercicios extra
         Referencias
+      @ZOOM@ 110
 
       # Definiciones
       <a href="https://en.wikipedia.org/wiki/Modular_programming" target="_blank">Módulo</a> = Porción de código que se implementa de forma
@@ -142,11 +143,12 @@
       se vio en el ejercicio / demo del Módulo 5.<br> /NOBR/
       Opcionalmente, mejorarlo para separar la parte de<br> /NOBR/
       "traducción" de cadenas de la del print().</blockquote>
+      Llamar al módulo <em>my_rot13</em> o <em>minombre_rot13</em> (breve!)
       Usarlo desde la carpeta actual y desde <samp>site-packages</samp>
       <!-- NOTA: por ahora, sin paquetes: copiar en site-packages "tal cual" -->
       .
       NOTA: llamar al módulo exactamente "my_rot13" (...)
-      No es un nombre recomendado pero para aprender sí!
+      No es un nombre recomendado pero para practicar sí!
       .
       : https://es.wikipedia.org/wiki/ROT13
 
@@ -174,7 +176,7 @@
       ## Doc HTML "navegable"
       pydoc nos la sirve mediante un servidor Web temporal
         py.exe -m pydoc -b
-        
+      .
       En Linux ese comando funciona igual pero es mejor éste
       para que no nos abra un navegador Web "raro"
         python3 -m pydoc -p0
@@ -226,8 +228,8 @@
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 2: paquetes cowsay<a href="#ejercicio-2" class="link-anchor"> # </a>
       <blockquote>Investigar (y estudiar la doc. de) uno o varios paquetes<br> /NOBR/
-      de Python que provean funcionalidad tipo "cowsay"
-      o alguna de sus variantes (Chuck...). Instalarlo, y hacer
+      de Python que provean funcionalidad tipo "cowsay"<br> /NOBR/
+      o alguna de sus variantes (Chuck...). Instalarlo, y hacer<br> /NOBR/
       un programa sencillo que haga uso de él.</blockquote>
       Anotar además la fuente de documentación consultada.
       NOTA: utilizar python3 -m pip search ...
@@ -249,6 +251,17 @@
       que para los módulos... Normalmente nosotros no
       crearemos paquetes (salvo compartir entre proy.)
 
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2-bis: diseñar paquetes<a href="#ejercicio-2-bis" class="link-anchor"> # </a>
+      <blockquote>Diseñar un paquete para trabajar posteriormente<br> /NOBR/
+      en equipo (que facilite dividir el trabajo). Pensar en<br> /NOBR/
+      las diferentes "áreas" de funcionalidad, su jerarquía<br> /NOBR/
+      (y si ha de ser plana o no), etc.</blockquote>
+      Hacerlo para el ejercicio del <u>juego de la vida</u>.
+      .
+      Opcion: algunos "consejos" o principios a seguir <a href="https://en.wikipedia.org/wiki/Modular_programming#Key_aspects" target="_blank">aquí</a>
+      @CLASS@ ejercicio-2-bis
+
       # Compilación
       Se usa el módulo py_compile. Ejemplo:
         python3 -m py_compile collatz.py
@@ -266,19 +279,36 @@
       Para indicar la versión de Python a utilizar (2 vs. 3 al menos)
         #!/usr/bin/env python3
       .
-      ## Python Launcher for Windows (Python >= 3.3) py.exe
+      ## Python Launcher for Windows (Python >= 3.3)
+        <u>py.exe</u>
+      Ahora este launcher también lee/utiliza los shebangs (útil para 2 vs. 3!)
       : https://docs.python.org/3/using/windows.html#launcher
       @CLASS@ shebangs
       <!-- DESTINO-REFERENCIA-INTERNA-MODULO-6 (DESDE MODULO 10) -->
 
       ## Varias versiones de Python
-      Windows:
+      Windows, cómo averiguar las <u>disponibles</u>:
         py.exe -0
-      Linux:
+      Se indicará la por defecto con un **
+      .
+      Linux, lo mismo (en orden de "prioridad", la por defecto 1º):
         which -a python
         which -a python3
         type -a python
         type -a python3
+      NOTA: serán enlaces ("accesos directos") a una 2.x / 3.x concreta...
+
+      Windows, cómo elegir la que <u>lanzamos</u>:
+        py.exe -3
+        py.exe -3.8
+        etc.
+      Linux, lo mismo:
+        python   # equivale a python2, casi siempre (Debian/Ubuntu sí)
+        python2
+        python2.7
+        python3  # equivale en principio a la 3.x más reciente instalada
+        python3.6
+        etc.
 
       ## Otras "marcas especiales" en ficheros de código fuente
       Para indicar el encoding usado:
@@ -324,14 +354,15 @@
 
       Ejemplos (cont.):
       Actualizar un paquete ya instalado:
-        python3 -m pip install --upgrade pip
+        > python3 -m pip install --upgrade pip
       Ver lo instalado (la 2ª forma es importante, la veremos):
         python3 -m pip list
         python3 -m pip <u>freeze</u>
       .
-      NOTA: se puede usar también directamente: <code>> pip3</code> ...
-      pero es mejor (y funciona siempre!) la forma ... -m pip
-      IMPORTANTE: no usar directamente <code>> pip</code> (en Linux): Python 2!
+      NOTA: se podría usar también directamente (desde el shell) esto:
+        > pip3 ...
+      pero es mejor, <u>recomendado</u> (y funciona siempre!) esto: python3 -m pip
+      IMPORTANTE: no usar directamente pip "a secas" (en Linux): Python 2!
 
       ## Avanzado: casos especiales (Jupyter, etc.)
       1) Si no tenemos acceso a un shell (estamos "dentro" de

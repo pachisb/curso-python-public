@@ -12,7 +12,7 @@ def factorial(n):
     return result
 
 
-# Alternativa equivalente von while, vista en clase
+# Alternativa equivalente con while, vista en clase
 # def factorial(n):
 #     result = 1
 #     i = 2
@@ -22,18 +22,20 @@ def factorial(n):
 #     return resul
 
 print(factorial(5))
+print(factorial(-5))
 print(factorial(10))
 print(factorial(2000))
-
+print()
 
 def factorial_recursivo(n):
-    """Cálculo del factorial de forma recursiva"""
-    if n == 0:
+    """Cálculo del factorial de forma RECURSIVA"""
+    if n <= 0:
         return 1
     else:
-        return n * factorial(n - 1)
+        return n * factorial_recursivo(n - 1)
 
 
 print(factorial_recursivo(5))
+print(factorial_recursivo(-5))
 print(factorial_recursivo(10))
-# print(factorial_recursivo(2000))  # NOTA: esto da error! ¿por qué?
+print(factorial_recursivo(2000))  # NOTA: esto da error! ¿por qué?

@@ -16,17 +16,19 @@ S3-D1
 FESTIVO 2 NOV (S4-D1)
 
 S4-D2
-5. Funciones (~2d)
+5. Funciones (~2d) (cont.)
 6. Módulos y paquetes (~1d)
-8. Funciones avanzadas (~1d)
-(cambio de orden)
 
 S5-D1
+6. Módulos y paquetes (~1d) (cont.)
+8. Funciones avanzadas (~1d)
+(cambio de orden)
 7. Objetos, errores y excepciones (~1d) (AJUST.)
 9. Entrada/Salida y manipulación de datos básica (~3d)
 
 S6-D1
-10. Entrada/Salida y manipulación de datos avanzada (~3d) (AJUST.)
+9. Entrada/Salida y manipulación de datos básica (~3d) (cont.)
+10. Entrada/Salida y manipulación de datos avanzada (~2d) (AJUST.)
 11. Herramientas y metodologías de desarrollo (~1d)
 
 S7-D1
