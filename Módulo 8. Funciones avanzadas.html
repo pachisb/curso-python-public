@@ -67,6 +67,8 @@
       Ejemplo:
         lambda x: x + 1
         (lambda x: x + 1)(2)
+        f = lambda x: x + 1  # podemos darle un nombre, para entenderlo mejor
+        f(2)  # es lo mismo, y equivalente a si la hubiéramos definido "normal" con def
       .
       En Python, en resumen, son funciones sin nombre escritas en una notación breve,
       que siempre devuelven un valor (funciones "tipo matemático" o "productivas")
@@ -113,7 +115,11 @@
             # devolvemos una función!
             f = lambda x: segundo(primero(x))
             return f
+      .
         f_comp_creator(f1, f2)(l)
+        # lo mismo pero dándole un mombre y en dos pasos:
+        new_func = f_comp_creator(f1, f2)
+        new_func(l)
 
       # Manipulación de estructuras de datos
       : https://docs.python.org/3/tutorial/datastructures.html
@@ -140,53 +146,63 @@
             squared = square(number)
             squared_numbers.append(squared)
       .
-        # Lo mismo con map() sería:
+        # Lo mismo del bucle pero con map() sería:
         squared_numbers = map(square, numbers)
 
       ## reduce()
         reduce(function, sequence[, initial])
-      "Apply a function of two arguments cumulatively to the items of a sequence (...)"
-      Es decir, los va procesando por pares progresivamente (con la función) y "acumulando"
+      "Apply a function of two arguments cumulatively to the items
+      of a sequence (...)"
+      .
+      Es decir, los va "procesando" por pares progresivamente, con la
+      función f que le indiquemos como argumento: f(f(f(x), y), z)...
+      OJO: por tanto, no devuelve un iterador sino ya el result. "final"
       Ejemplo:
-        from functools import reduce  # No es una built-in, pero sí en bibl. estándar
+        # no es built-in (import!), pero está en la bibl. estándar
+        from <u>functools</u> import reduce
         l = [3, 6, 8, 9, 2, 4, 5]
         product = reduce(lambda a, b : a*b, l)
 
       ## filter()
         filter(function, iterable)
-      "Construct an iterator from those elements of iterable for which function returns true"
+      "Construct an iterator from those elements of iterable for which function returns True"
+      .
       Es decir, nos sirve para <u>filtrar (eliminar) los que no cumplen</u> alguna condición
       Ejemplos:
         # filter devuelve un iterador, por eso al final lo convierto a list
         iter = filter(str.islower, ["hola", "Hello", "abc", "ABC"])
         new_list = list(iter)
 
-      Para todas las funciones anteriores, salvo zip(), es habitual utilizar
-      funciones lambda para pasar como argumento una función anónima ("temporal"
-      o auxiliar, que se define justo donde la usamos por claridad y brevedad).
-      Ejemplo alternativo:
-        # reduce() no es built-in (import!), pero está en la bibl. estándar
+      Para todas las funciones anteriores, salvo zip(), es habitual usar funciones
+      <u>lambda</u> para pasar como argumento una función anónima ("temporal" o
+      auxiliar, que se define justo donde la usamos por claridad y brevedad).
+      Pero no tenemos por qué... podemos definir las nuestras.
+      Ejemplo:
         from <u>functools</u> import reduce
         l = [3, 6, 8, 9, 2, 4, 5]
         # product = reduce(<u>lambda a, b : a*b</u>, l)
-        def mult2(a, b): return a * b
+      .
+        # lo equivalente sin lambda sería
+        def mult2(a, b):
+            return a * b
         product = reduce(mult2, l)
       .
       Más detalles en un artículo sencillo con ejemplos: <a href="https://medium.com/@lokeshsharma596/python-lambda-map-filter-reduce-and-zip-function-c59d8946a3ce" target="_blank">aquí</a>
 
-      A veces es más sencillo usar funciones ya existentes (no lambda)
-      por ejemplo alguna del módulo <u>operator</u>, que nos da funciones
-      equivalentes para cosas habituales que no lo son (suma, etc.).
-        import operator
-        from functools import reduce
-        new_list = reduce(operator.concat, ["hola", "Hola", "abc", "ABC"])
-        suma = reduce(operator.add, [3, 6, 8, 9, 2, 4, 5])
+      A veces es más sencillo usar funciones ya existentes (no lambda), como alguna del
+      <a href="https://docs.python.org/3/library/operator.html" target="_blank">módulo <u>operator</u></a>, que nos da "equivalentes" para cosas como los operadores, que
+      son algo parecido pero no funciones (no tienen nombre). Por ejemplo +, ==, <,  etc.
+      Ejemplos:
+        import <u>operator</u>
+        from <u>functools</u> import reduce
+      .
+        factorial = reduce(<u>operator.mul</u>, range(2, 11))  # factorial de 10
+        new_list = reduce(<u>operator.concat</u>, ["hola", "Hola", "abc", "ABC"])
+        suma = reduce(<u>operator.add</u>, [3, 6, 8, 9, 2, 4, 5])
       .
         people = [ {'nombre': 'Peter', 'apellido': 'Parker'},
                    {'nombre': 'John', 'apellido': 'Smith'} ]
-        sorted(people, key=operator.itemgetter('apellido'))
-      .
-      : https://docs.python.org/3/library/operator.html
+        sorted(people, key=<u>operator.itemgetter</u>('apellido'))
 
       ## list.copy(), dict.copy(), etc.
       Devuelven una <u>copia superficial ("shallow", de primer nivel</u> sólo) de
@@ -228,12 +244,14 @@
         sorted(diccio)
       .
         def comp_dicc_value(diccitem):
-            return diccitem[1]  # si recibe un item (tupla c-v), devuelve el valor
+            # se recibe un item (tupla c-v), y se devuelve el valor
+            return diccitem[1]
         sorted(diccio, <u>key</u>=comp_dicc_value))  # ordenados por valor
       .
         sorted(diccio.items(), key = lambda x: x[1])  # lo mismo con lambdas
-      Si puede haber valores repetidos, podemos "desempatar" con las claves:
-        sorted(diccio.items(), key = lambda x: x[1] + x[0])  # valor y clave "seguidos"
+      .
+      Y si puede haber valores repetidos, podemos "desempatar" con las claves:
+        sorted(diccio.items(), key = lambda x: x[1] + x[0])  # v+c concatenados
 
       Avanzado: otros usos de ordenación con parámetro <u>key</u>:
       .
@@ -259,8 +277,9 @@
       : https://docs.python.org/3/howto/sorting.html#sortinghowto
       IMPORTANTE: es ordenación <u>estable</u> (no altera orden para los iguales)
       Eso significa que podemos aplicarla varias veces (orden por <u>varios</u> criterios!)
-      .
-      Curiosidades y bromas: Ineffective sorts:
+
+      Curiosidades / bromas
+      Ineffective sorts:
       : https://xkcd.com/1185/
       : https://gkoberger.github.io/stacksort/
 
