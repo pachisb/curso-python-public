@@ -9,8 +9,8 @@
 # Posteriormente, se han hecho mejoras (definir una función, y añadir la
 # "parte __main__"... ver al final del todo). Con esos cambios, el uso
 # esperado desde otro programa será:
-#   import zen
-#   zen.show_zen()  # eso en el caso de this no "hacía falta"; es mejor así!
+#   import my_zen
+#   my_zen.show_zen()  # en el caso de this no "hacía falta"; es mejor así!
 
 
 # NOTA: esto es el contenido del texto/mensaje del Zen of Pyhton, pero
