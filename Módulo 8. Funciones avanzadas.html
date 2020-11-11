@@ -374,29 +374,24 @@
       Opcional: que le podamos indicar el exponente inicial y
       final (en lugar de que no tenga fin y empiece en 1).
       .
-      Ejemplo de esqueleto de función en página siguiente
+      Ejemplo de función de partida y forma de uso en pág. sig.
       @CLASS@ ejercicio-2
 
-      Función que calcula la n-ésima potencia de un número:
-      .
+      Función "estándar" que calcula la n-ésima potencia de un número,
+      punto de partida para adaptarla y obtener un generador:
         def potencia(base, exponente):
             resul = 1
-            <!-- i = 1
+            i = 1
             while i <= exponente:
                 resul = resul * base
-                i = i + 1 -->
-            ...
-      .
+                i = i + 1
             return resul
-
-      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
-      # Ejercicio / demo: generadores y leer CSV
-      <blockquote>Comparar el uso con y sin generadores para leer y procesar (con<br> /NOBR/
-      más o menos eficiencia) ficheros de texto (ej. CSV).</blockquote>
-      NOTA: buscar ficheros de texto (CSV en UTF-8 preferiblemente)
-      que sean muy <u>grandes</u>, para probar con tiempos mayores
       .
-      Código en: <a href="examples/generadores-csv-data-process.py" target="_blank">generadores-csv-data-process.py</a>
+      Forma de uso esperada una vez que sea un generador:
+        for i in potencia(2):  # por defecto, no indicamos exponente
+            if i > 1_000_000:  # añadimos una condición de parada cualq.
+                break
+            print(i)
 
       # Ejercicios extra
       Ejercicio <u>recomendado</u> (sencillo) con generadores:
