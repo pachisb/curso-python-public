@@ -374,29 +374,24 @@
       Opcional: que le podamos indicar el exponente inicial y
       final (en lugar de que no tenga fin y empiece en 1).
       .
-      Ejemplo de esqueleto de función en página siguiente
+      Ejemplo de función de partida y forma de uso en pág. sig.
       @CLASS@ ejercicio-2
 
-      Función que calcula la n-ésima potencia de un número:
-      .
+      Función "estándar" que calcula la n-ésima potencia de un número,
+      punto de partida para adaptarla y obtener un generador:
         def potencia(base, exponente):
             resul = 1
-            <!-- i = 1
+            i = 1
             while i <= exponente:
                 resul = resul * base
-                i = i + 1 -->
-            ...
-      .
+                i = i + 1
             return resul
-
-      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
-      # Ejercicio / demo: generadores y leer CSV
-      <blockquote>Comparar el uso con y sin generadores para leer y procesar (con<br> /NOBR/
-      más o menos eficiencia) ficheros de texto (ej. CSV).</blockquote>
-      NOTA: buscar ficheros de texto (CSV en UTF-8 preferiblemente)
-      que sean muy <u>grandes</u>, para probar con tiempos mayores
       .
-      Código en: <a href="examples/generadores-csv-data-process.py" target="_blank">generadores-csv-data-process.py</a>
+      Forma de uso esperada una vez que sea un generador:
+        for i in potencia(2):  # por defecto, no indicamos exponente
+            if i > 1_000_000:  # añadimos una condición de parada cualq.
+                break
+            print(i)
 
       # Ejercicios extra
       Ejercicio <u>recomendado</u> (sencillo) con generadores:
@@ -407,8 +402,9 @@
       - Funciones avanzadas (map, zip, etc.): <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/09-Built-in%20Functions/08-Built-in%20Functions%20Assessment%20Test.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../08-Built-in Functions...ipynb</a>
       - Más avanzado: generadores: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Iterators and Generators...ipynb</a>
       .
-      Ejercicio tipo examen/test de repaso (quizz) de realpython.com (algo avanzado):
-      - Lambdas y func. avanzadas <a href="https://realpython.com/quizzes/python-lambda/" target="_blank">realpython.com/quizzes/python-lambda</a>
+      Ejercicios de realpython.com (algo avanzados):
+      - Test/quizz de repaso sobre lambdas y func. avanzadas <a href="https://realpython.com/quizzes/python-lambda/" target="_blank">realpython.com/quizzes/python-lambda</a>
+      - Dos ejercicios relacionados: "Analyzing the S&P500", y "Building Relay Teams from Swimmer Data".<br> NOTA: usan itertools pero también ficheros (quizás mejor intentar más adelante, tras el Módulo 9).<br> Enunciado y solución en: <a href="https://realpython.com/python-itertools/" target="_blank">realpython.com/python-itertools</a>. Código en: <a href="https://github.com/realpython/materials/tree/master/itertools-in-python3" target="_blank">github.com/realpython/materials...</a>
       @ZOOM@ 110
 
       # Referencias

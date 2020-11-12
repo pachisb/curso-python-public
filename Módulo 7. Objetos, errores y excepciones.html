@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 7</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 7. Objetos, errores y excepciones
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Conceptos básicos de prog. orientada a objetos (OOP)
+        Propiedades (atributos)
+        Métodos
+          self. copia y comparación
+        Constructores. __init__
+        __str__
+        Herencia (inheritance)
+        Decoradores (decorators)
+          @dataclass
+        enum (enumeraciones)
+        Introspección
+        Errores y excepciones
+        with y "cleanup"
+        Aserciones (assert)
+        Documentación oficial y de referencia
+        Referencias
+      @ZOOM@ 110
+
+      # Conceptos básicos de programación
+      # orientada a objetos (OOP)
+      Una buena introducción general, con ejemplos:
+      : https://realpython.com/python3-object-oriented-programming/
+      .
+      Vídeo (dos primeros):
+      : https://realpython.com/lessons/what-object-oriented-programming-oop/
+
+      Definiciones informales:
+      <u>Clases</u>: "nuevos tipos" (personalizados)
+      <u>Objetos</u>: entidades (sustantivos)
+      - Tienen propiedades (atributos) y comportamientos/acciones (métodos)
+      - Se instancian ("crean") a partir de una clase (que hace de "plano")
+      - Cada objeto es "único" (independiente de otros de la misma clase),<br> aunque comparta la clase/tipo con otros
+      <u>Herencia</u>: las clases pueden tener relaciones de especialización (...)
+      .
+      Podemos ver los objetos como tipos de datos compuestos (ojo, <u>mutables</u>!)
+      para los que definimos funciones "específicas" (métodos)
+
+      "Computer Scientists generally like specializing their types,
+      while mathematicians often take the opposite approach, and
+      generalize everything. When we define new specialized types,
+      like "Person", we can restrict, control, and specialize the
+      operations that are possible. OOP is particularly popular
+      because it gives us a good way to <u>bundle</u> specialized data
+      and its methods into a new type (a class)"
+      -- Peter Wentworth, etc. en el libro:
+      <a href="https://openbookproject.net/thinkcs/python/english3e/even_more_oop.html" target="_blank">"How to Think Like a Computer Scientist..."
+
+      ## Cuándo utilizar OOP
+      En Python TODO son objetos! Incluso las cadenas, los números...
+        dir(5.0)
+      .
+      Aunque Python sea un lenguaje OO, no nos "obliga" a usar objetos
+      para nuestro código, y de hecho es <u>muy común no hacerlo</u>.
+      ¿Por qué? Porque los namespaces, módulos, etc. (en general, la
+      forma en que Python "estructura" todo) ya facilitan la "separación"
+      y encapsulación de las diferentes capas de abstracción. Además,
+      es habitual que se utilice el paradigma "stateless" (sin estado),
+      es decir, que los objetos o entidades tengan una vida relativamente
+      corta y que las funciones sean "puras" (no modifican lo recibido)
+
+      Eso es especialmente cierto para algunos tipos de programas, como
+      por ejemplo los que "producen" páginas Web.
+      Las pruebas, refactorización, y la concurrencia se facilitan también.
+      Por tanto, es bastante habitual que en ciencia de datos <u>NO se use</u>!
+      .
+      Entonces... ¿Cuándo utilizar OOP?
+      Suele ser últil e importante sobre todo en proyectos grandes.
+      También cuando el estado sí es "duradero" y/o complejo, por ejemplo
+      juegos, o aplicaciones con GUI (de "escritorio", que no sea Web).
+      Hay que valorar cúando compensa o resulta necesario, y cuándo no...
+      .
+      Ref.: <a href="https://docs.python-guide.org/writing/structure/#object-oriented-programming" target="_blank">docs.python-guide.org/writing/structure/#object-oriented...</a>
+
+      # Propiedades (atributos)
+        class Personaje:
+            avail_colors = ['red', 'blue', 'green']  # class attribute
+            def __init__(self, nombre, status_inic, color):
+                self.name = nombre  # instance attribute (lo "normal")
+                self.status = status_inic
+                self.color = color
+      .
+      NOTA: como siempre en Python, no indicamos el tipo de cada atributo!
+      Los atributos de clase son comunes a todas las instancias (como "constantes")
+      .
+      Avanzado: se pueden hacer read-only con el decorador @property
+      pero no es nada habitual ni muy coherente con el resto de Python
+      : https://docs.python.org/3/library/functions.html#property
+
+      # Métodos
+        class Personaje:
+            def __init__(<samp>self</samp>, nombre, status_inic, color):
+                ...
+            def die(<samp>self</samp>):
+                self.status = "dead"
+            def add_points(<samp>self</samp>, n):
+                ...
+      ## self
+      Se usa self por convención (recomendado!) pero podría ser cualquier
+      nombre de parámetro. Lo que tiene de especial es que es el primero,
+      y los métodos de las clases siempre reciben al objeto "en cuestión"
+      como primer parámetro
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: clases con Jupyter
+      <blockquote>Crear dos clases sencillas, con notebooks de Jupyter (de tipo auto-evaluación)<br> /NOBR/
+      del curso "Complete Python Bootcamp", de Jose Portilla<br> /NOBR/
+      (Udemy / GitHub).</blockquote>
+      Detalles sobre el curso en:
+      : https://www.udemy.com/course/complete-python-bootcamp/
+      : https://github.com/Pierian-Data/Complete-Python-3-Bootcamp
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/02-Object%20Oriented%20Programming%20Homework.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Object Oriented....ipynb</a>
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 1: clase "bank account" con Jupyter<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>Crear otra clase sencilla, con un notebook de Jupyter (de tipo auto-evaluación)<br> /NOBR/
+      del curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/04-OOP%20Challenge.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../04-OOP Challenge....ipynb</a>
+      @CLASS@ ejercicio-1
+
+      ## copia y comparación
+        p1 = Personaje("Player 1", "alive", "red")
+        p1 == Personaje("Player 1", "alive", "red")
+        p1 is Personaje("Player 1", "alive", "red")
+        p2 = p1
+        p2 is p1
+      Por defecto, ambas se hacen de forma "<u>shallow</u>" (superf.)
+      Avanzado: podemos definir las nuestras (...) y usar la
+      copia "deep" (profunda) del <em>módulo copy</em> (...)
+
+      # Constructores
+      "Factorías" que crean nuevos objetos (y los inicializan).
+      Se usan simplemente con el nombre de la clase (y quizás argumentos)
+      .
+      Ejemplos de usos de constructores:
+        p1 = Personaje("Player 1", "alive", "red")
+        import collections
+        # pueden estar dentro de módulos, y no recibir argumentos
+        c = collections.Counter()
+        # éstos, aunque en minúsculas (tipos built-in) los hemos usado ya mucho!
+        i = int(5.5)
+        s = str(i)
+
+      ## __init__
+      Método especial que sirve para <u>inicializar</u>
+      cada instancia de un objeto.
+      Es llamado de forma automática para los
+      objetos nuevos que se crean...
+      .
+      Puede recibir <u>parámetros</u> (además de <em>self</em>)
+
+      Otro ejemplo, con una propiedad/atributo, varios métodos e __init__:
+        class Pila:
+            def <samp>__init__</samp>(self):
+                self.items = []
+            
+            def push(self, item):
+                self.items.append(item)
+            
+            def pop(self):
+                return self.items.pop()
+            
+            def is_empty(self):
+                return (self.items == [])
+
+      # __str__
+      Por defecto, las clases/objetos tienen una "conversión" a str
+      genérica, que no suele ser útil ni nos muestra el "contenido"
+      (los atributos). Podemos definir nosotros la que nos interese:
+      .
+        print(Pila())
+      .
+        class Pila:
+            ...
+            def <samp>__str__</samp>(self):
+                return f"Pila() conteniendo: {self.items}"
+
+      # Herencia (inheritance)
+      Una clase que hereda de otra, tiene sus atributos y métodos,
+      aunque <u>puede</u> modificarlos (sobreescr.) y/o añadir nuevos...
+        class Car():
+            ...
+      .
+        class ElectricCar(Car):
+            def __init__(self, make, model, year, battery_type):
+                # super() hace referencia a la clase "padre"
+                super().__init__(make, model, year)
+                ...
+            ...
+      Normalmente el método __init__ lo querremos sobreescr. siempre!
+      Si no lo sobreescribimos (no aparece en el hijo) se queda "tal cual"
+
+      ## super()
+      <u>super</u>() se utiliza para aclarar (si hay ambigüedad) de qué clase es un
+      método al que queremos llamar. Si hay herencia y sobreescribimos
+      métodos, puede ser muy habitual (ej. en __init__). Sobre todo porque
+      desde la clase hija se suele querer llamar (antes o después de hacer
+      otras cosas) a lo equivalente que haga la clase padre en ese método...
+      .
+      Avanzado: con herencia múltiple puede hacer falta precisar más, y
+      para eso super() admite argumentos opcionales (...)
+
+      ## Herencia mútiple
+      <u>Muy avanzado</u>: es cuando una clase hereda de dos o más clases padre
+      .
+      La herencia múltiple es para usos muy concretos, no suele convenir,
+      lo mismo que crear jerarquías (aunque sean con herencia simple) muy
+      largas (muchos niveles de prof.) o muy complejas/amplias (...)
+      .
+      Utilizarla sólo si es imprescindible y se entiende lo que implica!
+
+      CONSEJO: casi siempre se puede lograr lo mismo (o muy equivalente)
+      que con la herencia (tanto simple, como sobre todo si es múltiple), con
+      <u>composición</u> (una clase <u>contiene atributos</u> cuyo tipo son otras clases).
+      A veces no queda tan compacto el código fuente, pero suele ser mucho
+      más fácil de mantener (hacer cambios a futuro), entender, y probar...!
+      Herencia: A <em>es</em> un B
+      Composición: A <em>tiene</em> un B.
+      .
+        class Apple(Fruit):       vs.     class Apple()
+            def __init__(self):               def __init__(self):
+                super().__init__()                self.fruit = Fruit()
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: tablero de 27 piezas<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Crear otra clase sencilla para representar el juego con tablero tipo<br> /NOBR/
+      puzzle de 27 piezas y 28 posiciones (4 filas, 7 columnas), que contiene<br> /NOBR/
+      una pieza para cada letra del alfabeto (incluida la ñ) y un hueco. Se<br> /NOBR/
+      parte de un estado dado (desordenado) y se debe llegar al ordenado.</blockquote>
+      Nota: pensar primero los <u>atributos</u>, y el nombre/uso de los métodos
+      Reglas que deberán tenerse en cuenta al diseñar la clase:
+      - Se debe poder representar el estado del tablero en un momento dado
+      - Un movimiento se define en base a la ficha sobre la que pondremos el<br> dedo, y la dirección (arr, abj, izd, dch) del movimiento
+      - Un movimiento puede ser fallido (no es posible mover la ficha) o exitoso
+      - Definir una función que diga si un movimiento es exitoso o no
+      .
+      Sugerencia: la posición del hueco es "especialmente importante"...
+      Opcional: definir otra función que diga si el juego ha terminado (ordenado)
+      @CLASS@ ejercicio-2
+
+      ! img/juego-tablero-crop.jpg
+
+      # Decoradores (decorators)
+      Avanzado:
+      "The decorator processes the decorated function in some way and returns it
+      or replaces it with another function (...) useful when you need to add extra
+      logic to existing functions without modifying them."
+      -- <a href="https://realpython.com/python-return-statement/#taking-and-returning-functions-decorators" target="_blank">https://realpython.com/python-return-statement/...</a>
+      .
+      Son un caso de de funciones de orden superior (que devuelven otras funciones),
+      podemos verlos como funciones que "envuelven" o enmascaran / controlan a otras,
+      por ejemplo para hacer algo justo antes y/o después de que se ejecuten.
+      Python nos permite además una notación muy cómoda y clara para usarlos, con la @
+      Se usan mucho en "frameworks" como por ejemplo Flask (desarrollo Web): ver <a href="https://flask.palletsprojects.com/en/0.12.x/patterns/viewdecorators/" target="_blank">doc</a>.
+
+      Ejemplo: para "cronometrar" y "depurar" una función. Completo en: <a href="examples/decoradores.py" target="_blank">decoradores.py</a>
+      .
+        def my_timer(f):  # my_timer es un decorador
+            # permitir recibir cualquier nº y tipo de parámetros!
+            def _timer(*args, **kwargs):
+                ...
+                start = time.time()  # anotar fecha/hora actual (segundos)
+                print(f"function will be executed now")
+                # invocar ahora a f() "normalmente" y guardar su resultado!
+                result = <u>f(*args, **kwargs)</u>
+                print(f"function running time:", time.time() - start)
+                return result  # devolver lo que había devuelto f!
+            return _timer  # devolver la nueva función "decorada"
+      .
+        <u>@my_timer</u>  # con esta notación, Python sustituye autom. f por la decorada
+        <u>def</u> f(x): return x * 2
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 3: repaso de decoradores con Jupyter<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>Repaso de decoradores, con notebooks de Jupyter de ejemplo, del curso<br> /NOBR/
+      "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: un poco largo pero interesante porque va profundizando poco a poco...
+      .
+      Notebook en:
+      <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/10-Python%20Decorators/01-Decorators.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../10-Python Decorators....ipynb</a>
+      @CLASS@ ejercicio-3
+
+      ## @dataclass (Python >= 3.7)
+      Avanzado, novedoso (poco usado aún), son una forma más breve para
+      crear clases que simplemente (o principalmente) contienen estr.'s de
+      datos. Nos da autom. los __init__, __str__ (print), comparador (==)...
+      .
+      NOTA: considerar antes siempre, por sencillez, <u>tuplas o diccionarios</u>!
+      .
+      Resumen rápido en:
+      <a href="https://realpython.com/python-data-structures/#dataclassesdataclass-python-37-data-classes" target="_blank">https://realpython.com/python-data-structures/#dataclasses...</a>
+      Más detalles y ejemplos en:
+      : https://realpython.com/python-data-classes/
+
+      Ejemplo de notación y uso sencillo:
+        from dataclasses import dataclass
+      .
+        @dataclass
+        class Position:
+            # los atributos se definen con la notación especial "nombre: tipo"
+            name: str
+            lon: float
+            lat: float
+      .
+            # los métodos, algo similar... pero con ->
+            def distance_from_home(self) -> float:
+                # pero luego ya su contenido o código, de la forma "normal"
+                return sqrt((self.lon - HOME.lon) ** 2 ...
+      .  
+            # en principio no hace falta definir el método __init__
+
+      # enum (enumeraciones)
+      Avanzado: clase para enumeraciones, en el <a href="https://docs.python.org/3.9/library/enum.html" target="_blank">módulo enum</a> (bibl. estándar)
+      Similares a constantes, pero "agrupadas". En otros lenguajes son un tipo específico:
+      : https://en.wikipedia.org/wiki/Enumerated_type
+      La usaremos heredando de ella. Aporta algunas comodidades pero no se usa mucho.
+      Casi siempre suele ser mejor y más simple usar un <u>diccionario</u>!
+      .
+      Ejemplo:
+        from enum import Enum
+        class Color(Enum):
+            RED = 1
+            GREEN = 2
+            BLUE = 3
+        print(Color.RED)  # name
+        print(Color.RED.value)
+
+      # Introspección
+      Avanzado: hay mecanismos para obtener "meta-información" de cualquier objeto
+        <u>dir</u>()
+        <u>hasattr</u>()  # "return whether the object has an attribute with the given name"
+        # nota: en este contexto, los métodos también son un tipo de atributo y
+        # por eso al usar hasattr() aparecen también. Podemos "afinar" después
+        print([x + ": " + str(type(getattr(obj, x))) for x in dir(obj)])
+      .
+      ## Módulo inspect
+      El módulo inspect nos da más mecanismos de este tipo (...)
+        import <u>inspect</u>
+        inspect.isfunction(min)  # sólo devuelve True si son "user defined..."
+        inspect.getmembers("hola")
+
+      # Errores y excepciones
+      Vídeo:
+      : https://realpython.com/lessons/exceptions-and-how-raise-them/
+      .
+      Conceptos:
+      Excepciones. Errores de sintaxis (running vs. parsing).
+      Lanzar excepciones para indicar situaciones de error. raise
+
+      Vídeo:
+      : https://realpython.com/lessons/assertions-and-tryexcept/
+      .
+      Conceptos:
+      Aserciones (más adelante).
+      Bloque <u>try / except</u> / ...
+      .
+      Más detallado, pero sencillo y con ejemplos:
+      : https://docs.python.org/3/tutorial/errors.html
+
+      ## Bloque try / except
+      Ejemplo muy completo:
+        <samp>try</samp>:
+            f = open('file.txt')
+            s = f.readline()
+            i = int(s.strip())
+        # para capturar un tipo de excepción concreto
+        <samp>except</samp> OSError <samp>as</samp> err:
+            print(f"OS error: {err}")
+        # lo mismo pero sin recoger/usar la info del error
+        <samp>except</samp> ValueError:
+            print("Could not convert data to an integer.")
+        # para capturar cualquier excepción (tras las concretas). NO RECOMENDABLE!
+        except:
+            print("Unexpected error!")
+            # opcional: volverla a lanzar tras el print (es como no gestionarla)
+            raise  # al estar dentro de un except "general", puede ser interesante
+        # parte opcional (siempre tras except) por si NO hubo error
+        else:
+            print("Finished OK")
+            f.close()
+        # parte opcional (siempre la última) que se ejecuta EN CUALQUIER CASO (al fina)
+        <samp>finally</samp>:
+            print("Finished OK")
+
+      Podemos tener un bloque simplemente con try / finally
+      .
+      Se pueden anidar los bloques try / except (y/o finally)
+      .
+      Lo más <u>importante</u> es que pensemos "defensivamente" y
+      usemos estos bloques (cuando/donde sea conveniente...)
+      en nuestro código, sobre todo si tratamos con entradas del
+      usuario o de terceros (posibles errores de formato, etc.)
+      o con ficheros, si interactuamos con la red... En general,
+      cualquier módulo/subsist. que indique que puede lanzarlas!
+
+      ## Excepciones: avanzado
+      Podemos <u>lanzar</u> excepciones para indicar situaciones erróneas, aunque
+      probablemente las reciba código escrito por nosotros: ¿las gestionamos?
+      Si no interesa eso, puede ser mejor devolver valores especiales (None...)
+      .
+      Podemos definir nuestras propias excepciones, pero no suele hacer falta,
+      es mejor usar una de las muchas ya definidas en Python:
+      : https://docs.python.org/3/library/exceptions.html#concrete-exceptions
+      .
+      Si usamos <u>return</u> dentro de bloques try / except / else / finally,
+      hay que tener cuidado: el último será el que se aplique (...)
+      .
+      Al lanzarlas se suelen "encadenar" (aunque no debemos preocuparnos de esto
+      normalmente), y se muestran al usuario seguidas para indicar el orden (...)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 4: repaso de excepciones con Jupyter<a href="#ejercicio-4" class="link-anchor"> # </a>
+      <blockquote>Repaso de excepciones sencillas, con notebooks de Jupyter de ejemplo,<br> /NOBR/
+      del curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Notebook en:
+      <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/07-Errors%20and%20Exception%20Handling/01-Errors%20and%20Exceptions%20Handling.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../01-Errors and Exceptions....ipynb</a>
+      @CLASS@ ejercicio-4
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 5: excepciones con Jupyter<a href="#ejercicio-5" class="link-anchor"> # </a>
+      <blockquote>Práctica con excepciones, con un notebook de Jupyter (de tipo auto-evaluación)<br> /NOBR/
+      del curso "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: ir <u>guardando</u> los notebooks en Drive!
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/07-Errors%20and%20Exception%20Handling/02-Errors%20and%20Exceptions%20Homework.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Errors and Exceptions....ipynb</a>
+      @CLASS@ ejercicio-5
+
+      # with y "cleanup"
+      Semi-avanzado: complicado de entender "a fondo" y sobre todo en detalle
+      cómo funciona internamente (o hacer nosotros objetos / funciones / etc.
+      adecuados para ser utilizado por terceros mediante with), pero sí que es
+      muy <u>habitual y recomendable usarlo</u> en algunos casos.
+      Con ficheros por ejemplo, es práctica habitual / casi imprescindible!
+      La motivación es que "gestiona" objetos que se destruyen/"limpian" autom.:
+      : https://docs.python.org/3/tutorial/errors.html#predefined-clean-up-actions
+      Ejemplo:
+        # open es una función especialm. preparada para with, y hace f.open()
+        <samp>with open</samp>("myfile.txt") <samp>as</samp> f:  # hará el f.close() autom. (siempre!)
+            for line in f:
+                print(line, end="")
+
+      ## ¿Por qué hace falta?
+        with open('hello.txt', 'w') as f:
+            f.write('hello, world!')
+      .
+      Porque en realidad equivale a algo (aprox.) como esto:
+        f = open('hello.txt', 'w')
+        try:
+            f.write('hello, world')
+        <u>finally</u>:  # muy importante!
+            f.<u>close</u>()
+      .
+      Es decir, nos facilita la gestión de errores, que deberíamos
+      hacer siempre, especialmente al trabajar con ficheros!
+      Más detalles (avanzado) en la <a href="https://docs.python.org/3/reference/compound_stmts.html#with" target="_blank">doc. oficial</a>.
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: excepciones y with con Jupyter
+      <blockquote>Repaso de excepciones, with y ficheros, con notebooks de Jupyter (de tipo<br> /NOBR/
+      auto-evaluación) del curso "Complete Python Bootcamp", de Jose Portilla<br> /NOBR/
+      (Udemy / GitHub).</blockquote>
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/17-Advanced%20Python%20Objects%20and%20Data%20Structures/08-BONUS%20-%20With%20Statement%20Context%20Managers.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../08-BONUS - With....ipynb</a>
+
+      # Aserciones (assert)
+      Avanzado: "Mathematical expressions showing the current
+      relationships between program variables"
+      Usadas como comprobaciones autom. (y depuración), pero
+      no son un sustituto del testing o de try/except
+        assert(True)
+        assert(False)
+        assert(self.color in self.avail_colors)
+      : https://docs.python.org/3/reference/simple_stmts.html#assert
+      .
+      En otros lenguajes, se suelen omitir autom. en modo "Release"
+      En Python, al ser interpretado, es cuando se "pide": con -O
+        python3 -O myprog.py  # optimiza, equiv. a "Release"
+
+      "The overall point is that if something does go wrong, we want to make it
+      completely obvious as soon as possible. It's easier to catch incorrect data
+      at the point where it goes in than to work out how it got there later when
+      it causes trouble.
+      Assertions are not a substitute for unit tests or system tests, but rather
+      a <u>complement</u>"
+      -- /NOBR/
+      : https://wiki.python.org/moin/UsingAssertionsEffectively
+      .
+      Es decir, no usar sólo aserciones sin tests de unidad (o sistema)!
+
+      # Documentación oficial y de referencia
+      The Python Tutorial (docs.python.org), oficial (pero informal):
+      : https://docs.python.org/3/tutorial/classes.html
+      : https://docs.python.org/3/tutorial/errors.html
+      Un buen libro online gratuito para algunos temas (algo antiguo):
+      que permite por ejemplo repasar lo esencial sobre OOP:
+      <a href="https://openbookproject.net/thinkcs/python/english3e/classes_and_objects_I.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/... (clases)</a>
+      <a href="https://openbookproject.net/thinkcs/python/english3e/exceptions.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/... (excepciones)</a>
+      Y lo mismo para temas más avanzados:
+      <a href="https://openbookproject.net/thinkcs/python/english3e/classes_and_objects_II.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/... (excepciones)</a>
+      <a href="https://openbookproject.net/thinkcs/python/english3e/even_more_oop.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/... (excepciones)</a>
+      <a href="https://openbookproject.net/thinkcs/python/english3e/collections.html" target="_blank">https://openbookproject.net/thinkcs/python/english3e/... (excepciones)</a>
+
+      # Referencias
+      : https://en.wikipedia.org/wiki/Object-oriented_programming
+      : https://realpython.com/python3-object-oriented-programming/
+      : https://realpython.com/python-exceptions/
+      The Python Tutorial (docs.python.org), oficial (pero informal):
+      : https://docs.python.org/3/tutorial/index.html
+
+    </pre>
+  </body>
+</html>
