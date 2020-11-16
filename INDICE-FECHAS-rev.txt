@@ -24,13 +24,11 @@ S5-D1
 8. Funciones avanzadas (~1d)
 (cambio de orden)
 7. Objetos, errores y excepciones (~1d) (AJUST.)
-9. Entrada/Salida y manipulación de datos básica (~3d)
 
 S6-D1
-9. Entrada/Salida y manipulación de datos básica (~3d) (cont.)
+9. Entrada/Salida y manipulación de datos básica (~2d) (AJUST.)
 10. Entrada/Salida y manipulación de datos avanzada (~2d) (AJUST.)
-11. Herramientas y metodologías de desarrollo (~1d)
 
 S7-D1
+11. Herramientas y metodologías de desarrollo (~1d)
 12. Extras: logging y otros. Entornos de desarrollo (~1d) (AJUST.)
-++ (margen 1d)

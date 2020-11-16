@@ -152,13 +152,18 @@
 
       ## copia y comparación
         p1 = Personaje("Player 1", "alive", "red")
-        p1 == Personaje("Player 1", "alive", "red")
-        p1 is Personaje("Player 1", "alive", "red")
+        p1 == Personaje("Player 1", "alive", "red")  # False!
+        p1 is Personaje("Player 1", "alive", "red")  # False
         p2 = p1
-        p2 is p1
-      Por defecto, ambas se hacen de forma "<u>shallow</u>" (superf.)
-      Avanzado: podemos definir las nuestras (...) y usar la
-      copia "deep" (profunda) del <em>módulo copy</em> (...)
+        p2 is p1  # True
+        p2 == p1  # Ahora sí, True
+      Por defecto, la asignación se hace como en las listas, etc. (NO copia), y
+      la comparación se basa en la identidad (p2 == p1 si p2 is p1)
+      Avanzado: podemos definir nuestra comparación "personalizada", pero
+      es complejo hacerlo bien y tiene peligros, mejor evitarlo (...)
+      <!-- https://hynek.me/articles/hashes-and-equality/ -->
+      Siempre podemos usar para copiar tanto la copia "normal" (superfic.)
+      como la "deep" (profunda) del <em>módulo copy</em> (...)
 
       # Constructores
       "Factorías" que crean nuevos objetos (y los inicializan).
@@ -306,7 +311,8 @@
       # Ejercicio 3: repaso de decoradores con Jupyter<a href="#ejercicio-3" class="link-anchor"> # </a>
       <blockquote>Repaso de decoradores, con notebooks de Jupyter de ejemplo, del curso<br> /NOBR/
       "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
-      Nota: un poco largo pero interesante porque va profundizando poco a poco...
+      Nota: un poco largo pero interesante porque va profundizando poco a poco;
+      hay algunas partes algo complejas; lo más importante es lo del <u>final</u>...
       .
       Notebook en:
       <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/10-Python%20Decorators/01-Decorators.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../10-Python Decorators....ipynb</a>
@@ -338,7 +344,7 @@
             def distance_from_home(self) -> float:
                 # pero luego ya su contenido o código, de la forma "normal"
                 return sqrt((self.lon - HOME.lon) ** 2 ...
-      .  
+      .
             # en principio no hace falta definir el método __init__
 
       # enum (enumeraciones)
