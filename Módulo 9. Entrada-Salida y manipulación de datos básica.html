@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 9</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 9. E/S y manipulación de datos básica
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Más conceptos
+        Ficheros de texto y binarios
+          Formatos de salto de línea
+        Formatos de fichero básicos. csv, txt, ini...
+        Operaciones básicas: open, read, reedline, close...
+        Librería (biblioteca) estándar
+          random
+          statistics
+          sys
+          sys.argv
+          time
+          datetime
+          subprocess
+          exec()
+          Otros
+        Concurrencia
+        Depuración (debug)
+        Ejercicios extra
+        Referencias
+      @ZOOM@ 110
+
+      # Más conceptos (definiciones)
+      <a href="https://en.wikipedia.org/wiki/Computer_memory" target="_blank">Memoria</a> (general, a veces ambiguo): rápida, uso inmediato
+      Caso particular: <a href="https://en.wikipedia.org/wiki/Random-access_memory" target="_blank">RAM</a> - Random Access Memory
+      No es lo mismo que: <a href="https://en.wikipedia.org/wiki/Hard_disk_drive" target="_blank">Discos</a> - (general) varios tipos...
+      <a href="https://en.wikipedia.org/wiki/Input/output" target="_blank">I/O</a> - Input/output
+      <a href="https://en.wikipedia.org/wiki/Computer_file" target="_blank">Fichero</a> (o archivo)
+
+      <blockquote>NOTA IMPORTANTE: ejecutar <u>todos</u> los ejemplos<br> de este módulo que no sean notebooks, dentro del<br> entorno de pruebas <u>Repl.it</u>!</blockquote>
+      No generar módulos sino un único programa/script<br> (fichero) principal, preferiblemente con una o más<br> funciones dentro y sus invocaciones al final
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 1 <u>(opcional)</u>: corregir errores<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>A partir de un fichero de código fuente dado, detectar y<br> /NOBR/
+      corregir todos los posibles errores de sintaxis y de lógica<br> /NOBR/
+      que se encuentren.</blockquote>
+      Sugerencias:
+      - Guardar una copia del original en todo momento!
+      - Ayudarse de herramientas: IDE, IPython...
+      - Opc.: ir probando por trozos (puede ayudar)
+      @CLASS@ ejercicio-1
+
+      # Ficheros de texto y binarios
+      <a href="https://en.wikipedia.org/wiki/Text_file" target="_blank">Ficheros de texto</a>: separados por saltos de línea
+      Caso partic.: ficheros "imprimibles": sin algunos caract. especiales
+      Sencillos, legibles, sin "estructura" ni "formato", más
+      robustos... Ojo con los encodings! Editor de texto (...)
+      .
+      <a href="https://en.wikipedia.org/wiki/Binary_file" target="_blank">Ficheros binarios</a>: los que NO son de texto
+      .
+      ## Formatos de salto de línea
+      LF (Linux, Web...) <u>recomendado</u>
+      CR (Apple, en desuso)
+      CRLF (Windows, 0x0d, 0x0a, en ese orden!)
+      No mezclar nunca, puede dar muchos <u>problemas</u>!
+
+      # Formatos de fichero básicos
+      ## txt
+      Lo que "nosotros queramos" que contenga (siempre que no sea un fich. binario)
+      Convención: usar esta extensión para texto legible (para personas...)
+      Otros ficheros de tipo text: código fuente (py), HTML, sh, bat...
+      ## csv
+      Comma-separated-values (casi siempre...)
+      : https://docs.python.org/3/library/csv.html
+      "Dialectos"
+      : https://docs.python.org/3/library/csv.html#dialects-and-formatting-parameters
+      ## tsv
+      Nombre no muy utilizado (pero por exactitud, se debería utilizar más).
+      Se suelen "confundir" con csv
+
+      ## ini
+      : https://docs.python.org/3/library/configparser.html
+      No hay un estándar definido!
+      : https://docs.python.org/3/library/configparser.html#supported-ini-file-structure
+      .
+      Ejemplo de uso:
+        >>> config = configparser.ConfigParser()
+        >>> config.read('example.ini')
+        ['example.ini']
+        >>> config.sections()
+        ['language', 'xyz']
+        >>> 'language' in config
+        True
+        >>> config['language']['User']
+        'es'
+
+      ## binarios
+      "Cualquier" secuencia de <u>bytes</u>
+      Lo que "nosotros queramos" que contenga (siguiendo una interpretación det.)
+      .
+      "Binary itself is meaningless, until such time as an executed algorithm defines
+      what should be done with each bit, byte, word or block" -- <a href="https://en.wikipedia.org/wiki/Binary_file#Interpretation" target="_blank">Wikipedia</a>
+      .
+      Puede contener trozos que a su vez sean texto (ej. archivos Word)
+      Otros ejemplos: audio, imágenes, archivos comprimidos (zip), xls, LibreOffice...
+      .
+      Herramienta útil: visor / editor hexadecimal
+
+      # Operaciones básicas: open, read, readline,
+      # readlines, write, close, with, etc.
+      Modos de apertura de un fichero: r, w, a (y b)
+      Concepto de "cursor" (posición actual). Acceso <u>secuencial</u>
+      Saltos de línea
+      "Manejadores" (handles) de fichero
+      La importancia de close y el uso de <u>with</u> (...)
+      Vídeo (ejemplos sencillos):
+      : https://realpython.com/lessons/with-open-pattern/
+
+      Ejemplos con ficheros de texto:
+        <samp>with</samp> <u>open</u>('foo.txt', 'r') <samp>as</samp> file_read:
+            for line in file_read:  # NOTA: mejor que file_read.readlines():
+                print(line, end='')  # cada cadena "line" ya termina con "\n"
+        with open('foo.txt', 'r') as file_read:
+            # De una vez leer todo (sólo si fichero "pequeño"!)
+            lista = file_read.<u>readlines</u>()
+            # Alternativa: de una vez leer todo (fichero "pequeño"!)
+            cad = file_read.<u>read</u>()  # cadena con todo "junto", no lista
+        with open('foo.txt', 'r') as file_read:
+            while ...:  # podemos hacerlo a mano también, con (o sin) bucles
+                line = file_read.<u>readline</u>()
+      .
+        with open('foo.txt', 'a') as f_write:
+            f_write.<u>write</u>('hola<samp>\n</samp>')
+            f_write.<u>writelines</u>(['algo\n', 'mas', 'adios\n'])
+
+      Artículo / tutorial con ejemplos, <u>recomendable</u>:
+      : https://realpython.com/read-write-files-python/
+      .
+      Más avanzado (operaciones con ficheros, copia, directorios...):
+      : https://realpython.com/working-with-files-in-python/
+      (veremos un poco de esto en el Módulo 10)
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 2: leer ficheros<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>A partir del ejercicio del juego de la vida,<br> /NOBR/
+      modificarlo para que sea capaz de leer desde<br> /NOBR/
+      un fichero de texto (nombre fijo) unas líneas<br> /NOBR/
+      que representen un estado inicial dado para<br> /NOBR/
+      el "mundo" del juego.</blockquote>
+      Notas:
+      - Comprobar que todas tengan la misma logitud
+      - Permitir cualquier número de líneas de entrada
+      - Ignorar las líneas completamente vacías
+      - Capturar las <u>excepciones</u> que se produzcan!
+      @CLASS@ ejercicio-2
+
+      # Librería (biblioteca) estándar
+      : https://docs.python.org/3/tutorial/stdlib.html#brief-tour-of-the-standard-library
+      ## Módulos ya vistos
+      csv
+      configparser
+      math
+      itertools
+      functools
+      collections
+      operator
+      copy
+      etc.
+
+      ## math
+      : https://docs.python.org/3/tutorial/stdlib.html#mathematics
+      .
+      ## random
+        import random
+        random.randint(0, 100)  # range [a, b], including both end points
+        random.shuffle(lista)   # desordena (modificando!) en orden aleat.
+        random.choice(seq)      # elige y devuelve 1 elemento al azar
+        random.sample(seq, n)   # elige y devuelve n elementos al azar
+
+      ## statistics
+        >>> import statistics
+        >>> data = [2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5]
+        >>> statistics.mean(data)  # media aritm.
+        1.6071428571428572
+        >>> statistics.median(data)  # mediana
+        1.25
+        >>> statistics.variance(data)  
+        1.3720238095238095
+      .
+      Y más funciones:
+      : https://docs.python.org/3/library/statistics.html
+      .
+      NOTA: recordar que también se usa <a href="https://scipy.org/" target="_blank">SciPy</a> para temas más avanzados
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 3: repaso de math y random<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>Repaso de los módulos <u>math</u> y <u>random</u> de la biblioteca estándar,<br> /NOBR/
+      con notebooks de Jupyter de ejemplo del curso "Complete Python<br> /NOBR/
+      Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Nota: en el de random se hace referencia al tema de la semilla o "seed"
+      para generar números aleatorios, que es algo avanzado y no se ha visto...
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/03-Math-and-Random-Module.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../03-Math-and....ipynb</a>
+      @CLASS@ ejercicio-3
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: leer y procesar CSV sencillo
+      <blockquote>Leer y procesar ficheros de texto CSV de datos climatológicos</blockquote>
+      Enunciado original:
+      "In weather.csv you’ll find daily weather data. Write a program to
+      read the file, then output the day number (column one) with the
+      smallest temperature spread (the maximum temperature is the
+      second column, the minimum the third column)"  -- <a href="https://realpython.com/python-interview-problem-parsing-csv-files/#problem" target="_blank">realpython.com</a>
+      .
+      CSV en: <a href="https://github.com/realpython/interview-questions/blob/master/parsing-data/weather.csv" target="_blank">github.com/realpython/.../weather.csv</a>
+      <!-- Solución completa (con código) para los dos, Football y weather en: -->
+      <!-- https://github.com/realpython/interview-questions/tree/master/parsing-data -->
+
+      ## sys
+        import sys
+        sys.version
+        sys.version_info
+        <u>sys.path</u>  # PYTHONPATH
+        <u>sys.executable</u>  # Ejecutable actual de Python
+      .
+        sys.stderr  # Avanzado: salida de error (vs. stdout)
+        print("ERROR 5", file=sys.stderr)
+
+      ## sys.argv
+      Ejemplo sencillo de uso de argumentos recibidos:
+        import sys
+        print(sys.argv[0])
+        if len(sys.argv) > 1:
+            full_arg_list = sys.argv[1:]
+            arg_filename = full_arg_list[0]
+        else:
+            arg_filename = "default.txt"
+      .
+      Alternativa/mejora recom. (casos no sencillos): <u>argparse</u>
+
+      ## time
+        import time
+        time.sleep(5)
+        start = time.time()  # anotar fecha/hora actual (segundos)
+        ...
+        print(f"total running time:", time.time() - start)
+
+      ## datetime
+        import datetime
+        now = datetime.date.today()
+        now.strftime("%m-%d-%y. %d %b %Y is a %A of %B.")
+      .
+        # dates support calendar arithmetic
+        birthday = datetime.date(2001, 1, 1)
+        age = now - birthday
+        age.days
+
+      La gestión del tiempo y de fechas/horas no es nada sencilla.
+      Los cambios de hora estacionales (DST), zonas horarias, y los
+      formatos de representación de fechas, deben gestionarse "bien".
+      .
+      Introducción <u>recomendable</u> (al menos el principio):
+      : https://realpython.com/python-time-module/
+      .
+      Documentación oficial de los módulos de la bibl. estándar:
+      : https://docs.python.org/3/library/time.html#module-time
+      : https://docs.python.org/3/tutorial/stdlib.html#dates-and-times
+
+      En ocasiones "bien" significará no hacer "nada" (...)
+      Como con otros temas (UTF-8) aunque a veces esa información
+      no es explícita, siempre está definida de alguna forma (S.O.?)...
+      Lo importante es que la tengamos en cuenta, y no asumamos que
+      siempre estamos en el caso "sencillo" (sin confirmarlo antes).
+      Si hace falta, deberemos añadir parámetros/config. adecuados!
+      O si es posible y aplicable, usar "siempre" horas UTC...
+        Hora <samp>"visible"</samp> (usuario)  vs.  <samp>"interna"</samp> (ej. timestamps) 
+      .
+      Todo esto es especialmente importante en ciencia de datos (I/O)!
+
+      Más detalles (el módulo datetime cubre más cosas y es más complejo,
+      aunque probablemente lo usaremos más, y como tiene solapamientos con
+      el módulo time, quizás convenga empezar / intentar buscar en primer
+      lugar en datetime las funcionalidades que necesitemos...)
+      .
+      Artículo útil y completo pero largo (recom. al menos el inicio):
+      : https://realpython.com/python-datetime/
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 4: repaso de datetime con Jupyter<a href="#ejercicio-4" class="link-anchor"> # </a>
+      <blockquote>Repaso del módulo, con notebooks de Jupyter de ejemplo, del curso<br> /NOBR/
+      "Complete Python Bootcamp" de Jose Portilla (Udemy / GitHub).</blockquote>
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/02-Datetime-Module.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../02-Datetime....ipynb</a>
+      @CLASS@ ejercicio-4
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 5: biblioteca estándar y ficheros<a href="#ejercicio-5" class="link-anchor"> # </a>
+      <blockquote>Crear una serie de programas sencillos para gestionar ficheros.</blockquote>
+      - Mostrar la palabra más larga de entre las leídas de un fichero<br> (con un nombre dado, fijo) que contenga varias líneas.
+      - Contar y mostrar el número de líneas de un fichero
+      - Escribir en un fichero el valor de las 50 primeras potencias de 2,<br> empezando en 2<sup>0</sup> (una en cada línea).<br> Opcional: hacerlo usando además un generador (yield...)
+      - Recibir como argumentos (desde línea de comandos) 3 valores<br> enteros (año, mes y día) y calcular el tiempo transcurrido hasta<br> hoy, en horas (o desde hoy, si es fecha futura)
+      Nota importante: capturar <u>excepciones</u> que se puedan producir!
+      @CLASS@ ejercicio-5
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: generadores y leer CSV
+      <blockquote>Comparar el uso con y sin generadores para leer y procesar (con<br> /NOBR/
+      más o menos eficiencia) ficheros de texto (ej. CSV).</blockquote>
+      Opc.: añadir también lo necesario para "cronometrar" los tiempos.
+      NOTA: utilizar ficheros de texto (CSV en UTF-8 preferiblemente)
+      que sean muy <u>grandes</u>, para probar con tiempos mayores
+      .
+      Código en: <a href="examples/generadores-csv-data-process.py" target="_blank">generadores-csv-data-process.py</a>
+
+      ## subprocess
+        # En Linux
+        subprocess.getoutput('ls ~')
+        # En Windows
+        subprocess.getoutput('dir %USERPROFILE% /b')
+
+      Ejemplo para usar pip desde dentro de un programa
+      (o desde el intérprete interactivo) Python:
+        import subprocess
+        import sys
+        cmd = [sys.executable, '-m', 'pip', 'install', name]
+        subprocess.run(cmd)
+      .
+      NOTA: aunque sea un módulo, <u>no</u> se debe usar con import...
+        <del>import pip</del>
+        <del>pip.xxx(...)</del>
+
+      ## exec()
+      Avanzado: ejecuta código dinámicamente (en el momento)
+      Nota: no confundir con subprocess.run()...
+      Ejemplo:
+        x = 2
+        if x % 2 == 0:
+            cad = "formula = x * 5"
+        else:
+            cad = "formula = 0"
+        exec(formula)
+      .
+      Es simplemente una función built-in (no bibl. estándar)
+      Similar a eval(), visto en el Módulo 8...
+
+      ## Otros: glob, os, zlib, json,
+      ## xml, unittest, logging...
+      Los veremos más adelante
+
+      # Concurrencia
+      Tema avanzado... sirve para hacer "varias cosas a la vez" (+/-)
+      : https://docs.python.org/3/library/concurrency.html
+      Asyncio - para I/O; muy avanzado, complejo (...)
+      Threading - para I/O o CPU ("turnos": un sólo núcleo!)
+      Multiprocessing - para CPU, varios núcleos; más "sencillo"
+      aunque se complica para comunicar/compartir info entre ellos
+      .
+      Más detalles y ejemplos:
+      : https://towardsdatascience.com/concurrency-in-python-e770c878ab53
+      : https://realpython.com/python-concurrency/
+      : https://docs.python.org/3/library/concurrency.html
+
+      # Depuración (debug)
+      Consejos básicos <u>muy recomendables</u>:
+      : https://openbookproject.net/thinkcs/python/english3e/app_a.html
+      .
+      Herramientas específicas (o no). IDE
+      print()
+      logging
+
+      # Ejercicios extra
+      - Utilizando subprocess, invocar a pip para generar la lista de paquetes<br> actualmente instalados (en "formato" list, no freeze), obtener la salida<br> (resultado/texto) de su ejecución y guardarlo en un diccionario. Ejemplo<br> del valor esperado para este diccionario una vez hecho todo ello:
+            <samp>{ 'scipy' : '1.2.1', 'pandas' : '0.24.2', ... }</samp>
+      - Realizar el otro ejercicio ("Football") del artículo de realpython.com<br> sobre CSV: <a href="https://realpython.com/python-interview-problem-parsing-csv-files/#problem" target="_blank">realpython.com/python-interview-problem-parsing-csv-files</a><br> OJO: tiene el enunciado <u>y la solución a continuación</u>...
+      <!-- https://github.com/realpython/interview-questions/tree/master/parsing-data -->
+
+      # Referencias
+      : https://docs.python.org/
+      : https://docs.python.org/3/tutorial/stdlib.html
+      : https://realpython.com/tutorials/
+      : https://en.wikipedia.org/
+
+    </pre>
+  </body>
+</html>

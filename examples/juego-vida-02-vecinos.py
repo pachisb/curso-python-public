@@ -54,6 +54,7 @@ def print_tablero(m):
 
 def clear_screen():
     """Limpia la pantalla (en consola). Válido en Linux, Mac y Windows"""
+    # NOTA: no sirve en modo interactivo, IPython, Jupyter notebook, etc.
     import os
     os.system('cls' if os.name=='nt' else 'clear')
 
