@@ -36,9 +36,9 @@ print(f"Row count is {row_count}")
 print(f"Last row was {row}")
 
 # NOTA: probar cambiando el nombre del fichero para usar uno muy grande!
-# csv_gen = csv_reader_slow("examples/flashcards_capitales.txt")
+# csv_gen = csv_reader_slow("prac/python_psf_external_19.csv")
 # csv_gen = csv_reader_slow("prac/weather.csv")
-csv_gen = csv_reader_slow("prac/python_psf_external_19.csv")
+csv_gen = csv_reader_slow("examples/flashcards_capitales.csv")
 row_count = 0
 for row in csv_gen:
     row_count += 1
