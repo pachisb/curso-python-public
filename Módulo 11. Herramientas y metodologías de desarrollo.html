@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 11</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 11. Herramientas y metodologías de desarrollo
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Control de versiones
+          Otros. Git. GitHub
+        Buenas prácticas de desarrollo
+          Coding styles
+          Reproducibilidad del entorno
+          The twelve-factor app
+          Automatización. CI/CD
+          Gestión de dependencias
+        Stack Overflow: consejos
+        Licencias de código fuente
+        Metodologías
+        Pruebas (testing)
+          Tipos de tests
+          "Niveles" de test
+          Pruebas automatizadas
+          Unit testing. módulo unittest
+      @ZOOM@ 110
+
+      # Control de versiones
+      ## Otros: CVS, SVN (Subversion),
+      ## Hg (Mercurial), BitKeeper...
+      Algunos son ya algo antiguos, y tienen diferencias o limitaciones
+      ## Git
+      El más popular actualmente (con mucha diferencia). Más flexible
+      y potente, distribuido, pero también algo más complejo...
+
+      IMPORTANTE: en Windows, más fácil (y funciona siempre) si abrimos la
+      terminal dentro de VS Code, o bien desde Windows -> Inicio -> "Git CMD"
+      y es ahí donde vamos tecleando los comandos.
+      La mayoría de los comandos también se podrán usar desde GUI en VS Code!
+      .
+      Buen tutorial, sencillo (desde cero), sobre Git (línea de comandos) y algo de
+      GitHub también. <u>Muy recomendable</u>:
+      : https://realpython.com/python-git-github-intro/
+      .
+      Conceptos básicos (esquemático!) en este <u>cheat sheet</u> (ver página siguiente):
+      : https://about.gitlab.com/images/press/git-cheat-sheet.pdf
+
+      ! img/gitlab-cheatsheet-working-areas.png
+      # From GitLab Cheat sheet: <a href="https://about.gitlab.com/images/press/git-cheat-sheet.pdf" target="_blank">https://about.gitlab.com/images/press/git-cheat-sheet.pdf</a>
+      @ZOOM@ 110
+
+      Interesante también, más completo y a "fondo" (llega hasta conceptos
+      más avanzados, algunos quizás no sean imprescindibles al empezar...),
+      el siguiente curso "interactivo" (tipo <u>playground</u>), de <a href="https://learn.datacamp.com" target="_blank">DataCamp</a>:
+      : https://learn.datacamp.com/courses/introduction-to-git
+      .
+      Nota: requiere <u>registrarse</u> (gratuito), y luego tiene bastante material de
+      aprendizaje (orientado a data science!) aunque la mayoría NO gratuito...
+
+      ## GitHub
+      Charla/<u>vídeo</u> breve sobre GitHub (25m), incluye algo de de Markdown:
+      : https://youtu.be/6UtrLpd79Aw?t=12931
+      Muy similar (charla/vídeo del mismo tema y misma ponente):
+      : https://myignite.microsoft.com/sessions/93f49a5f-71f9-4036-afcf-6cdcbb8abf05
+      .
+      Más tutoriales interesantes (GitHub, Markdown, GitHub Pages), que
+      incluyen <u>ejercicios</u> y tests de repaso (tipo quizz):
+      : https://docs.microsoft.com/en-us/learn/paths/collaborate-markdown-github-pages
+      Nota: también es algo más avanzado, mejor hacer primero otros básicos!
+      Otros del mismo estilo:
+      : https://lab.github.com/
+
+      # Buenas prácticas de desarrollo
+      ## Nombres
+      Nombres claros, <u>descriptivos</u> y a poder ser, cortos.
+      Intentar, por claridad, no duplicar nombres globales y locales.
+      Aplica a todo: variables, funciones, módulos...
+      Respetar las normas/recom. sobre mayúsc./minúsc., puntuación, etc.!
+      ## Consistencia (nombres, estilo, idioma, estructura...)
+      Mantener la coherencia entre todas las partes del código fuente.
+      Especialmente si nos incorporamos a un proyecto ya en curso
+
+      ## Evitar variables globales
+      Casi nunca están justificadas o son imprescindibles.
+      Pensar si añadiendo más parámetros a las funciones (o valores que
+      sean devueltos por ellas) es equivalente y suficiente...
+      ## Uso de constantes
+      Intentar definir en el lugar adecuado (al principio, normalmente)
+      todas las constantes necesarias. Cosas que realmente pueden cambiar
+      en el futuro pero no muy a menudo...
+      Como en todo... no "excederse", o puede ser contraproducente! A veces
+      en lugar de constantes será mejor usar argumentos de línea de comandos
+      (<u>sys.argv</u>) y/o incluso un fichero (u otro forma) de configuración (ej. ini)
+
+      ## Comentarios
+      Documentar cualquier porción de código que no sea clara o sencilla,
+      o suposiciones/condiciones que deben cumplirse, posibles errores...
+      .
+      Tanto a nivel concreto (ej. una función lambda, explicar qué hace o
+      por qué se usa) como general (grandes -o no- secciones del código),
+      y en este segundo caso, añadir lo que ayude a enteder la "big picture"
+
+      ## Documentación
+      <u>Docstrings</u> en el código!
+      README's, y otros ficheros .txt o .md para documentar lo esencial.
+      .
+      Ejemplos: qué hace falta para empezar, para probar (BBDD, config...),
+      casos o funcionamientos especiales que no sean intuitivos, avisos...
+      .
+      Intentar NO documentar lo que es redundante o ya "se ve", o es muy
+      cambiante; a veces es peor una doc. desactualizada que ninguna doc.
+
+      ## Diseño del modelo de datos
+      Esta parte suele ser complicada, sobre todo al principio. Revisarla
+      bien y a poder ser con terceros... Determina si luego el resto del
+      programa es más o menos complejo y/o fácil de implementar!
+      Tender a lo sencillo cuando sea suficiente (listas, diccionarios...)
+      .
+      Evitar clases propias, herencia, y herencia múltiple si no son impresc.
+      (en orden creciente de complejidad y de importancia del consejo).
+      Casi siempre es suficiente (aunque dependiendo del tipo de programa)
+      con usar composición (sobre todo para evitar herencia). Ej. <u>dict</u>, tuple!
+
+      ## Coding styles
+      Ej. PEP 8. Usar herramientas tipo Black, <u>autopep8</u>... (VS Code)
+      Referencia: <a href="https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style" target="_blank">The Python Tutorial (docs.python.org)</a>
+      Más detalles: <a href="https://www.python.org/dev/peps/pep-0008/" target="_blank">PEP 8</a>
+      .
+      Incluso en algunos proyectos se automatiza su uso (antes/durante
+      la subida de cambios al repositorio Git, por ejemplo)
+      .
+      Nota: black es un poco más avanzado y difícil de usar, pero tiene
+      ventajas como que se puede automatizar bastante. Más detalles:
+      : https://github.com/ambv/black
+
+      <!-- EJERCICIO-PARA-CLASE (COMPLEJO) -->
+      ## Claridad y legibilidad antes que brevedad o "ingenio"
+      ¿Qué hace el siguiente código?
+      <!-- First 10 Fibonacci numbers -->
+      .
+        print(list(map(lambda x,f=lambda x,f:(f(x-1,f)+f(x-2,f)) if x>1 else 1:
+          f(x,f), range(10))))
+      .
+      Criterio general: pensar en los "otros" (ahora, y sobre todo dentro de
+      un tiempo). Nosotros mismos a veces nos "convertiremos" en "otros"!
+      .
+      Cuando algo complejo "compensa" (se "ahorra" o compacta mucho, o
+      bien se va a repetir muchas veces) usarlo, pero <u>documentarlo</u> (ej. con
+      comentarios) adecuadamente!
+      @NOSELECT@
+
+      ## Reproducibilidad del entorno
+      <u>Siempre</u> generar y guardar en control de versiones los ficheros como
+      requirements.txt (y/u otros similares si los hay).
+      Comprobar periódicamente que "desde cero" realmente funcionan...
+      .
+      Comprobar periódicamente que realmente <u>usamos</u> el entorno correcto!
+      Error habitual (sobre todo si varios proyectos/entornos diferentes...)
+      Recomendable (si es posible), usar entornos virtuales (uno por proyecto),
+      los veremos en el Módulo 12.
+      .
+      Comprobar que todos los miembros del <u>equipo</u> lo tenemos, y que el resto
+      de herramientas/módulos/etc. que no estén "controlados" coincidan...
+
+      ## Feedback al usuario
+      Mensajes informativos de vez en cuando si tardamos mucho.
+      Especialmente si son aplicaciones con un GUI y/o tipo Web...
+      ## No confundir feedback/mensajes normales y logging
+      Ambos pueden ser importantes (y complementarios) dependiendo del
+      tipo de programa.
+      Tener en cuenta que a veces el usuario es "interno" (nosotros u otros
+      desarrolladores, el administrador del sistema que ve los logs, etc.)
+      ## Comprobar las entradas del usuario (y de terceros)
+      <u>Siempre</u> todo lo que venga de usuarios, ficheros, servicios/Web/APIs
+      se debe comprobar (y documentar -p. ej. en el código- qué y cómo lo
+      esperamos recibir)
+      Los datos, formatos, situaciones (errores, imprevistos) cambian!
+
+      ## The twelve-factor app
+      Avanzado:
+      "The twelve-factor app is a <u>methodology</u> for building SaaS apps"
+      : https://12factor.net/
+      Aunque en realidad se usa para otros tipos de aplicaciones también, y
+      es una recomendación/referencia habitual en la literatura. Son ideas
+      o consejos útiles, en general para casi cualquier proyecto software.
+      .
+      Algunos son complejos o específicos para SaaS. Son interesantes sobre
+      todo los <u>primeros</u> (1, 2, 3) y los <u>últimos</u> (9, 10, 11)
+
+      ## Automatización. CI/CD
+      Es un tema más complejo, conocer al menos el concepto...
+      "(...) enforcing <u>automation</u> in building, testing and deployment of
+      applications. Modern day DevOps practices involve continuous
+      development, continuous testing, continuous integration, cont.
+      deployment and continuous monitoring of software applications
+      throughout its development life cycle" -- <a href="https://en.wikipedia.org/wiki/CI/CD" target="_blank">Wikipedia</a>
+      . 
+      : https://en.wikipedia.org/wiki/Continuous_integration
+      : https://en.wikipedia.org/wiki/Continuous_deployment
+      .
+      Como en todo, hay que saber cuándo compensa, y cuándo es
+      mejor un proceso "manual"... (ver broma en sig. página)
+
+      : https://xkcd.com/1319/
+      ! https://imgs.xkcd.com/comics/automation.png
+
+      ## Gestión de dependencias
+      Además de controlarlas y hacerles seguimento (requirements.txt, etc.),
+      definir <u>criterios</u> para actualizar el entorno (paquetes, y el propio Python).
+      Normalmente estarán (deberían) definidos por la empresa/proyecto...
+      Algunas sugerencias:
+      - Si se usa Anaconda, tomar la versión estable cada X meses
+      - Si se usa principalmente Ubuntu/Debian, etc., usar "su" Python
+      - Para el resto de paquetes (pocos si se usa Anaconda; casi todos en<br> otros casos; ej. pandas, matpotlib...), hacer periódicamente una<br> labor de actualiz. y <u>pruebas</u>
+      - Intentar balancear el "estar al día" y el tiempo dedicado a los cambios
+      - <u>Siempre</u> hacerlo de forma controlada y coordinada, y documentarlo!
+
+      Los diez artículos "top" de Joel Spolsky:
+      : https://www.joelonsoftware.com/category/reading-lists/top-10/
+      Nota: muchos son largos, avanzados, y algo antiguos
+      .
+      Mi recomendación: en especial estos tres:
+      The "Joel Test" (12 Steps to Better Code)
+      : https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+      The Iceberg Secret, Revealed (programmers "vs." MBAs)
+      : https://www.joelonsoftware.com/2002/02/13/the-iceberg-secret-revealed/
+      Things You Should Never Do (... sobre leer y escribir código, y más)
+      : https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/
+
+      # Stack Overflow: consejos
+      Consejos sobre cómo hacer preguntas adecuadas:
+      <!-- : https://codeblog.jonskeet.uk/2012/11/24/stack-overflow-question-checklist/ -->
+      <!-- Lo mismo pero en una URL más corta, por comodidad... -->
+      : http://tinyurl.com/stack-checklist
+      Lo mismo, en un vídeo muy corto:
+      : https://youtu.be/1F_OgqRuSdI?t=233
+      .
+      El 2º, está tomado de la lista de vídeos del libro nombrado en el
+      Módulo 4, "Automate the Boring Stuff with Python (2ª ed.)".
+      Recordar: en Youtube, los primeros temas de ese libro (en forma
+      de "demo" explicada/narrada de los conceptos):
+      <a href="https://www.youtube.com/watch?v=1F_OgqRuSdI&list=PL0-84-yl1fUnRuXGFe_F7qSH1LEnn9LkW" target="_blank">youtube.com/watch?v=1F_OgqRuSdI&list=...</a>
+
+      # Licencias de código fuente
+      Libres vs. propietaria, copyright, propiedad, etc.
+      : https://en.wikipedia.org/wiki/Software_license
+      .
+      Una muy buena introducción a licencias y a opensource:
+      : https://opensource.guide/legal/
+      Ayuda para escoger la licencia adecuada:
+      : http://choosealicense.com/
+
+      # Metodologías
+      "Estilo" del proceso de desarrollo de software (y forma
+      de organizarlo, fases, etc.). Es la parte de <u>ingeniería</u>, y
+      más teórica (sistemática...)
+      : https://en.wikipedia.org/wiki/Software_development_process
+      .
+      Clásicas (cascada, incremental, espiral...) vs. ágiles
+      Las ágiles más populares: <u>Scrum</u>, XP (eXtreme Programming)...
+
+      ! https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Three_software_development_patterns_mashed_together.svg/840px-Three_software_development_patterns_mashed_together.svg.png
+
+      # Pruebas (testing)
+      Tema extenso, es toda una disciplina en sí misma (...)
+      Normalmente se refiere a "<u>dynamic testing</u>" (sin explicitarlo),
+      frente a "static testing" (revisión/análisis del código fuente).
+      También hacen testing estático los <a href="https://en.wikipedia.org/wiki/Lint_(software)" target="_blank">linters</a>, aunque hoy en día
+      no se usan tanto (el compilador hace en parte lo mismo... pero
+      ojo porque en lenguajes interpretados esto puede no ser cierto)
+      Y en algunos ámbitos, eso no se considera/denomina testing.
+      .
+      En el resto de este módulo, hablamos siempre de testing dinámico.
+
+      Concepto fundamental: los errores causan menos problemas, y se
+      pueden corregir más rápido, cuanto <u>antes se detecten</u>.
+      Mejor en fase de <u>desarrollo</u> que de testing... ¡¡¡y que en producción!!!
+      .
+      ## "Niveles" de test
+      Tests de <u>sistema</u>, de <u>integración</u>, y de <u>unidad</u> (top to bottom) (...)
+      También a menudo se añade un nivel aún superior: aceptación, que
+      se refiere a que se dé por válido (listo para producc.) el sistema
+
+      ## Tipos de tests
+      Caja negra vs. caja blanca (o transparente) (...)
+      Alfa / <a href="https://en.wikipedia.org/wiki/Software_release_life_cycle#Beta" target="_blank">beta</a> / etc.
+      Tests de seguridad, de rendimiento (...)
+      <a href="https://en.wikipedia.org/wiki/A/B_testing" target="_blank">Tests A/B</a> (comparar dos variantes)
+      (...)
+      .
+      ## Exploratory testing
+      "Estilo libre". Requiere experiencia, intuición, conocimiento de lo
+      que se va a probar... y más tiempo. Suele detectar más errores!
+      : https://en.wikipedia.org/wiki/Exploratory_testing
+
+      ## Tests de "casos límite"
+      "Estilo" EAFP vs LBYL (mejor pedir perdón...)
+      : https://docs.python.org/3/glossary.html#term-eafp
+      : https://docs.python.org/3/glossary.html#term-lbyl
+      .
+      En Python generalmente se tiende/recomienda EAFP: <u>try/except</u>!
+      De una forma o de la otra, <u>hay que controlar los errores</u> (y probar)!
+      Ésta es la parte más importante desde el pto. vista del programador
+
+      ## Pruebas automatizadas
+      Para que se ejecuten periódica/frecuentemente (ej. con cada cambio
+      subido al repositorio, cada noche, en cada liberación...)
+      ## Unit testing. módulo unittest
+      Tests de unidad. Habitualmente "olvidados", son el segundo tipo de
+      pruebas más importante a realizar por los programadores...
+      <a href="https://docs.python.org/3/library/unittest.html" target="_blank">unittest</a> es el módulo más utilizado (en la actualidad) para hacer
+      unit testing en Python (facilita la creación y uso de las pruebas)
+      .
+      Buena y breve explicación introductoria sobre el concepto/idea,
+      aunque no usa "unittest" específicamente:
+      <a href="https://openbookproject.net/thinkcs/python/english3e/fruitful_functions.html#unit-testing" target="_blank">How to Think Like a Computer Scientist: Learning with Python - Unit testing</a>
+
+      ## Test-driven development (TDD)
+      Filosofía de obligar a escribir tests hasta el "extremo": escribir los
+      tests <u>antes</u> que el resto del programa! Los tests son el "contrato"...
+      .
+      "Test-driven development (TDD) is a software development practice
+      which takes the unit testing practices one step further. The key
+      idea is that automated tests should be written first. This technique
+      is called test-driven because non-testing code should only be
+      written when there is a failing test to fix"  -- <a href="https://en.wikipedia.org/wiki/Test-driven_development" target="_blank">Wikipedia</a>
+
+    </pre>
+  </body>
+</html>
