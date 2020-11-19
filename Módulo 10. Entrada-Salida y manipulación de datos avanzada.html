@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Belerofontech - Introducción a la programación con Python - Módulo 10</title>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="any">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.css -->
+    <style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-3x2{width:1020px;height:680px;margin:-340px 0 0 -510px}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}img{transform:none!important;min-width:200px;width:100%;display:flex}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,.2);visibility:visible!important}}</style>
+    <!-- NOTE: the next line will load the specific CSS file samefilename.html.css -->
+    <script>var scrname = window.location.pathname.split('/').pop(); document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", "<link rel=\"stylesheet\" href=\"" + scrname + ".css\"/>");</script>
+    <!-- NOTE: the next line will load the CSS file customization.css (just this or the previous one is enough) -->
+    <link rel="stylesheet" href="customization.css">
+    <!-- NOTE: the next line will be (or has been) replaced by the contents of src/slide.js -->
+    <!-- NOTE: change below to CLICK_NEXT=1 to restore the default advance-on-click behaviour... -->
+    <!-- NOTE: change below to HISTORY=0 to avoid pushing browser history elements for each page change! -->
+    <script>var CLICK_NEXT=0,HISTORY=1,slideNames={},currentSlide=-1,INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(e){var t=(e.match(INDENT_RE)||[""])[0].length;if(t>0){var n="^"+e.substring(0,t);return e.replace(new RegExp(n,"mg"),"")}return e}function renderSlide(e,t,n){var i=t.split("\n"),s=-1,r=document.createElement("div"),o=document.createElement("div"),a="";r.className="slide slide-"+n,o.className="slide-content";for(var l=0;l<i.length;l++){var d=i[l];if(d.startsWith("#"))a=d.startsWith("##")?a+"<h2>"+d.substring(2).trim()+"</h2>":a+"<h1>"+d.substring(1).trim()+"</h1>";else if(d.startsWith("`")||d.startsWith("\t")||d.startsWith("  ")){var h;0==(h=d.startsWith("  ")?d.substring(2):d.substring(1)).length&&(h=" "),a=a+"<pre>"+h+"</pre>"}else if(d.startsWith("@NOSELECT@"))r.className+=" noselect";else if(d.startsWith("@NOSCALE@"))r.className+=" noscale",o.className="slide-content-noscale";else if(d.startsWith("@ZOOM@")){var c=d.substring(6).trim();r.className+=" zoom-"+c}else if(d.startsWith("@CLASS@")){var u=d.substring(7).trim();r.className+=" "+u,slideNames[u]=n}else if(d.startsWith("!"))a=a+'<img src="'+d.substring(1).trim()+'" />';else if(d.startsWith(":")){var m=d.substring(1).trim(),g='target="_blank"';m.startsWith("#")&&(g=""),a=a+'<a href="'+m+'" '+g+">"+m+"</a>",a+="<br>"}else if(d.startsWith("- "))a=a+"<ul><li>"+d.substring(1).trim()+"</li></ul>";else{if(d.startsWith("\x3c!--"))continue;var w=!0;d.startsWith(".")&&(d=d.substring(1)),"/NOBR/"==(d=d.trim()).substring(d.length-6,d.length)&&(w=!1,d=d.substring(0,d.length-6));for(var f=0;f<d.length;f++){var y=d.charAt(f);"*"==y?-1==s?s=(a+="<strong>").length:(s!=a.length?a+="</strong>":a=a.substring(0,a.length-8)+"*",s=-1):a+=y}0==w||"</blockquote>"==d.substring(d.length-13,d.length)||"</pre>"==d.substring(d.length-6,d.length)?a+="\x3c!-- nobr --\x3e":a+="<br>"}}o.innerHTML=a,r.style.visibility="hidden",r.appendChild(o),e.appendChild(r)}function render(e){var t=document.createElement("div");t.className="slide-root",document.body.appendChild(t);for(var n=(e=trimIndent(e)).split(new RegExp("^\n+","mg")),i=0;i<n.length;i++){renderSlide(t,n[i].trim(),i)}return t}function resize(){var e=window.innerWidth,t=window.innerHeight,n=document.body.offsetWidth,i=document.body.offsetHeight,s=e/t<n/i?e/n:t/i;document.body.style.transform="scale("+s+")",current()}function goTo(e){currentSlide>=0&&(1==HISTORY?window.location.hash=e:window.location.hash.replace(e),currentSlide=e);for(var t=document.querySelectorAll(".slide"),n=0;n<t.length;n++){var i=1,s=t[n],r=s.children[0],o=window.devicePixelRatio/10+.6;s.className.match("noscale")&&(o=1);var a=s.offsetWidth*o/r.offsetWidth,l=s.offsetHeight*o/r.offsetHeight;if(s.className.match("zoom-")){var d=s.className.match("zoom-.+")[0].split();(i*=(parseInt(d[0].substr(5))||100)/100)<.25?i=.25:i>4&&(i=4)}i*=Math.min(a,l),n==e?(r.style.transform="scale("+i+")",currentSlide>=0&&(s.style.visibility="")):s.style.visibility="hidden"}}function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll(".slide").length-1))}function prev(){goTo(Math.max(currentSlide-1,0))}function current(){dest=currentSlide,max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0)))}function readhash(){return dest=window.location.hash.substring(1)||"0",null!=slideNames[dest]&&(dest=slideNames[dest]),dest}function newhash(){-1!=currentSlide&&(dest=readhash(),max=document.querySelectorAll(".slide").length-1,goTo(Math.min(max,Math.max(dest,0))))}window.onload=function(){render(document.getElementById("slide").innerHTML);var e=readhash();resize(),currentSlide=e,CLICK_NEXT&&(window.onclick=next),window.onresize=resize,window.onwheel=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(e.deltaY>0?next():prev())},window.onkeydown=function(e){window.event.ctrlKey||window.event.metaKey||window.event.altKey||(39==e.keyCode||40==e.keyCode||76==e.keyCode||74==e.keyCode||13==e.keyCode||34==e.keyCode||32==e.keyCode?next():37==e.keyCode||38==e.keyCode||72==e.keyCode||75==e.keyCode||8==e.keyCode||33==e.keyCode?prev():36==e.keyCode?goTo(0):27==e.keyCode&&(window.location.hash=currentSlide))},window.onhashchange=newhash,window.setTimeout(current,150)};</script>
+    <style media="screen">@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext);@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);@import url(https://fonts.googleapis.com/css?family=Inconsolata);</style>
+  </head>
+  <body class="slide-16x9">
+    <pre id="slide">
+      # Introducción a la
+      # programación con Python
+      .
+      ## Módulo 10. E/S y manipulación de datos avanzada
+      .
+      `<div style="text-align: right;">© 2020 Pachi Sucunza, Belerofontech</div>
+      `<div style="text-align: right;"><a href="mailto:pachi.sucunza@belerofontech.com" target="_blank">✉</a> <a href="http://www.belerofontech.com" target="_blank">🔗</a> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License">CC BY-NC-SA 4.0</a></div>
+
+      # Índice
+        Biblioteca estándar (cont.)
+          glob, os, argparse
+        Juegos de caracteres
+          Unicode
+          Codif. de caracteres. ASCII. UTF-8. Otras
+          hashbangs (shebangs) para indicar encoding
+        bytes()
+        Codificación de datos
+          Base 64 encoding. URL Encoding
+        Comprensiones (comprehensions)
+          Expresiones generadoras, etc.
+        Hashes y CRC's
+        Compresión de datos
+        Conceptos básicos de acceso a BBDD
+          Librería SQLAlchemy
+        Expresiones regulares
+        Obtención de datos desde Webs y APIs
+          Formato de datos JSON y HTML
+          Librería requests
+          Autenticación. Scraping
+        Ejercicios extra
+        Referencias
+      @ZOOM@ 110
+
+      # Biblioteca estándar (cont.)
+      ## Otros módulos
+      <a href="https://docs.python.org/3/library/glob.html" target="_blank">glob</a> - avanzado: expansión de patrones de rutas, tipo *.csv
+      <a href="https://docs.python.org/3/library/os.html" target="_blank">os</a> - temas relacionados con el S.O.: path, permisos/propiedades de ficheros,
+      listdir(), procesos, directorio actual: os.curdir, chdir(), etc.
+      <a href="https://docs.python.org/3/library/argparse.html" target="_blank">argparse</a>
+      Para gestionar los argumentos de la línea de comandos (<u>sys.argv</u>), de
+      forma cómoda y más avanzada (crear un CLI -- command-line interface),
+      permitiendo indicar si son opcionales, valores por defecto, cortos o
+      largos (o ambas cosas), ayuda... 
+      NOTA: valorar argumentos vs. (o junto a) ficheros de configuración (ej. ini)
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo: argparse, logging y configparser
+      <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/
+      y hace uso de argparse (CLI), configparser (ini), logging...</blockquote>
+
+      # Avanzado: juegos de caracteres<a href="#juegos-caracteres" class="link-anchor"> # </a>
+      ## Unicode
+      Estándar (y organismo) para la codificación, representación
+      y manejo de texto. Define un <u>repertorio/"juego"</u> de todos los
+      posibles caracteres (y algunos símbolos especiales, ej. 🎵 😉)
+      para todos los idiomas (alfabetos) y sistemas de escritura.
+      <a href="http://www.unicode.org/versions/Unicode13.0.0/" target="_blank">En 2020 (v13.0)</a> define unos 114K caracteres, ampliables a 1.1M,
+      y a cada uno se le asigna un "code point" (número). Ej: U+1F609
+      .
+      Existen <u>muchos otros</u> juegos de caracteres más <u>antiguos</u>
+      @CLASS@ juegos-caracteres
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-10 (DESDE MODULO 4) -->
+
+      ## Codificación de caracteres (character encoding)
+      Es el mecanismo para procesar, almacenar y transmitir texto
+      (como una secuencia de bytes/números).
+      Son un convenio (reglas/tablas) para asignar code points a
+      caracteres de manera inequívoca
+      Ejemplos: Morse, ASCII, UTF-8 y UTF-16 (estos 2, de Unicode) 
+      .
+      Resumen bastante completo de lo general y lo de Python:
+      : https://docs.python.org/3/howto/unicode.html
+      Bastante largo pero didáctico y más a fondo y general:
+      <a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/" target="_blank">Artículo de Joel Spolsky sobre Unicode y encodings</a>
+
+      ## ASCII (7 bits)
+      Es el primer juego de caract. y sistema de codificación
+      (el estándar definía ambas cosas) que fue casi universal
+      Define sólo 128 caracteres (alfabeto inglés y poco más)
+      .
+      Video muy didáctico para entender la historia y la base:
+      : https://www.youtube.com/watch?v=UPlR4eMMCmI
+
+      <!-- Adapted from: -->
+      <!-- https://cdn.shopify.com/s/files/1/1014/5789/files/Standard-ASCII-Table_large.jpg -->
+      ! img/standard-ASCII-table-highlighted.png
+
+      ## UTF-8
+      Es la codif. de caracteres más habitual en Web y Linux
+      Es el <u>recomendado</u> siempre
+      Tiene muchas ventajas (diseñado para ser detectable, "corregible"...)
+      Compatible ASCII (7 bits: los primeros 128 caracteres coinciden)
+      .
+      Ejemplos:
+        'A' (U+0041) ➡ 0x41 ('0b1000001', en decimal 65) (1 byte)
+        '😉' (U+1F609) ➡ 0xF0 0x9F 0x98 0x89 (4 bytes)
+
+      ## Otras codif. de caracteres usadas antes
+      Tienen un conjunto de caracteres diferente (o sea, <u>no todos</u>
+      los caract. se pueden representar o convertir!)
+      .
+      La más habitual en Europa Occidental (conj. reducido):
+        Windows-1252 (o cp1252, o <u>Latin 1</u>) ~= <u>ISO-8859-x</u> y CP850
+      Todas ellas suelen también ser compat. con ASCII (7 bits)
+      Otra habitual en programas y ficheros de Windows (conj. amplio):
+        UCS-2 (o <u>UTF-16</u>), mal llamado "Unicode" a veces...
+
+      En Python 3, todo es Unicode con UTF-8, y nos "despreocupamos"
+      excepto cuando manejamos código fuente "mal hecho" (no UTF-8)
+      o cuando <u>leemos o escribimos ficheros</u> (hay que definir cómo)
+      o cuando tenemos que interactuar con algo que exija otro encoding.
+      Hay funciones para "convertir" texto entre distintas codificaciones.
+      .
+      Lista de encodings soportados:
+      : https://docs.python.org/3/library/codecs.html#standard-encodings
+      .
+      Avanzado: u-strings (por compat. con Python 2, que no era UTF-8 por def.)
+        <u>u</u>"hola" == "hola"  # en Python 3 son exactamente lo mismo
+
+      ## hashbangs (shebangs) para indicar encoding
+      El código fuente (ficheros .py) por defecto (en Python 3) se
+      espera que esté en encoding <u>UTF-8</u>. Si es así, no hay que
+      explicitarlo, aunque hay quien (o herram.'s) que lo prefieren.
+      <!-- REFERENCIA-INTERNA-A-MODULO-6 -->
+      Ver cómo hacerlo con los shebangs en <a href="Módulo 6. Módulos y paquetes.html#shebangs" target="_blank">Módulo 6</a>
+      .
+      Recordar de todas formas que eso sólo afecta al código, IDE...
+      Para que luego se muestren bien los caracteres, intervienen más
+      cosas como el programa (terminal o GUI), el S.O., las fuentes...
+
+      Resumen, lo más importante (del artículo mencionado antes):
+      "It does not make sense to have a string without knowing what encoding it
+      uses. You can not pretend that “plain” text is ASCII / Latin 1 [ / UTF-8 / xyz].
+      There is No Such Thing As “plain text”.
+      If you have a string, in memory, in a file, or in an email message, you have to
+      know what encoding it is in or you cannot interpret it or display it to users
+       correctly."
+      -- <a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/" target="_blank">Joel Spolsky: The Absolute Minimum (...) about Unicode and Character Sets</a>
+      .
+      En Python 3, en memoria las cadenas siempre son UTF-8, esa parte está clara.
+      Cuando trabajamos con ficheros o internet, debemos conocerlo e indicarlo!
+      Normalmente el encoding está implícito o no lo conocemos, pero será "alguno"
+
+      # Avanzado: bytes()
+      bytes es una clase para manipular datos binarios, es decir, secuencias inmutables
+      de enteros (valores 0..255). Son "similares" a cadenas.
+      : https://docs.python.org/3/library/stdtypes.html#binaryseq
+      .
+      Los ficheros binarios se gestionan con este tipo de datos, y usando open(..., <u>"b"</u>)
+      En realidad, cuando escribimos ficheros de texto, también se "convierten" a
+      una secuencia de bytes adecuada según el character encoding, aunque lo hace
+      Python por nosotros de forma "casi" invisible... open(..., <u>encoding</u>="xyz")
+      Nota: esa conversión depende del entorno/S.O./etc. Mejor ser explícitos!
+      Más detalles en: <a href="https://docs.python.org/3/library/functions.html#open" target="_blank">https://docs.python.org/3/library/functions.html#open</a>
+
+      La función bytes() convierte (normalmente desde cadenas) a repr. binaria con bytes:
+        In [1]: bytes("ABC", encoding="utf-8")
+        Out[1]: b'ABC'
+        
+        In [2]: bytes("🎵", encoding="utf-8")
+        Out[2]: b'\xf0\x9f\x8e\xb5'
+        
+        In [3]: bytes("😉", encoding="utf-8")
+        Out[3]: b'\xf0\x9f\x98\x89'
+        
+        In [4]: <u>list</u>(bytes("😉", encoding="utf-8"))
+        Out[4]: [240, 159, 152, 137]
+        
+        In [5]: list(bytes("ABC", encoding="utf-8"))
+        Out[5]: [65, 66, 67]
+        
+        In [6]: bytes("😉", encoding="utf-8").<u>hex</u>()
+        Out[6]: 'f09f9889'
+
+      Más ejemplos:
+        with open("txt_from_bin.txt", "wb") as f_bin_write:
+            btarray = bytes("😉\n", encoding="utf-8")
+            f_bin_write.write(btarray)
+      .
+        with open("txt_from_bin.txt", "r") as f_read:
+            cad = f_read.readline()
+            print(cad)
+      .
+        with open("txt_from_bin.txt", "r", encoding="utf-8") as f_read:
+            cad = f_read.readline()
+            print(cad)
+
+      ## Avanzado: .editorconfig
+      Fichero muy útil para gestionar <u>explícitamente</u> nuestras preferencias en cuanto
+      a encoding (y saltos de línea!), a nivel desarrollo, editor/IDE, etc. Ejemplo:
+        root = true
+        
+        [*]
+        <u>end_of_line</u> = lf
+        <u>charset</u> = utf-8
+        indent_style = space
+        indent_size = 4
+        insert_final_newline = true
+        trim_trailing_whitespace = false
+        
+        [*.{json,js,css,scss,yml,htm,html}]
+        indent_size = 2
+        
+        [{*.bat,*.cmd}]
+        end_of_line = crlf
+      En el caso de VS Code, hay que instalar la extensión "editorconfig.editorconfig"
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 1 <u>(opcional)</u>: Scrabble<a href="#ejercicio-1" class="link-anchor"> # </a>
+      <blockquote>A partir de un esqueleto de programa dado, completarlo<br> /NOBR/
+      para solucionar el problema de encontrar todas las palabras<br> /NOBR/
+      que se pueden formar en Scrabble con una combinación de<br> /NOBR/
+      fichas determinada.</blockquote>
+      Nota: usar la lista de palabras "oficial" de Scrabble: <a href="http://mit.edu/jesstess/www/SkillsharePython/Unit5/sowpods.txt" target="_blank">aquí</a>
+      Opcional: calcular además la puntuación de cada palabra (...)
+      Opcional: dividir el trabajo por equipos (...)
+      .
+      Sugerencias:
+      - Guardar una copia del original en todo momento!
+      - Ir probando por trozos, y con ficheros más pequeños al inicio
+      <!-- Problema y solución en: -->
+      <!-- https://wiki.openhatch.org/wiki/O%27Reilly_Introduction_to_Python/Section_18 -->
+      @CLASS@ ejercicio-1
+
+      # Codificación de datos
+      ## Base 64 encoding
+      Para codificar datos arbitrarios (ej. binarios) en texto ASCII
+      : https://en.wikipedia.org/wiki/Base64
+      Ejemplo: <samp>SGVsbG8sIHdvcmxkIQ==</samp>
+      Muy usado en Web, emails, XML... Útil para pruebas: <a href="https://www.base64decode.org/" target="_blank">base64decode.org</a>
+      .
+      Se puede gestionar con el módulo <u>base64</u> de la bibl. estándar (...)
+      : https://docs.python.org/3/library/base64.html
+
+      ! https://dzone.com/storage/temp/7139353-visualization-preview.png
+
+      ## URL Encoding (Percent Encoding)
+      Similar, para las direcciones URL (más "legible")
+      - URLs can only be sent over the Internet using the ASCII character-set.
+      - URLs cannot contain spaces (normally replaced with a plus "+" sign or %20)
+      .
+      Ejemplo: <a href="https://www.google.com/search?q=Hello+world%21" target="_blank">https://www.google.com/search?q=Hello+world%21</a>
+      .
+      En Python, se puede usar el módulo parse dentro de urllib (import <u>urllib.parse</u>)
+      Más detalles en:
+      : https://docs.python.org/3/library/urllib.parse.html
+      : https://www.w3schools.com/tags/ref_urlencode.asp
+
+      # Comprensiones (comprehensions)
+      ## Expresiones generadoras
+      Avanzado: Generator expresions
+      Son una <u>notación</u> abreviada para escribir un generador:
+      <u>( expression <samp>for</samp> item <samp>in</samp> list <samp>if</samp> conditional )</u>
+      .
+      Pueden sustituir a cosas como map(), lambdas, etc. de forma más sencilla
+      Al ser un generador, se van produciendo los valores "a demanda"...
+      No son un bucle sino una expresión, aunque "se parecen" y no importa mucho
+      La parte del if es opcional. Más detalles y doc. de referencia:
+      : https://docs.python.org/3/reference/expressions.html#generator-expressions
+
+      Ejemplos:
+        mezclados = ["abc", "Hola", "UPPER", "MiXeD"]
+        mayusc = (str.upper(x) <samp>for</samp> x <samp>in</samp> mezclados <samp>if</samp> len(x) > 3)
+        print(list(mayusc))
+      .
+        primeros_cuadrados = ( i**2 for i in range(10) )
+        for i in primeros_cuadrados:
+            print(i)
+      .
+        for i in ( i**2 for i in range(10) ): # lo mismo!
+            print(i)
+      .
+      NOTA: si no es ambiguo, a veces se pueden omitir los paréntesis
+
+      ## Comprensiones de listas
+      <u>[ expression <samp>for</samp> item <samp>in</samp> list <samp>if</samp> conditional ]</u>
+      Ejemplo útil:
+        mezclados = ["5", 0, "2", 10.0, "34", 10_000]
+        sorted(mezclados)  # ERROR!
+        # Ojo: incluso si fueran cadenas, el orden no sería "correcto"
+      .
+        # convertir valores a float
+        flotantes = [float(x) for x in mezclados]
+        sorted(flotantes)  # OK
+      .
+      Similares a una generator expression (incluso en notación) pero no devuelven un
+      iterador sino directamente una <u>lista</u>
+      : https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions
+
+      ## Comprensiones de tuplas?
+      No existen (sintaxis ambigua!) pero se puede hacer casi
+      lo mismo indirectamente, con las de listas o generadores:
+      tuple( expression for item in list if conditional )
+      tuple( [ expression for item in list if conditional ] )
+
+      ## Comprensiones de diccionarios
+      <u>{ k <samp>:</samp> v <samp>for</samp> k<samp>,</samp> v <samp>in</samp> [(1, 2), (1, 0)] }</u>
+      .
+      Atención a los signos ":" y ","! Esperan <u>dos</u> expresiones (clave-valor).
+      También puede tener una parte condicional (if) al final, como las otras...
+      .
+      ## y de sets (conjuntos)
+      Sintaxis similar a la de diccionarios pero con una sola expresión:
+      { s for s in [1, 2, 1, 0] }
+
+      # Hashes y CRC's
+      "Resumir" y comprobar la no alteración de los datos
+      Se les llama también "digests" (en el sentido de resumen)
+      ## md5
+      Mecanismo de hash muy usado durante muchos años (y todavía)
+      aunque ahora no se considera seguro. Mejor usar <u>SHA-3</u>!
+      : https://en.wikipedia.org/wiki/MD5
+      : https://en.wikipedia.org/wiki/SHA-3 
+
+      ## módulo hashlib
+      Ejemplo:
+        import hashlib
+        hashlib.sha3_256(b"Hello world!").hexdigest()
+      .
+      Ojo: no confundir con la función built-in <a href="https://docs.python.org/3/library/functions.html#hash" target="_blank">hash()</a>, relacionada
+      con los temas de identidad e inmutabilidad: is, id()...
+
+      ## CRC-32
+      CRC: Códigos de redundancia cíclica
+      CRC-32 es uno de los más populares
+      Similares a los hashes (al final calculan un valor "resumen"), pero
+      enfocados en la <u>detección de errores</u>, más que en la "unicidad"
+      de los resultados o en que sean difíciles de vulnerar...
+      .
+      Son mucho más <u>rápidos</u> de calcular!
+      Se usan para detectar errores de transmisión, corrupción de datos...
+      : https://en.wikipedia.org/wiki/Cyclic_redundancy_check
+
+      ! img/crc-32-pseudo-code.png
+
+      # Compresión de datos
+      Utilizar una codificación diferente para los datos,
+      que resulte más <u>compacta</u>, aprovechando redundancias
+      Normalmente (la que nos interesa) es "sin pérdidas" (lossless)
+      Hay muchos formatos/algoritmos, con diferentes objetivos...
+      .
+      Ejemplo muy sencillo de entender:
+      : https://en.wikipedia.org/wiki/Run-length_encoding
+      Más detalles:
+      : https://en.wikipedia.org/wiki/Lossless_compression
+      Hay muchos algoritmos diferentes: <a href="https://docs.python.org/3/library/zlib.html" target="_blank">zlib</a>, <a href="https://docs.python.org/3/library/gzip.html#module-gzip" target="_blank">gzip</a>, zip, ..., png, jpg (Lossy!)
+
+      Ejemplos de uso:
+        import <samp>zipfile</samp>
+        with zipfile.ZipFile('prac/foo.zip', 'w') as myzip:
+            myzip.write('prac/qr.txt')  # añadir un archivo al zip
+            myzip.write('prac/test-print.py')  # añadir otro archivo
+      .
+        with zipfile.ZipFile('prac/foo.zip', 'r') as myzip:
+            with myzip.open('prac/qr.txt', 'r') as myfile:
+                print(myfile.readline())  # Ojo, objeto binario (bytes)
+            # Alternativa: extraer todo y luego ya procesar cada archivo "normal"
+            myzip.extractall("extracted_content")  # recibe la ruta donde extraerlo
+      .
+      Más detalles en:
+      : https://docs.python.org/3/library/zipfile.html
+
+    </pre>
+  </body>
+</html>

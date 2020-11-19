@@ -6,10 +6,6 @@
 import time
 
 
-# NOTA: dependiendo de cómo/dónde lo ejecutemos, puede hacer falta ajustar la ruta!
-FICH_TABL = "examples/juego-vida-spc.txt"
-
-
 def leer_tablero_fich(nombre_fich):
     """Lee un fichero de texto con un contenido adecuado (...) y lo convierte
     en una matriz que representa el tablero de juego (0's y 1's numéricos)"""
@@ -40,6 +36,7 @@ def leer_tablero_fich(nombre_fich):
     return m
 
 
+# Nota: en esta versión ya no se utiliza (al menos por ahora) esta función
 def leer_tablero(tablero_cadena):
     """Convierte una cadena adecuada en una matriz, para operar mejor con ella"""
     i = 0
@@ -118,6 +115,10 @@ def sig_generacion(m):
 
 # NOTA: posible mejora opcional: recibir un argumento de línea de comandos opcional, con el
 # nombre del fichero de tablero que se debe leer (si no se recibe, se usa el de por defecto)
+
+# NOTA: dependiendo de cómo/dónde lo ejecutemos, puede hacer falta ajustar la ruta!
+# FICH_TABL = "examples/juego-vida.txt"
+FICH_TABL = "examples/juego-vida-spc.txt"
 
 # m = leer_tablero(tablero_texto)
 m = leer_tablero_fich(FICH_TABL)

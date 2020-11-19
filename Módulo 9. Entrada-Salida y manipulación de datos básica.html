@@ -43,8 +43,8 @@
           subprocess
           exec()
           Otros
-        Concurrencia
         Depuración (debug)
+        Concurrencia
         Ejercicios extra
         Referencias
       @ZOOM@ 110
@@ -374,14 +374,24 @@
             cad = "formula = x * 5"
         else:
             cad = "formula = 0"
-        exec(formula)
+        exec(cad)  # recibe una cadena!
+        print(formula)
       .
       Es simplemente una función built-in (no bibl. estándar)
-      Similar a eval(), visto en el Módulo 8...
+      Similar a eval(), visto en el <a href="Módulo 8. Funciones avanzadas.html#eval" target="_blank">Módulo 8</a>, pero más general...
+      <!-- REFERENCIA-INTERNA-A-MODULO-8 -->
 
       ## Otros: glob, os, zlib, json,
       ## xml, unittest, logging...
       Los veremos más adelante
+
+      # Depuración (debug)
+      Actividad de buscar y eliminar errores en los programas
+      - Escribir información para conocer el estado y el flujo de<br> ejecución del programa. <a href="https://en.wikipedia.org/wiki/Log_file" target="_blank">logging</a> vs. print()
+      - Ejecución en modo debug. Herramientas específicas. IDE
+      .
+      Consejos básicos <u>muy recomendables</u>:
+      : https://openbookproject.net/thinkcs/python/english3e/app_a.html
 
       # Concurrencia
       Tema avanzado... sirve para hacer "varias cosas a la vez" (+/-)
@@ -395,14 +405,6 @@
       : https://towardsdatascience.com/concurrency-in-python-e770c878ab53
       : https://realpython.com/python-concurrency/
       : https://docs.python.org/3/library/concurrency.html
-
-      # Depuración (debug)
-      Consejos básicos <u>muy recomendables</u>:
-      : https://openbookproject.net/thinkcs/python/english3e/app_a.html
-      .
-      Herramientas específicas (o no). IDE
-      print()
-      logging
 
       # Ejercicios extra
       - Utilizando subprocess, invocar a pip para generar la lista de paquetes<br> actualmente instalados (en "formato" list, no freeze), obtener la salida<br> (resultado/texto) de su ejecución y guardarlo en un diccionario. Ejemplo<br> del valor esperado para este diccionario una vez hecho todo ello:

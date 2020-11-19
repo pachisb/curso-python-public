@@ -7,8 +7,17 @@
 import time
 
 
-# NOTA: dependiendo de cómo/dónde lo ejecutemos, puede hacer falta ajustar la ruta!
-FICH_TABL = "examples/juego-vida-spc.txt"
+# Función auxiliar usada desde leer_tablero_fich(), para que quede todo más claro...
+def convertir_cadena_linea_en_lista(cad):
+    """Para una cadena bien formada como "000101010101010101111", devuelve [0, 0, 0, 1, ...]"""
+    l = []
+    for caracter in cad:
+        if caracter in ".0-·":  # Opc.: permitir "0"s y más, por comodidad
+            l.append(0)
+        elif caracter == "1":
+            l.append(1)
+        # NOTA: al no hacer nada más, ya ignoramos los \n, espacios, líneas vacías...
+    return l
 
 
 def leer_tablero_fich(nombre_fich):
@@ -22,21 +31,17 @@ def leer_tablero_fich(nombre_fich):
     try:
         with open(nombre_fich) as f:
             for line in f:
-                l = []
-                line = line.strip()  # quitar espacios ini/fin y \n final
-                line = line.replace(" ", "")  # Opc.: quitar espacios intermedios
-                if line != "":  # ignorar las vacías
-                    for carac in line:
-                        if carac in ".0-·":  # Opc.: permitir "0"s y más, por comodidad
-                            l.append(0)
-                        else:
-                            l.append(1)
+                # Por claridad, "extraemos" la lógica para cada línea a otra función
+                l = convertir_cadena_linea_en_lista(line)
+                if len(l) > 0:
                     m.append(l)
-    except:
-        m = []  # en caso de error, mejor esto (por si estaba "a medias")
+    except FileNotFoundError:
+        print(f"Error en la lectura del archivo '{nombre_fich}'', no existe o no se puede abrir!")
+        m = []  # en  caso de error, mejor esto (por si estaba "a medias")
     return m
 
 
+# Nota: en esta versión ya no se utiliza (al menos por ahora) esta función
 def leer_tablero(tablero_cadena):
     """Convierte una cadena adecuada en una matriz, para operar mejor con ella"""
     i = 0
@@ -115,6 +120,10 @@ def sig_generacion(m):
 
 # NOTA: posible mejora opcional: recibir un argumento de línea de comandos opcional, con el
 # nombre del fichero de tablero que se debe leer (si no se recibe, se usa el de por defecto)
+
+# NOTA: dependiendo de cómo/dónde lo ejecutemos, puede hacer falta ajustar la ruta!
+# FICH_TABL = "examples/juego-vida.txt"
+FICH_TABL = "examples/juego-vida-spc.txt"
 
 # m = leer_tablero(tablero_texto)
 m = leer_tablero_fich(FICH_TABL)
