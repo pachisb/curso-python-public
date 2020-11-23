@@ -28,9 +28,9 @@ S5-D1
 S6-D1
 9. Entrada/Salida y manipulación de datos básica (~2d) (AJUST.)
 (cambio de orden)
+11. Herramientas y metodologías de desarrollo (~1d)
 12. Extras: logging y otros. Entornos de desarrollo (~1d) (AJUST.)
-10. Entrada/Salida y manipulación de datos avanzada (~2d) (AJUST.)
 
 S7-D1
-11. Herramientas y metodologías de desarrollo (~1d)
-10. Entrada/Salida y manipulación de datos avanzada (~2d) (AJUST.) (cont.)
+11. Herramientas y metodologías de desarrollo (~1d) (cont.)
+10. Entrada/Salida y manipulación de datos avanzada (~2d) (AJUST.)
