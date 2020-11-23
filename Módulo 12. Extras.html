@@ -173,6 +173,9 @@
         > python3 -m venv
         > python3 -m pip freeze [--user]
       Importante y recomendado: usar requirements.txt
+      .
+      <u>Repaso</u> y ejemplos (interesante sobre todo el principio) en:
+      : https://realpython.com/python-virtual-environments-a-primer/
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / demo: entornos virtuales
@@ -245,8 +248,11 @@
       Linux:
         python3 -m jupyter notebook
       .
-      Alternativas:
-      Usar los notebooks desde VS Code, entornos cloud, etc.
+      Alternativas: usar los notebooks desde VS Code, entornos cloud, etc.
+      : https://mybinder.org/
+      : https://colab.research.google.com/notebooks/welcome.ipynb
+      @CLASS@ ipython
+      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-12 (DESDE MODULO 1) -->
 
       ## Expresiones extra en IPython
         ?  # añadido tras un comando, muestra doc/ayuda
@@ -254,20 +260,37 @@
         In[n] / In[-1] / Out[n]  # Ojo, Out es diccionario!
         _ / __  # último / penúltimo (etc.) resultado - Out!
         ;  # para separar sentencias dentro de una línea
-      @CLASS@ ipython
-      <!-- DESTINO-REFERENCIA-INTERNA-MODULO-12 (DESDE MODULO 1) -->
+        ! # system command escape (invocar al shell del sistema)
 
       ## Magic functions
         magic  # equivalente a help() para las magic functions
+        %quickref  # ayuda resumida para las magic functions y más
         %lsmagic  # lista todas las magic functions
         %rep  # toma el último resultado (Out) para editar
-        %edit [-p]  # para usar un editor (opc. previo cont.)
-        %run [-i|-m]  # ejec. fichero (opc. "integrado") / módulo
         %cd
         %pwd  # mostrar el directorio actual
-        ! # system command escape (invocar al shell)
+
+        %edit [-p]  # para usar un editor (opc. previo cont.)
+        %run [-i|-m]  # ejec. fichero (opc. "integrado") / módulo
+        %cpaste  # útil para pegar código copiado, porque
+                 # se permiten espacios iniciales, ">", etc.
+        %time ...  # medir el tiempo de ejec. de una sentencia
+        %%time ...  # medir el tiempo de ejec. de una celda
+        %matplotlib inline  # si usamos matplotlib, ver los result.!
+
+      ## Atajos de teclado, etc.
+      <kbd>Ctrl+Enter</kbd> para ejecutar el bloque actual
+      <kbd>Shift+Enter</kbd> para ejecutar el bloque actual y seguir
+      .
+      Intro básica, más atajos de teclado, etc.:
+      : https://medium.com/edureka/jupyter-notebook-cheat-sheet-88f60d1aca7
+      .
+      Doc. oficial sobre las magic functions:
+      : https://ipython.readthedocs.io/en/stable/interactive/magics.html
+
 
       ## IPython desde intérprete Python
+      (Avanzado: útil para cuando no tenemos acceso a consola)
       IPython es simplemente un módulo, así que podemos usarlo
       también desde el shell Python interactivo "normal"!
         >>> <samp>import IPython; IPython.start_ipython()</samp>
