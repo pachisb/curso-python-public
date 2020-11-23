@@ -54,9 +54,9 @@
 
       # Biblioteca estándar (cont.)
       ## Otros módulos
-      <a href="https://docs.python.org/3/library/glob.html" target="_blank">glob</a> - avanzado: expansión de patrones de rutas, tipo *.csv
+      <a href="https://docs.python.org/3/library/glob.html" target="_blank">glob</a> - avanzado: expansión de patrones de rutas, tipo <samp>**.csv</samp>
       <a href="https://docs.python.org/3/library/os.html" target="_blank">os</a> - temas relacionados con el S.O.: path, permisos/propiedades de ficheros,
-      listdir(), procesos, directorio actual: os.curdir, chdir(), etc.
+      listdir(), procesos, directorio actual: os.curdir, chdir(), etc. (Algunos, avanzados!)
       <a href="https://docs.python.org/3/library/argparse.html" target="_blank">argparse</a>
       Para gestionar los argumentos de la línea de comandos (<u>sys.argv</u>), de
       forma cómoda y más avanzada (crear un CLI -- command-line interface),
@@ -65,9 +65,39 @@
       NOTA: valorar argumentos vs. (o junto a) ficheros de configuración (ej. ini)
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
-      # Ejercicio / demo: argparse, logging y configparser
-      <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/
-      y hace uso de argparse (CLI), configparser (ini), logging...</blockquote>
+      # Ejercicio / demo <u>(opcional)</u>: módulo csv
+      <blockquote>Demo de un pequeño programa que hace uso del módulo csv (biblioteca<br> /NOBR/
+      estándar) para leer ficheros CSV más o menos grandes...</blockquote>
+      Opcional: se puede comparar con el ejemplo del Módulo 9 citado abajo
+      <u>Solución</u> en página siguiente...
+      .
+      Ejemplo de base opcional (relacionada con esto, pero sin usar el módulo csv),
+      en el Ejercicio / demo "generadores y leer CSV" del <a href="Módulo 9. Entrada-Salida y manipulación de datos básica.html#ejercicio-generadores-csv" target="_blank">Módulo 9</a>.
+      Doc. oficial de referencia: <a href="https://docs.python.org/3/library/csv.html" target="_blank">https://docs.python.org/3/library/csv.html</a>
+      <!-- REFERENCIA-INTERNA-A-MODULO-9 -->
+
+      Solución al ejercicio anterior:
+        import csv
+      .
+        header = [ "(desconocidas)" ]  # no siempre tendremos cabeceras...
+        with <u>open</u>('examples/flashcards_capitales.csv', <u>encoding</u>='utf-8') as csv_file:
+            csv_reader = <u>csv.reader</u>(csv_file, delimiter=',')
+            # Opcional: leer la primera línea de forma "manual", si son cabeceras
+            # header = csv_reader.__next__()
+            print(f'Columnas/cabecera: {" // ".join(header)}')
+            for row in csv_reader:  # el objeto es iterable
+                print(f'\t{row[1]} es la capital de {row[0]}')  # row es una <u>lista</u>
+      .
+      Más ejemplos y detalles (incluyendo uso con diccionarios en lugar de listas, y con <u>pandas</u>):
+      : https://realpython.com/python-csv/
+      .
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      <!-- # Ejercicio / demo <u>(opcional)</u>: argparse, logging -->
+      <!-- # y configparser -->
+      <!-- <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/ -->
+      <!-- y hace uso de argparse (CLI), configparser (ini), logging...</blockquote> -->
+      <!-- . -->
+      <!-- Nota: continuaremos con este ejemplo más adelante... -->
 
       # Avanzado: juegos de caracteres<a href="#juegos-caracteres" class="link-anchor"> # </a>
       ## Unicode
@@ -224,7 +254,7 @@
         
         [{*.bat,*.cmd}]
         end_of_line = crlf
-      En el caso de VS Code, hay que instalar la extensión "editorconfig.editorconfig"
+      En el caso de VS Code, hay que <em>instalar la extensión</em> "editorconfig.editorconfig"
 
       <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
       # Ejercicio 1 <u>(opcional)</u>: Scrabble<a href="#ejercicio-1" class="link-anchor"> # </a>
@@ -324,12 +354,16 @@
       Sintaxis similar a la de diccionarios pero con una sola expresión:
       { s for s in [1, 2, 1, 0] }
 
+      Más ejemplos y repaso en:
+      : https://www.geeksforgeeks.org/comprehensions-in-python/
+      : https://realpython.com/list-comprehension-python/
+
       # Hashes y CRC's
       "Resumir" y comprobar la no alteración de los datos
       Se les llama también "digests" (en el sentido de resumen)
       ## md5
-      Mecanismo de hash muy usado durante muchos años (y todavía)
-      aunque ahora no se considera seguro. Mejor usar <u>SHA-3</u>!
+      Algoritmo de hash muy usado durante muchos años (y todavía)
+      aunque ahora ya <u>no se considera seguro</u>. Mejor usar <u>SHA-3</u>!
       : https://en.wikipedia.org/wiki/MD5
       : https://en.wikipedia.org/wiki/SHA-3 
 
@@ -380,6 +414,120 @@
       .
       Más detalles en:
       : https://docs.python.org/3/library/zipfile.html
+
+      Resumen de los principales módulos de la bibl. estándar
+      y ejemplos, en "Brief Tour of the Standard Library":
+      : https://docs.python.org/3/tutorial/stdlib.html
+
+      # Conceptos básicos de acceso a BBDD
+      Se puede hacer a más o menos bajo nivel ("cercano" a la BD o no).
+      Hay muchas librerías...! También se usa <a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity" target="_blank">ODBC</a> como mecanismo
+      independiente de la plataforma/S.O. y el tipo de BD (...)
+      .
+      ## Librería SQLAlchemy
+      <u>Recomendada</u> y ampliamente usada, sobre todo en data science
+      Tiene una aproximación similar (multiplataforma; BD-agnóstica) y
+      proporciona funcionalidad adicional (como la de <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping" target="_blank">ORM</a>)
+      : https://www.sqlalchemy.org/
+
+      Forma de uso <u>habitual</u> en data science: SQLAlchemy con <u>pandas</u>, "por tablas".
+      La vemos a continuación (en el siguiente ejercicio).
+      .
+      Uso menos habitual (avanzado): "directo", y con sentencias SQL.
+      Varias formas... Por ejemplo, con la DB-API (oficial, <a href="https://www.python.org/dev/peps/pep-0249/" target="_blank">PEP 249</a>) y con uso directo
+      de varios tipos de BD, incluyendo <u>MySQL, PostgreSQL, MS SQL Server y SQLite</u>:
+      : https://philvarner.github.io/pages/novice-python3-db-api.html
+      Similar (más sencillo, también con ejemplos), para MySQL, PostgreSQL y SQLite:
+      : https://realpython.com/python-sql-libraries/
+
+      <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
+      # Ejercicio 2 <u>(opcional)</u>: SQLAlchemy<a href="#ejercicio-2" class="link-anchor"> # </a>
+      <blockquote>Preparar una o varias BBDD MySQL y/o PostgreSQL para acceder a sus datos<br> /NOBR/
+      (ya sean locales/nativas/virtuales o remotas/red/nube) con SQLAlchemy.<br> /NOBR/
+      Después, probar a insertar y recuperar datos en ellas.</blockquote>
+      .
+      <u>Guión</u> para la parte de acceso a los datos, instalación de SQLAlchemy, etc.:
+      : https://www.sqlshack.com/introduction-to-sqlalchemy-in-pandas-dataframe/
+      @CLASS@ ejercicio-2
+      <!-- Más casos: ...\source\prueba-sqlserver-python -->
+      <!-- Opc. Azure: belero-demo-vm-bd1.westeurope.cloudapp.azure.com (5432) -->
+
+      # Muy avanzado: Expresiones regulares
+      ## módulo re (biblioteca estándar)
+      "Flexible <u>Pattern Matching</u>"
+      Son una generalización de los "comodines" del shell del sistema:
+        dir *.csv
+        dir pythonchallenge-0?.py
+      .
+      Introducción (interesa sobre todo el principio):
+      : https://docs.python.org/3/howto/regex.html
+
+      Sintaxis permitida (doc. oficial):
+      : https://docs.python.org/3/library/re.html#re-syntax
+      .
+        ?      Match zero or one repetitions of preceding
+        *      Match zero or more repetitions of preceding
+        +      Match one or more repetitions of preceding
+        {n}    Match n repetitions of preceding
+        {m,n}  Match between m and n repetitions of preceding
+        . ^ $ [ ] \ | ( )  Otros caracteres especiales (...)
+
+      .
+        \d  Match any digit (nota: son DOS caracteres!)
+        \D  Match any non-digit
+        \s  Match any whitespace
+        \S  Match any non-whitespace
+        \w  Match any alphanumeric char
+      .
+        [aeiou]   Cualquiera de los caracteres listados
+        [a-z0-9]  Cualq. de los conjuntos de caracteres indicados
+
+      <u>match</u>() - si la expr. se cumple (al inicio de la cadena), devuelve un
+      objeto con información sobre la posición en que se encuentra, etc.
+      .
+      Ejemplo:
+        import re
+        email = re.<u>compile</u>('\w+@\w+\.[a-z]{3}')  # "preparación"
+        mtch = email.<u>match</u>('guido@python.org')
+        if mtch is None:  # no se cumple
+            print("Incorrect email address")
+        else:
+            print(f"Match encontrado, posición {mtch.start()}")
+      .
+      Nota: expr. simplificada, no representa "bien" las reglas para email's
+
+      <u>search</u>() - si la expr. se cumple (en cualquier posición)
+      <u>findall</u>() - devuelve una <u>lista</u> con las ocurrencias (cualq. pos.)
+      .
+      Más ejemplos:
+        email.search("...")  # texto donde se busca
+        email.findall("...")  # texto donde se busca
+
+      Nota: se suele usar notación <u>raw-strings</u>. Sintaxis habitual:
+        two_chars = r"\n"  # dos caracteres, no el salto de línea!
+        expr1 = r"\d{2} \d{4} \d{2}:\d{2}:\d{2})"
+        # se espera que se use para expr. regulares (se colorea diferente)
+      .
+      Curiosidad de VS Code sobre las raw strings y el syntax highlighting:
+        expr2 = R"\d{2} \d(4} \d{2}:\d{2}:\d{2})"
+        # es EQUIVALENTE, pero se colorea de la forma "normal"
+      Ver detalles <a href="https://stackoverflow.com/questions/49358590/is-there-a-difference-between-capital-and-lowercase-string-prefixes/49358682#49358682" target="_blank">aquí</a>
+
+      <!-- EJERCICIO-PARA-CLASE -->
+      # Ejercicio 3: repaso con Jupyter<a href="#ejercicio-3" class="link-anchor"> # </a>
+      <blockquote>Repaso de expr. regulares, con notebook de Jupyter de ejemplo, del curso<br> /NOBR/
+      "Complete Python Bootcamp", de Jose Portilla (Udemy / GitHub).</blockquote>
+      Detalles sobre el curso en:
+      : https://www.udemy.com/course/complete-python-bootcamp/
+      : https://github.com/Pierian-Data/Complete-Python-3-Bootcamp
+      .
+      Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/05-Overview-of-Regular-Expressions.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../05-Overview-of-Regular....ipynb</a>
+      @CLASS@ ejercicio-3
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo <u>(opcional)</u>: Flask
+      <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/
+      y hace uso de argparse (CLI), configparser (ini), logging, Flask...</blockquote>
 
     </pre>
   </body>
