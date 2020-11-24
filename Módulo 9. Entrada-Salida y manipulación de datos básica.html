@@ -263,7 +263,7 @@
         print("ERROR 5", file=sys.stderr)
 
       ## sys.argv
-      Ejemplo sencillo de uso de argumentos recibidos:
+      Ejemplo sencillo de uso de argumentos <u>recibidos por el programa</u>:
         import sys
         print(sys.argv[0])
         if len(sys.argv) > 1:
@@ -275,38 +275,51 @@
       Alternativa/mejora recom. (casos no sencillos): <u>argparse</u>
 
       ## time
+      Usado para tomar "referencias" de tiempo (<em>timestamps</em>) y medir
+      lapsos (intervalos) de tiempo transcurrido (medidos en segundos)
+      Ejemplo:
         import time
         time.sleep(5)
-        start = time.time()  # anotar fecha/hora actual (segundos)
+        start = time.time()  # guardar fecha/hora actual (segundos)
         ...
-        print(f"total running time:", time.time() - start)
+        # Calcular y mostrar el lapso de tiempo (ahora - antes)
+        print(f"total running time:", time.time() - start, "seconds")
 
       ## datetime
+      Más completo, para gestionar fechas/horas de forma más flexible
+      (permite acceder a info de cada "campo" de la fecha: año, mes...) y
+      para hacer aritmética. Concepto de timedelta: días + segundos (...)
+      Ejemplos:
         import datetime
         now = datetime.date.today()
-        now.strftime("%m-%d-%y. %d %b %Y is a %A of %B.")
-      .
+        print(now.strftime("%m-%d-%y. %d %b %Y is a %A of %B."))
         # dates support calendar arithmetic
         birthday = datetime.date(2001, 1, 1)
         age = now - birthday
-        age.days
+        print(age.days, "days old")
 
       La gestión del tiempo y de fechas/horas no es nada sencilla.
-      Los cambios de hora estacionales (DST), zonas horarias, y los
-      formatos de representación de fechas, deben gestionarse "bien".
+      Los cambios de hora estacionales (DST), <u>zonas horarias</u>, y los formatos
+      de representación de fechas, deben gestionarse "bien" (explícitamente!).
+      Ejemplo:
+        import datetime
+        import pytz  # módulo para gestionar las timezones (zonas horarias)
+        d_naive = datetime.datetime.now()  # "ingenua": no conoce su timezone
+        timezone = pytz.timezone("Europe/Madrid")
+        d_aware = timezone.localize(d_naive)  # fecha "consciente" de su tz
+        print(d_naive.isoformat())  # isoformat() útil para repr. fechas en logs
+        print(d_aware.isoformat())
       .
-      Introducción <u>recomendable</u> (al menos el principio):
-      : https://realpython.com/python-time-module/
-      .
-      Documentación oficial de los módulos de la bibl. estándar:
-      : https://docs.python.org/3/library/time.html#module-time
-      : https://docs.python.org/3/tutorial/stdlib.html#dates-and-times
+      Explicación sencilla de lo fundamental sobre timezones:
+      <a href="https://howchoo.com/g/ywi5m2vkodk/working-with-datetime-objects-and-timezones-in-python" target="_blank">https://howchoo.com/g/ywi5m2vkodk/working-with-datetime-objects...</a>
 
-      En ocasiones "bien" significará no hacer "nada" (...)
+      En ocasiones "bien" significará no hacer "nada": por ejemplo, si
+      sabemos que los datos de fechas provienen y se usan de una misma
+      zona horaria siempre, y son periodos "cortos" (no verano+inv.) (...)
       Como con otros temas (UTF-8) aunque a veces esa información
       no es explícita, siempre está definida de alguna forma (S.O.?)...
       Lo importante es que la tengamos en cuenta, y no asumamos que
-      siempre estamos en el caso "sencillo" (sin confirmarlo antes).
+      siempre estamos en el caso "favorable" (sin confirmarlo antes).
       Si hace falta, deberemos añadir parámetros/config. adecuados!
       O si es posible y aplicable, usar "siempre" horas UTC...
         Hora <samp>"visible"</samp> (usuario)  vs.  <samp>"interna"</samp> (ej. timestamps) 
@@ -314,12 +327,26 @@
       Todo esto es especialmente importante en ciencia de datos (I/O)!
 
       Más detalles (el módulo datetime cubre más cosas y es más complejo,
-      aunque probablemente lo usaremos más, y como tiene solapamientos con
-      el módulo time, quizás convenga empezar / intentar buscar en primer
-      lugar en datetime las funcionalidades que necesitemos...)
+      aunque probablemente lo usaremos más, y como tiene solapamientos
+      con el módulo time, es mejor empezar / intentar buscar primero si en
+      el módulo datetime ya tenemos la funcionalidad que buscamos...)
       .
-      Artículo útil y completo pero largo (recom. al menos el inicio):
+      Artículo útil y completo, con ejemplos (largo, rec. al menos el inicio):
       : https://realpython.com/python-datetime/
+      .
+      Artítulo sobre módulo time (avanzado, rec. las dos primeras secciones):
+      : https://realpython.com/python-time-module/
+
+      Documentación oficial de los principales módulos (<u>avanzado</u>, extensa)
+      .
+      Módulo time:
+      : https://docs.python.org/3/library/time.html#module-time
+      .
+      Módulo datetime:
+      : https://docs.python.org/3/library/datetime.html#module-datetime
+      .
+      Módulo pytz (para gestionar timezones, no bibl. estándar pero muy usado):
+      : https://pypi.org/project/pytz/ 
 
       <!-- EJERCICIO-PARA-CLASE -->
       # Ejercicio 4: repaso de datetime con Jupyter<a href="#ejercicio-4" class="link-anchor"> # </a>
