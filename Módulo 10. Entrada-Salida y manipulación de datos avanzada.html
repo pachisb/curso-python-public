@@ -440,6 +440,15 @@
       Similar (más sencillo, también con ejemplos), para MySQL, PostgreSQL y SQLite:
       : https://realpython.com/python-sql-libraries/
 
+      Uso desde pandas, ejemplos y tutorial:
+      : https://realpython.com/pandas-read-write-files/
+      .
+      Uso "directo" (más similar a lo nativo, con sentencias SQL):
+      : https://realpython.com/python-sql-libraries/#postgresql
+      .
+      Uso avanzado (tipo ORM):
+      <a href="https://realpython.com/python-sqlite-sqlalchemy/#working-with-sqlalchemy-and-python-objects" tabindex="_blank">https://realpython.com/python-sqlite-sqlalchemy/...</a>
+
       <!-- EJERCICIO-PARA-CLASE (OPCIONAL) -->
       # Ejercicio 2 <u>(opcional)</u>: SQLAlchemy<a href="#ejercicio-2" class="link-anchor"> # </a>
       <blockquote>Preparar una o varias BBDD MySQL y/o PostgreSQL para acceder a sus datos<br> /NOBR/
@@ -448,6 +457,8 @@
       .
       <u>Guión</u> para la parte de acceso a los datos, instalación de SQLAlchemy, etc.:
       : https://www.sqlshack.com/introduction-to-sqlalchemy-in-pandas-dataframe/
+      Para la parte de acceso a datos:
+      : https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91
       @CLASS@ ejercicio-2
       <!-- Más casos: ...\source\prueba-sqlserver-python -->
       <!-- Opc. Azure: belero-demo-vm-bd1.westeurope.cloudapp.azure.com (5432) -->
@@ -524,10 +535,119 @@
       Notebook en: <a href="https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/05-Overview-of-Regular-Expressions.ipynb" target="_blank">.../Complete-Python-3-Bootcamp/.../05-Overview-of-Regular....ipynb</a>
       @CLASS@ ejercicio-3
 
+      # Obtención de datos desde Webs y APIs
+      API: Application Programming Interface
+      Comunicación entre progamas y/o servicios
+      .
+      Explicación básica sobre HTTP, servidores HTTP, DNS, y un ejemplo
+      sencillo para crear un servidor HTTP (estático) en Python:
+      : https://www.afternerd.com/blog/python-http-server/
+      .
+      ## Formato de datos JSON y HTML
+      Ver detalles en Módulo 12
+
+      ## Librería urllib.request
+      De la biblioteca estándar, más compleja y cada
+      vez menos utilizada
+      ## Librería requests
+      La <u>más usada</u> con diferencia. Potente y simple
+      : https://requests.readthedocs.io/en/master/user/quickstart/
+      Doc. de referencia:
+      : https://requests.readthedocs.io/en/master/
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / proyecto <u>(opcional)</u>: APIs
+      ## Primera parte: buscar APIs y su doc.
+      Buscar datasets, ficheros, API’s, etc. (open data)
+      Zaragoza:
+      : https://www.zaragoza.es/sede/portal/datos-abiertos/
+      OpenWeatherMap
+      : https://openweathermap.org/api
+      : https://openweathermap.org/faq
+      : https://openweathermap.org/appid
+      <!-- : https://pyowm.readthedocs.io/en/latest/v3/code-recipes.html -->
+
+      ## Segunda parte: consultarlas
+      Partir de algo como:
+        import requests
+        r = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Orland,FL')
+        print r.json()
+      .
+      Opcional (avanzado): consultar la doc. del módulo JSON y hacer uso de él para
+      trabajar con los datos recibidos (y/o para enviar consultas más complejas)
+
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / demo <u>(opcional)</u>: Flask
       <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/
       y hace uso de argparse (CLI), configparser (ini), logging, Flask...</blockquote>
+      .
+      Tutorial (muy largo, avanzado) <u>muy recomendable</u> sobre Flask:
+      : https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
+
+      ## Tercera parte (avanzado): crear APIs
+      Crear una API que dé servicio a otro programa creado por nosotros
+      también, que hará de cliente.
+      .
+      Utilizar requests y JSON
+      (...)
+
+      ## Avanzado: autenticación, etc.
+      Authentication vs. authorization
+      Hay muchos mecanismos. Suelen requerir HTTPS (TLS) (...)
+      OAuth (muy usado, algunos detractores, sobre todo con 2.0)
+      : https://en.wikipedia.org/wiki/OAuth
+      OpenID
+      : https://en.wikipedia.org/wiki/OpenID
+      JSON Web Token (JWT)
+      : https://en.wikipedia.org/wiki/JSON_Web_Token
+
+      ! https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/OpenIDvs.Pseudo-AuthenticationusingOAuth.svg/1024px-OpenIDvs.Pseudo-AuthenticationusingOAuth.svg.png
+
+      : https://xkcd.com/936/
+      ! https://imgs.xkcd.com/comics/password_strength.png
+      @ZOOM@ 110
+
+      ## Scraping
+      Artículo que explica el concepto, aunque lueog los ejemplos son
+      complejos, con la librería lxml (http://lxml.de/):
+      : https://docs.python-guide.org/scenarios/scrape/#web-scraping
+      .
+      Se suele usar la librería Scrapy:
+      : https://scrapy.org/
+      Doc. y ejemplo:
+      : https://docs.scrapy.org/en/latest/intro/overview.html
+
+      Ejercicios avanzados sobre Scraping (también uno de intro/repaso):
+      : https://github.com/Belerofontech/Complete-Python-3-Bootcamp/tree/master/13-Web-Scraping
+      .
+      Idea para otro ejercicio: teoría sobre Wikipedia y la palabra “Philosophy” (...)
+      Viene del chiste / broma siguiente (leer el tooltip):
+      : https://xkcd.com/903/
+
+      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
+      # Ejercicio / demo <u>(opcional)</u>: face detection con OpenCV
+      (...)
+      .
+      Eleborado a partir del material del:
+      : https://github.com/arindomjit/Face_Detector
+      Del artículo:
+      : https://towardsdatascience.com/face-detection-in-10-lines-for-beginners-1787aa1d9127
+  
+      # Ejercicios extra
+      Ejercicios tipo examen:
+      : https://aprendeconalf.es/docencia/python/trabajos/inteligencia-negocios/
+      : https://aprendeconalf.es/docencia/python/examenes/inteligencia-negocios/
+      Avanzado: estudiar ficheros de datos grandes (CSV) y qué se puede hacer
+      con ellos, e intentar reproducir alguno de sus cálculos (Python survey 2019):
+      : https://www.jetbrains.com/lp/python-developers-survey-2019/
+      Datos disponibles aquí:
+      : https://drive.google.com/drive/folders/1GW86M_QLFOA2KyeWeb8hzBj_RqQIXmAU
+
+      # Referencias
+      : https://docs.python.org/
+      : https://docs.python.org/3/tutorial/stdlib.html
+      : https://realpython.com/tutorials/
+      : https://en.wikipedia.org/
 
     </pre>
   </body>
