@@ -8,5 +8,6 @@ seaborn
 scipy
 sqlalchemy
 psycopg2
+opencv-python
 # autopep8
 # rope
