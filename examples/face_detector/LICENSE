@@ -1,0 +1,30 @@
+Sample Python face detector from:
+    https://github.com/arindomjit/Face_Detector
+
+License for this Python sample is unknown.
+
+Copyright (C) Arindomjit Bhattacharjee (?)
+    https://github.com/arindomjit
+    https://medium.com/@b.arindom
+
+Detailed read:
+    "Face Detection in 10 lines for Beginners"
+    https://towardsdatascience.com/face-detection-in-10-lines-for-beginners-1787aa1d9127 
+
+--
+
+The sample uses OpenCV (Open Source Computer Vision Library)
+    https://github.com/opencv/opencv
+    https://opencv.org/
+
+See README for usage and dependencies installation instructions.
+
+--
+
+Haar sample file ("haarcascade_frontalface_default.xml"), under OpenCV (Apache 2.0) license, from:
+    https://github.com/opencv/opencv/tree/master/data/haarcascades
+    Copyright (C) 2000, Intel Corporation, all rights reserved.
+
+License: Intel License Agreement For Open Source Computer Vision Library
+
+NOTE: other HAAR models can be used (i.e. for eye detection) instead.
