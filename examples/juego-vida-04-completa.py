@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Solución para el Ejercicio 3 "juego de la vida (parte 1)" del Módulo 9 5 (esqueleto inicial)
+# Solución para el Ejercicio 3 "juego de la vida (parte 1)" del Módulo 9 (esqueleto inicial)
 
 import time
 
