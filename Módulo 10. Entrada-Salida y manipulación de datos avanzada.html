@@ -90,14 +90,6 @@
       .
       Más ejemplos y detalles (incluyendo uso con diccionarios en lugar de listas, y con <u>pandas</u>):
       : https://realpython.com/python-csv/
-      .
-      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
-      <!-- # Ejercicio / demo <u>(opcional)</u>: argparse, logging -->
-      <!-- # y configparser -->
-      <!-- <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/ -->
-      <!-- y hace uso de argparse (CLI), configparser (ini), logging...</blockquote> -->
-      <!-- . -->
-      <!-- Nota: continuaremos con este ejemplo más adelante... -->
 
       # Avanzado: juegos de caracteres<a href="#juegos-caracteres" class="link-anchor"> # </a>
       ## Unicode
@@ -129,7 +121,7 @@
       (el estándar definía ambas cosas) que fue casi universal
       Define sólo 128 caracteres (alfabeto inglés y poco más)
       .
-      Video muy didáctico para entender la historia y la base:
+      Vídeo muy didáctico para entender la historia y la base:
       : https://www.youtube.com/watch?v=UPlR4eMMCmI
 
       <!-- Adapted from: -->
@@ -264,13 +256,13 @@
       fichas determinada.</blockquote>
       Nota: usar la lista de palabras "oficial" de Scrabble: <a href="http://mit.edu/jesstess/www/SkillsharePython/Unit5/sowpods.txt" target="_blank">aquí</a>
       Opcional: calcular además la puntuación de cada palabra (...)
-      Opcional: dividir el trabajo por equipos (...)
+      Opcional: dividir el trabajo en módulos, por equipos (...)
+      Opcional: mejorarlo usando <a href="https://docs.python.org/3/library/argparse.html" target="_blank">argpase</a>, y crear un CLI adecuado (...)
       .
       Sugerencias:
       - Guardar una copia del original en todo momento!
       - Ir probando por trozos, y con ficheros más pequeños al inicio
-      <!-- Problema y solución en: -->
-      <!-- https://wiki.openhatch.org/wiki/O%27Reilly_Introduction_to_Python/Section_18 -->
+      - Problema original y su <a href="https://wiki.openhatch.org/wiki/O%27Reilly_Introduction_to_Python/Section_18" target="_blank">solución</a>, en un curso de O'Reilly (...)
       @CLASS@ ejercicio-1
 
       # Codificación de datos
@@ -431,7 +423,7 @@
       : https://www.sqlalchemy.org/
 
       Forma de uso <u>habitual</u> en data science: SQLAlchemy con <u>pandas</u>, "por tablas".
-      La vemos a continuación (en el siguiente ejercicio).
+      Más detalles (opcional) a continuación, en la siguiente página...
       .
       Uso menos habitual (avanzado): "directo", y con sentencias SQL.
       Varias formas... Por ejemplo, con la DB-API (oficial, <a href="https://www.python.org/dev/peps/pep-0249/" target="_blank">PEP 249</a>) y con uso directo
@@ -440,7 +432,7 @@
       Similar (más sencillo, también con ejemplos), para MySQL, PostgreSQL y SQLite:
       : https://realpython.com/python-sql-libraries/
 
-      Uso desde pandas, ejemplos y tutorial:
+      Uso <u>desde pandas</u>, ejemplos y tutorial:
       : https://realpython.com/pandas-read-write-files/
       .
       Uso "directo" (más similar a lo nativo, con sentencias SQL):
@@ -460,8 +452,6 @@
       Para la parte de acceso a datos:
       : https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91
       @CLASS@ ejercicio-2
-      <!-- Más casos: ...\source\prueba-sqlserver-python -->
-      <!-- Opc. Azure: belero-demo-vm-bd1.westeurope.cloudapp.azure.com (5432) -->
 
       # Muy avanzado: Expresiones regulares
       ## módulo re (biblioteca estándar)
@@ -544,13 +534,24 @@
       : https://www.afternerd.com/blog/python-http-server/
       .
       ## Formato de datos JSON y HTML
-      Ver detalles en Módulo 12
+      Ver detalles sobre el formato, ejemplos, etc. en el <a href="Módulo 12. Extras.html#json" target="_blank">Módulo 12</a>
+      <!-- REFERENCIA-INTERNA-A-MODULO-12 -->
+
+      ## Módulo json
+      De la biblioteca estándar. Para gestionar JSON como texto (para I/O ya sea
+      desde/hacia ficheros, internet, etc.) y como diccionarios Python.
+      Ejemplo de uso:
+        import json
+        json.loads('["foo", {"bar":["baz", null, 1.0, 2]}]')  # returns a dict
+      .
+      Doc. del módulo, muy recomendable y con ejemplos sencillos:
+      : https://docs.python.org/3/library/json.html
 
       ## Librería urllib.request
-      De la biblioteca estándar, más compleja y cada
-      vez menos utilizada
+      De la biblioteca estándar, más compleja y cada vez menos
+      utilizada
       ## Librería requests
-      La <u>más usada</u> con diferencia. Potente y simple
+      La <u>más usada</u> con diferencia (potente y simple). <u>Introducción</u>:
       : https://requests.readthedocs.io/en/master/user/quickstart/
       Doc. de referencia:
       : https://requests.readthedocs.io/en/master/
@@ -558,38 +559,36 @@
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / proyecto <u>(opcional)</u>: APIs
       ## Primera parte: buscar APIs y su doc.
-      Buscar datasets, ficheros, API’s, etc. (open data)
+      Buscar datasets, ficheros de ejemplo, API’s, etc. (open data)
       Zaragoza:
       : https://www.zaragoza.es/sede/portal/datos-abiertos/
-      OpenWeatherMap
+      OpenWeatherMap (requiere registrarse, uso gratuito con límites):
       : https://openweathermap.org/api
       : https://openweathermap.org/faq
       : https://openweathermap.org/appid
-      <!-- : https://pyowm.readthedocs.io/en/latest/v3/code-recipes.html -->
 
       ## Segunda parte: consultarlas
       Partir de algo como:
         import requests
-        r = requests.get('http://api.openweathermap.org/data/2.5/weather?q=Orland,FL')
-        print r.json()
+        api_url = "http://api.openweathermap.org/data/2.5/weather?"
+        api_url += "q=Zaragoza,es&APPID=xyz"
+        r = requests.get(api_url)
+        print(r.json())
+      NOTA: la <u>API key</u> ("xyz") se obtiene al registrarse; ejemplo (válido en nov. 2020):
+        <samp>7ff75dc941c94f200a15d4e338109010</samp>
       .
       Opcional (avanzado): consultar la doc. del módulo JSON y hacer uso de él para
       trabajar con los datos recibidos (y/o para enviar consultas más complejas)
 
-      <!-- EJERCICIO-PARA-CLASE (DEMO) -->
-      # Ejercicio / demo <u>(opcional)</u>: Flask
-      <blockquote>Demo de un pequeño programa auxiliar (proporciona una API sencilla)<br> /NOBR/
-      y hace uso de argparse (CLI), configparser (ini), logging, Flask...</blockquote>
-      .
-      Tutorial (muy largo, avanzado) <u>muy recomendable</u> sobre Flask:
-      : https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
-
       ## Tercera parte (avanzado): crear APIs
-      Crear una API que dé servicio a otro programa creado por nosotros
-      también, que hará de cliente.
+      Crear una API que dé servicio a otro programa creado por nosotros también, que 
+      hará de cliente. Utilizar requests y JSON (...)
+      Opcional: para la parte servidora, usar el <a href="https://palletsprojects.com/p/flask/" target="_blank">framework Web Flask</a>
       .
-      Utilizar requests y JSON
-      (...)
+      Tutorial <u>muy recomendable</u> sobre APIs con Flask:
+      : https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
+      Tutorial (muy largo, avanzado) recomendable sobre Flask (uso general, no sólo APIs):
+      : https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
 
       ## Avanzado: autenticación, etc.
       Authentication vs. authorization
@@ -608,8 +607,8 @@
       @ZOOM@ 110
 
       ## Scraping
-      Artículo que explica el concepto, aunque lueog los ejemplos son
-      complejos, con la librería lxml (http://lxml.de/):
+      Artículo que explica el <u>concepto</u>, aunque luego los ejemplos son
+      complejos, con la librería lxml (<a href="http://lxml.de/" target="_blank">http://lxml.de/</a>):
       : https://docs.python-guide.org/scenarios/scrape/#web-scraping
       .
       Se suele usar la librería Scrapy:
@@ -626,11 +625,12 @@
 
       <!-- EJERCICIO-PARA-CLASE (DEMO) -->
       # Ejercicio / demo <u>(opcional)</u>: face detection con OpenCV
-      (...)
+      <blockquote>Demo de un pequeño programa que hace uso de la OpenCV (Open Source Computer<br> /NOBR/
+      Vision Library) para detectar caras desde imágenes y webcam.</blockquote>
+      Código en: <a href="examples/face_detector/face_detector.py" target="_blank">.../face_detector/face_detector.py</a>
       .
-      Eleborado a partir del material del:
-      : https://github.com/arindomjit/Face_Detector
-      Del artículo:
+      Elaborado a partir del material del repositorio: <a href="https://github.com/arindomjit/Face_Detector" target="_blank">github.com/arindomjit/Face_Detector</a>
+      Descrito en el siguiente <u>artículo</u>:
       : https://towardsdatascience.com/face-detection-in-10-lines-for-beginners-1787aa1d9127
 
       # Ejercicios extra
