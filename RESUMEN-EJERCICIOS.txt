@@ -1,0 +1,167 @@
+Módulo 1
+    # Ejercicio 1: algoritmos (lavadora) (PAPEL)
+    # Ejercicio 2 (opcional): algoritmos (factorial, nómina) (PAPEL)
+    # Ejercicio / demo: WSL Ubuntu
+    # Ejercicio / demo: IPython
+    # Ejercicio / demo: notebooks (JUPYTER)
+    # Ejercicio 3 (opcional): IPython (probar en consola) (INVESTIG./LIBRE)
+    # Ejercicios extra
+        Pruebas de entornos, seguir tutoriales Linux/etc., doc... (INVESTIG./LIBRE)
+
+Módulo 2
+    # Ejercicio 1: cambio de base (a mano) (PAPEL / PIZARRA)
+    # Ejercicio 2: Stack Overflow (INVESTIG./LIBRE)
+    # Ejercicios extra
+        Practicar con tipos de datos, f-strings, etc.
+        Representar números en otras bases
+
+Módulo 3
+    # Ejercicio / demo: ecuación 2º grado (sentencias e if) (GRUPOS) (ecuacion-segundo-grado.py) (SOLUC-GIT)
+    # Ejercicio 1: media y suma (while) (GRUPOS) (SOLUC-GIT)
+    # Ejercicio 1 bis: cálculo de e (while) (INDIVIDUAL+GRUPO LUEGO) (SOLUC-GIT)
+    # Ejercicio 2 (opcional): cambio de base (while)
+        Además, diagrama de flujo, comentar en pizarra soluciones de otros
+        y ejecución desde pythontutor.com y/o con print's, etc.
+    # Ejercicio 3: polígonos y tortugas (PARTE DE BASE DADA, con turtle) (GRUPOS) (SOLUC-GIT)
+    # Ejercicio 4: buscar repetidos (for) (SOLUC-GIT)
+    # Ejercicios extra
+        (opcional) Espiral con turtle
+        (HECHO en clase, era opcional) Saber si un número es primo (SOLUC-GIT)
+        (opcional) En el libro "How to Think Like a Computer Scientist..." (conditionals: 2, 13)
+        (opcional) En el libro "How to Think Like a Computer Scientist..." (iteration: 1-10 sin funciones)
+        (HECHO en clase) The Python Challenge: HECHOS: 0, 1, 2, 3 a medias (SOLUC-GIT)
+
+Módulo 4
+    # Ejercicio / demo: bucles y funciones con listas
+    # Ejercicio 1: rango de números (similar a range()) (listas) (GRUPOS) (SOLUC-GIT)
+    # Ejercicio 1-bis: bucles sencillos (repaso) (INDIVIDUAL) (SOLUC-GIT)
+    # Ejercicio / demo: media con listas (como el de M3 pero con listas, y añadiendo mediana opcional) (SOLUC-GIT)
+        (media-y-mediana-con-listas.py)
+    # Ejercicio / demo: buscar repetidos con listas (como el de M3 pero con listas) (SOLUC-GIT)
+        (buscar-repetidos-03-listas.py)
+    # Ejercicio 2: repaso con Jupyter (listas y bucles) (JUPYTER) (HECHOS-INDIV: 04-Lists y algunos el 03-for)
+    # Ejercicio 3: tuplas con Jupyter (JUPYTER)
+    # Ejercicio 4 (opcional): strings con Jupyter (JUPYTER)
+    # Ejercicio 4-bis: producto matricial (con listas y bucles) (partiendo de esqueleto) (GRUPOS) (SOLUC-GIT)
+    # Ejercicio 5: diccionarios con Jupyter (JUPYTER) (INDIVIDUAL)
+    # Ejercicio / demo: recorrer diccionarios (recorrer-diccionarios.py) (SOLUC-GIT)
+    # Ejercicio / demo: contar frecuencias (contar-frecuencias-diccionarios.py) (SOLUC-GIT)
+    # Ejercicio / demo: eliminar repetidos con sets
+    # Ejercicios extra
+        (opcional) Recomendados: notebooks de repaso tipo auto-evaluación, del curso "Bootcamp" (JUPYTER)
+            Evaluación: Objetos y más (tipos básicos, listas, tuplas, diccionarios, etc.)
+            https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/09-Objects%20and%20Data%20Structures%20Assessment%20Test.ipynb/
+            Evaluación: bucles y range (comprehensions por ahora no, muy avanzado)
+            https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/02-Python%20Statements/07-Statements%20Assessment%20Test.ipynb
+        (opcional) Avanzado: ordenar una lista de elementos (del mismo tipo), con varios bucles
+        (opcional) The Python Challenge (continuar/repetir el 3, que está resuelto) y quizás más...
+        (opcional) Del libro "Automate the Boring Stuff..." las secciones "Practice Projects" en cada capítulo
+        (opcional) En el libro "How to Think Like a Computer Scientist..." (varios: lists, tuples...)
+
+Módulo 5
+    # Ejercicio / demo: ROT13 (función print_rot13())
+    # Ejercicio 1: borrar de una lista (parámetros por asignación) (SOLUC-GIT)
+    # Ejercicio 2: funciones sencillas (más un ejercicio sencillo de turtle -- functions: 1) (SOLUC-GIT)
+        https://openbookproject.net/thinkcs/python/english3e/functions.html#exercises
+    # Ejercicio 3: juego de la vida (parte 1) (calcular nº de vecinos) (partiendo de esqueleto) (SOLUC-GIT)
+        (juego-vida-01-esqueleto.py) (HECHO COMO DEMO EN CLASE FINALMENTE)
+    # Ejercicio 4: parámetros (IRPF) (GRUPOS) (SOLUC-GIT)
+    # Ejercicio / demo: recursión (recursion-baja_y_sube.py) (SOLUC-GIT)
+    # Ejercicio 5 (opcional): copo de nieve Koch (recursión) (partiendo de esqueleto) (turtle-koch-01-esqueleto.py)
+    # Ejercicio 6: potencia de un número (recursión)
+    # Ejercicio 7 (opcional): billetes (recursión) (REVISADA SOLUCIÓN EN CLASE) (SOLUC-GIT)
+    # Ejercicios extra
+        (opcional) Pasados, convertir a función, especialmente éste:
+            # Módulo 4, Ejercicio 4-bis: producto matricial
+        (opcional) Dibujar otros fractales con turtle: triángulo de Sierpinski, Cesaro...
+        (opcional) Saber si un número es primo y factores divisores, funciones (SOLUC-GIT)
+            (partiendo de lo previo en:) # Módulo 3, Ejercicio extra: Saber si un número es primo
+        (opcional) En el libro "How to Think Like a Computer Scientist..." (varios: functions, fruitful functions...)
+            En especial el del "Game challenge" (adivinar núm. entre 0 y 99...)
+        (opcional) (AVANZADO) Variación del de los billetes con número ilimitado de cada tipo/tamaño
+        (opcional) (AVANZADO) Ordenar una lista de enteros, usando recursión
+        (opcional) (AVANZADO) Más ejercicios con itertools de realpython.com (también en Módulo 8)
+
+Módulo 6
+    # Ejercicio 1: usar módulos sencillos (plot, etc.) usarlos con un programa ya dado (HECHO COMO DEMO EN CLASE FINALMENTE)
+    # Ejercicio / demo: módulo my_rot13 (crear módulo) y copiarlo en "carpetas de sistema" y usarlo (SOLUC-GIT)
+    # Ejercicio 2: paquetes cowsay (más invest., doc., y uso) (GRUPOS)
+    # Ejercicio 2-bis (opcional): diseñar paquetes (juego de la vida)
+    # Ejercicio / demo: instalar paquetes (de requirements.txt)
+    # Ejercicio 3: instalar dependencias (nuevas listas de requisitos)
+    # Ejercicios extra
+        (opcional) Módulo para lo de los primos y factores de un número (SOLUC-GIT)
+        (opcional) "Convertir" en módulos alguno de los programas previos, opc. con "__main__"
+        (opcional) Organizar alguno de esos módulos (idealmente más de uno) en un paquete
+        (opcional) Ejercicio tipo quizz de repaso:
+            https://realpython.com/quizzes/run-python-scripts/
+        (opcional) Seguir algún tutorial sobre conda (no Anaconda)
+
+Módulo 7
+    # Ejercicio / demo: clases con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/02-Object%20Oriented%20Programming%20Homework.ipynb
+    # Ejercicio 1: clase "bank account" con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/04-OOP%20Challenge.ipynb
+    # Ejercicio 2: tablero de 27 piezas (SOLUC-GIT)
+    # Ejercicio 3: repaso de decoradores con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/10-Python%20Decorators/01-Decorators.ipynb
+    # Ejercicio 4: repaso de excepciones con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/07-Errors%20and%20Exception%20Handling/01-Errors%20and%20Exceptions%20Handling.ipynb
+    # Ejercicio 5: excepciones con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/04-OOP%20Challenge.ipynb
+    # Ejercicio / demo: excepciones y with con Jupyter (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/07-Errors%20and%20Exception%20Handling/01-Errors%20and%20Exceptions%20Handling.ipynb
+
+Módulo 8
+    # Ejercicio / demo: lambda y composición
+    # Ejercicio 1 (opcional): ordenación (algoritmos varios, elegir 2 de entre gnome, bubble, insertion)
+    # Ejercicio / demo: generadores y range (partiendo de base/esqueleto) (rango-de-numeros.py) (SOLUC-GIT)
+    # Ejercicio 2: generadores y potencia (SOLUC-GIT)
+    # Ejercicios extra
+    (opcional) Recomendados: notebooks de repaso tipo auto-evaluación, del curso "Bootcamp" (JUPYTER)
+        Repaso de funciones:
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/03-Methods%20and%20Functions/08-Functions%20and%20Methods%20Homework.ipynb
+        Funciones avanzadas (map, zip, etc.):
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/09-Built-in%20Functions/08-Built-in%20Functions%20Assessment%20Test.ipynb
+        (AVANZADO) generadores:
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb
+    (opcional) (AVANZADO) Ejercicio tipo quizz de repaso (algo avanzado, lambdas y func. avanzadas):
+        https://realpython.com/quizzes/python-lambda/
+    (opcional) (AVANZADO) Dos ejercicios relacionados: "Analyzing the S&P500", y "Building Relay Teams..." de realpython.com
+
+Módulo 9
+    # Ejercicio 1: corregir errores (NO EN GIT!)
+    # Ejercicio 2: leer ficheros (juego de la vida) (SOLUC-GIT)
+    # Ejercicio 2 bis: leer ficheros CSV (flashcards) (SOLUC-GIT)
+    # Ejercicio 3: repaso de math y random (JUPYTER)
+        https://github.com/Belerofontech/Complete-Python-3-Bootcamp/blob/master/12-Advanced%20Python%20Modules/03-Math-and-Random-Module.ipynb
+    # Ejercicio / demo: leer y procesar CSV sencillo (weather)
+    # Ejercicio 4: repaso de datetime con Jupyter (JUPYTER)
+    # Ejercicio 5: biblioteca estándar y ficheros (varios sencillos: ficheros, datetime y sys.argv)
+    # Ejercicio / demo: generadores y leer CSV (generators-csv-data-process.py) (SOLUC-GIT)
+    # Ejercicios extra
+        Utilizando subprocess, invocar a pip ... (output, diccionario)
+        El otro ejercicio ("Football") del artículo de realpython.com con CSV's
+            https://realpython.com/python-interview-problem-parsing-csv-files/#problem
+
+Módulo 10
+    # Ejercicio / demo (opcional): módulo csv
+    # Ejercicio 1 (opcional): Scrabble (completar... e incluye buscar doc. sobre argparse) (SOLUC-GIT)
+        https://wiki.openhatch.org/wiki/O%27Reilly_Introduction_to_Python/Section_18
+    # Ejercicio 2 (opcional): SQLAlchemy (primero instalación BBDD (...!)) (SOLUC-GIT)
+        Guión en artículos:
+            https://www.sqlshack.com/introduction-to-sqlalchemy-in-pandas-dataframe/
+            https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91
+    # Ejercicio 3: repaso con Jupyter (expr. regulares)
+    # Ejercicio / proyecto (opcional): APIs (SOLUC-GIT sencilla para el caso openweathermap)
+        https://requests.readthedocs.io/en/master/user/quickstart/
+
+Módulo 11
+    N/A
+
+Módulo 12
+    # Ejercicio 1: lenguajes de marcado (Markdown y HTML)
+    # Ejercicio / demo: logging (siguiendo un howto de la doc. "oficial")
+        https://docs.python.org/3/howto/logging.html#logging-basic-tutorial
+    # Ejercicio / demo: entornos virtuales (venv) (tutorial oficial Python)
+        https://docs.python.org/3/tutorial/venv.html
