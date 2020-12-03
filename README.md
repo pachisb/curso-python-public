@@ -4,6 +4,8 @@ Este proyecto usa GitHub pages, el contenido se puede ver directamente en:
 
 <https://belerofontech.github.io/curso-python-public/index.html>
 
+Las presentaciones de este curso han sido creadas con la herramienta [slide-HTML](https://github.com/pachi-belero/slide-html).
+
 ---
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
