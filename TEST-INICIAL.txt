@@ -1,28 +1,139 @@
 Qué experiencia o formación previa tienes?
+
+
+
+
 Cuáles son tus objetivos y expectativas con el curso?
+
+
+
+
 Qué es una máquina virtual?
+
+
+
+
 Qué es una base de datos?
+
+
+
+
 Qué lenguajes de programación puedes nombrar (máximo 5)?
+
+
+
+
 Qué es HTML? Es un lenguaje de programación?
+
+
+
+
 Qué es una variable?
+
+
+
+
 Qué es una función?
+
+
+
+
 Da un ejemplo de una llamada a una función
+
+
+
+
 Da un ejemplo de una expresión aritmética
+
+
+
+
 Qué es o para qué sirve un sistema operativo?
+
+
+
+
 Qué es un tipo flotante?
+
+
+
+
 Qué es un bucle?
+
+
+
+
 Qué es un algoritmo?
+
+
+
+
 Qué es un giga byte?
+
+
+
+
 Qué es un comentario?
+
+
+
+
 Cuál crees que es el resultado de esta expresión? 4 * 7 % 3 ** 2
+
+
+
+
 Qué significa "divide y vencerás" (en programación)?
+
+
+
+
 Qué es depurar?
+
+
+
+
 Qué son o para qué se usan los atributos? Y los métodos?
+
+
+
+
 Qué son o para qué se usan las excepciones?
+
+
+
+
 Qué es la recursión?
+
+
+
+
 Qué es una palabra clave?
+
+
+
+
 Qué es una estructura de datos?
+
+
+
+
 Quién es Guido van Rossum?
+
+
+
+
 Qué es o para qué se usa un diccionario (o pon un ejemplo)?
+
+
+
+
 Qué es la eficiencia o por qué es importante?
+
+
+
+
 Qué es la concurrencia?
+
+
+
