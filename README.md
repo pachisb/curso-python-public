@@ -2,9 +2,9 @@
 
 Este proyecto usa GitHub pages, el contenido se puede ver directamente en:
 
-<https://pachi-belero.github.io/curso-python-public/index.html>
+<https://pachisb.github.io/curso-python-public/index.html>
 
-Las presentaciones de este curso han sido creadas con la herramienta [slide-HTML](https://github.com/pachi-belero/slide-html).
+Las presentaciones de este curso han sido creadas con la herramienta [slide-HTML](https://github.com/pachisb/slide-html).
 
 ---
 
